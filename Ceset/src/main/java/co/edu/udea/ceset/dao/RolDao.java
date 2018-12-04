@@ -6,7 +6,7 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.cnf.JDBCConnectionPool;
-import co.edu.udea.ceset.dto.Rol;
+import co.edu.udea.ceset.dto.Rolec;
 import co.edu.udea.ceset.utilities.Utilities;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,17 +22,18 @@ import org.apache.log4j.Logger;
 public class RolDao extends JDBCConnectionPool {
     private final Logger logger = Logger.getLogger(getClass());
     
-    public String create(Rol rol) {
+    public String create(Rolec rol) {
         PreparedStatement psCreateRol = null;
         ResultSet rs = null;
         try {
             psCreateRol = getConnection().prepareStatement(
-                    "INSERT INTO wfc_rol VALUES (" + 
-                            rol.getId() + ", \"" +
-                            rol.getNombre() + "\", \"" + 
-                            rol.getEstado() + "\", \"" + 
-                            rol.sqlDateFormat(rol.getFechaCreacion()) + "\", \"" + 
-                            rol.sqlDateFormat(rol.getFechaModificacion()) + "\")"
+                    "INSERT INTO `tbl_role`(`description`, `CreatedAt`, " + ""
+                            + "`UpdatedAt`, `States`) VALUES (" + 
+                          
+                            rol.getDescription()+ "\", \"" + 
+                            rol.sqlDateFormat(rol.getCreatedAt()) + "\", \"" + 
+                            rol.sqlDateFormat(rol.getUpdatedAt()) + "\", \"" + 
+                            rol.getStates() + "\")"
             );
             psCreateRol.executeUpdate();
         } catch (SQLException e) {
@@ -52,14 +53,14 @@ public class RolDao extends JDBCConnectionPool {
         return "Se insertó el registro correctamente";
     }
     
-    public Rol getById(int id) {
+    public Rolec getById(int id) {
         PreparedStatement psGetRol = null;
         ResultSet rs = null;
-        Rol rol = new Rol();
+        Rolec rol = new Rolec();
         
         try {
             psGetRol = getConnection().prepareStatement(
-                    "SELECT * FROM wfc_rol WHERE id = " + id);
+                    "SELECT * FROM tbl_rol WHERE id = " + id);
             rs = psGetRol.executeQuery();
             if(rs != null) {
                 while (rs.next()) {
@@ -82,18 +83,18 @@ public class RolDao extends JDBCConnectionPool {
         return rol;
     }
     
-    public Collection<Rol> getAll(){
+    public Collection<Rolec> getAll(){
         PreparedStatement psGetAll = null;
         ResultSet rs = null;
-        Collection<Rol> listaRoles = new LinkedList<>();
+        Collection<Rolec> listaRoles = new LinkedList<>();
         
         try {
             psGetAll = getConnection().prepareStatement(
-                     "Select * from wfc_rol");
+                     "Select * from tbl_rol");
             rs = psGetAll.executeQuery();
             if(rs != null){
                 while(rs.next()){
-                    Rol rol = mapRol(rs);
+                    Rolec rol = mapRol(rs);
                     listaRoles.add(rol);
                     
                 }
@@ -114,14 +115,14 @@ public class RolDao extends JDBCConnectionPool {
         return listaRoles;
     }
     
-    private Rol mapRol(ResultSet rs) throws SQLException{
-        Rol rol = new Rol();
+    private Rolec mapRol(ResultSet rs) throws SQLException{
+        Rolec rol = new Rolec();
         try {
-            rol.setId(rs.getInt("id"));
-            rol.setNombre(rs.getString("descripcion"));
-            rol.setEstado(rs.getString("estado"));
-            rol.setFechaCreacion(rs.getDate("fechaCreacion"));
-            rol.setFechaModificacion(rs.getDate("fechaModificacion"));
+            rol.setIdRole(rs.getInt("idRole"));
+            rol.setDescription(rs.getString("description"));
+            rol.setCreatedAt(rs.getDate("CreatedAt"));
+            rol.setUpdatedAt(rs.getDate("UpdatedAt"));
+            rol.setStates(rs.getString("States"));
         } catch (SQLException e) {
             throw e;
         }

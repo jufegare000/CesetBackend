@@ -6,6 +6,7 @@
 package co.edu.udea.ceset.dto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -63,6 +64,8 @@ public class Rolec implements Serializable {
     private Collection<Rolebypermission> rolebypermissionCollection;
     @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
     private Collection<Rolebyuser> rolebyuserCollection;
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public Rolec() {
     }
@@ -136,10 +139,12 @@ public class Rolec implements Serializable {
         return hash;
     }
 
-
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.Rolec[ idRole=" + idRole + " ]";
     }
-    
+
+    public String sqlDateFormat(Date date) {
+        return this.dateFormat.format(date);
+    }
 }

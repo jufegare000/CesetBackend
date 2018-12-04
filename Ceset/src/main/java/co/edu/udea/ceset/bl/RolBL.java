@@ -6,7 +6,7 @@
 package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.RolDao;
-import co.edu.udea.ceset.dto.Rol;
+import co.edu.udea.ceset.dto.Rolec;
 import java.util.Collection;
 import java.util.Date;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ public class RolBL {
         return getInstance();
     }
 
-    public Collection<Rol> getAll() {
+    public Collection<Rolec> getAll() {
         return obtenerRolDao().getAll();
     }
 
@@ -42,17 +42,18 @@ public class RolBL {
         return new RolDao();
     }
     
-    public Rol obtenerPorId(int id) {
+    public Rolec obtenerPorId(int id) {
         return obtenerRolDao().getById(id);
     }
     
-    public String crear(int id, String nombre, String estado) {
-        Rol rol = new Rol();
-        rol.setId(id);
-        rol.setNombre(nombre);
-        rol.setEstado(estado);
-        rol.setFechaCreacion(new Date());
-        rol.setFechaModificacion(new Date());
+    public String crear(String nombre, String descripcion) {
+        Rolec rol = new Rolec();
+;
+        rol.setDescription(descripcion);
+        
+        rol.setCreatedAt(new Date());
+        rol.setUpdatedAt(new Date());
+        rol.setStates("Active");
         
         return obtenerRolDao().create(rol);
     }
