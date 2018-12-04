@@ -30,8 +30,12 @@ public class RolServicio {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void createRole(Rolec rol) {
+
          RolBL.getInstance().crear(rol.getDescription());
     }
+    
+    
+    
 /*
     @Consumes("application/json")
     @GET

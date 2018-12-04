@@ -40,7 +40,6 @@ co\edu\udea\ceset\dto\Permission_.class
 co\edu\udea\ceset\properties\PropiedadesCeset.class
 co\edu\udea\ceset\dto\Rolebyuser_.class
 co\edu\udea\ceset\excepciones\PreexistingEntityExceptionMapper.class
-co\edu\udea\ceset\dao\RolDao1.class
 co\edu\udea\ceset\dao\RolDAO.class
 co\edu\udea\ceset\dto\Rol.class
 co\edu\udea\ceset\dto\MensajeError.class

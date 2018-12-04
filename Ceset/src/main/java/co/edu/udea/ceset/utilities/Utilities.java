@@ -9,6 +9,7 @@ package co.edu.udea.ceset.utilities;
  *
  * @author jufeg
  */
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -59,4 +60,6 @@ public class Utilities {
         Utilities utils = new Utilities();
         utils.logger.error("SIBU-Error:" + msg);
     }
+    
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 }
