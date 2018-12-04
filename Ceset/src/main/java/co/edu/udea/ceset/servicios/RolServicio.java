@@ -6,8 +6,9 @@
 package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.RolBL;
-import co.edu.udea.ceset.dto.Rol;
+import co.edu.udea.ceset.dto.Rolec;
 import java.util.Collection;
+import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -28,30 +29,29 @@ public class RolServicio {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String createRole(Rol rol) {
-        return RolBL.getInstance().crear(rol.getId(), rol.getNombre(), rol.getEstado());
+    public void createRole(Rolec rol) {
+         RolBL.getInstance().crear(rol.getDescription());
     }
-    /*
+/*
     @Consumes("application/json")
     @GET
     @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
-    public Collection<Rol> getAll () {
+    public Collection<Rolec> getAll () {
         return RolBL.getInstance().getAll();
     }
+  
     */
-    @Consumes("application/json")
     @GET
-    @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAll () {
-        return "Hola";
+    public List<Rolec> getAll () {
+        return RolBL.getInstance().getAll();
     }
     
     @GET
-    @Path("/{id}")
+    @Path("/{idRole}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Rol obtenerPorId(@PathParam("id") int id) {
+    public Rolec obtenerPorId(@PathParam("idRole") int id) {
         return RolBL.getInstance().obtenerPorId(id);
     }
 }

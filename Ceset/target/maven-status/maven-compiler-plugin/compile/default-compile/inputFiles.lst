@@ -1,6 +1,8 @@
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Usuario.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\RolDao1.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\filtros\CORSFilter.java
-D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\RolDao.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\RolDAO.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Rolec.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\servicios\RolServicio.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\AuthenticationException.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.java
@@ -11,6 +13,7 @@ D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\IOE
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\NonexistentEntityExceptionMapper.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\PreexistingEntityException.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\PreexistingEntityExceptionMapper.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Rolebypermission.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\servicios\UsuariosServicio.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\cnf\JDBCConnectionPool.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\utilities\Utilities.java
@@ -27,6 +30,7 @@ D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\UserDAO.jav
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\bl\RolBL.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\BusinessLogicalException.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\auth\SecurityFilter.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Permission.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Person.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\BusinessLogicalExepectionMapper.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\PersonDAO.java
@@ -35,5 +39,6 @@ D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\Ill
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\GenericExceptionMapper.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\User.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\AuthenticationExepectionMapper.java
+D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Rolebyuser.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\exceptions\IllegalOrphanException.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\DatabaseExepectionMapper.java

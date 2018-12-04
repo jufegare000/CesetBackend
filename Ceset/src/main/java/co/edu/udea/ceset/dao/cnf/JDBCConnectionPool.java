@@ -29,7 +29,7 @@ public class JDBCConnectionPool {
             Class.forName("com.mysql.jdbc.Driver");
             if (dataSource == null) {
                 InitialContext initialContext = new InitialContext();
-                dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/db_wf_ceset");
+                dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/db_ceset");
             }
             cnx = dataSource.getConnection();
             cnx.setAutoCommit(true);

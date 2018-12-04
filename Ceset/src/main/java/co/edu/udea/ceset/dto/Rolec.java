@@ -65,7 +65,7 @@ public class Rolec implements Serializable {
     @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
     private Collection<Rolebyuser> rolebyuserCollection;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    
 
     public Rolec() {
     }
@@ -144,7 +144,7 @@ public class Rolec implements Serializable {
         return "co.edu.udea.ceset.dto.Rolec[ idRole=" + idRole + " ]";
     }
 
-    public String sqlDateFormat(Date date) {
+/*    public String sqlDateFormat(Date date) {
         return this.dateFormat.format(date);
-    }
+    }*/
 }

@@ -5,12 +5,14 @@
  */
 package co.edu.udea.ceset.bl;
 
-import co.edu.udea.ceset.dao.RolDao;
+import co.edu.udea.ceset.dao.RolDAO;
 import co.edu.udea.ceset.dto.Rolec;
-import java.util.Collection;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
 import org.apache.log4j.Logger;
-
+import javax.persistence.Persistence;
 /**
  *
  * @author jufeg
@@ -18,8 +20,10 @@ import org.apache.log4j.Logger;
 public class RolBL {
 
     private static RolBL singletonInstance = new RolBL();
-
+    
     private static final Logger LOG = Logger.getLogger(RolBL.class.getName());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final String nombrePU = "ceset_PU";
 
     public static RolBL getInstance() {
         synchronized (RolBL.class) {
@@ -34,28 +38,30 @@ public class RolBL {
         return getInstance();
     }
 
-    public Collection<Rolec> getAll() {
-        return obtenerRolDao().getAll();
+    public List<Rolec> getAll() {
+        return obtenerRolDao().findRolecEntities();
     }
 
-    public RolDao obtenerRolDao() {
-        return new RolDao();
+    public RolDAO obtenerRolDao() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        RolDAO DAO = new RolDAO(emf);
+        return DAO;
+
     }
-    
+   
     public Rolec obtenerPorId(int id) {
-        return obtenerRolDao().getById(id);
+        return obtenerRolDao().findRolec(id);
     }
     
-    public String crear(String nombre, String descripcion) {
+    public void crear(String descripcion) {
         Rolec rol = new Rolec();
-;
         rol.setDescription(descripcion);
         
         rol.setCreatedAt(new Date());
         rol.setUpdatedAt(new Date());
         rol.setStates("Active");
         
-        return obtenerRolDao().create(rol);
+        obtenerRolDao().create(rol);
     }
 
     public static Logger getLog() {
