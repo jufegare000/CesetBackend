@@ -100,9 +100,9 @@ public class UsuariosServicio implements Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void creatUser(User usr) {
+    public void creatUser(Person prsn) {
 
-         UsuarioBL.getInstance().crear(usr);
+         UsuarioBL.getInstance().crear(prsn);
     }
     
 
