@@ -6,8 +6,9 @@
 package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.RolBL;
+import co.edu.udea.ceset.bl.RoleByUserBL;
+import co.edu.udea.ceset.dto.Rolebyuser;
 import co.edu.udea.ceset.dto.Rolec;
-import java.util.Collection;
 import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
@@ -25,7 +26,6 @@ public class RolServicio {
     
     @Context
     SecurityContext securityContext;
-    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -57,5 +57,12 @@ public class RolServicio {
     @Produces(MediaType.APPLICATION_JSON)
     public Rolec obtenerPorId(@PathParam("idRole") int id) {
         return RolBL.getInstance().obtenerPorId(id);
+    }
+    
+    @GET
+    @Path("/rolebyuser")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Rolebyuser> getRolebyU() {
+        return RoleByUserBL.getInstance().obtenerTodods();
     }
 }

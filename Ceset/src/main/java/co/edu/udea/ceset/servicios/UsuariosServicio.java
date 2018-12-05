@@ -4,6 +4,7 @@ package co.edu.udea.ceset.servicios;
 import co.edu.udea.ceset.auth.AuthUtils;
 import co.edu.udea.ceset.auth.Token;
 import co.edu.udea.ceset.bl.UsuarioBL;
+import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rol;
 import co.edu.udea.ceset.dto.Rolec;
 import co.edu.udea.ceset.dto.User;
@@ -16,6 +17,7 @@ import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -93,5 +95,15 @@ public class UsuariosServicio implements Serializable {
     public User obtenerPorId(@PathParam("idUser") int id) {
         return UsuarioBL.getInstance().obtenerPorId(id);
     }
+    
+ 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void creatUser(User usr) {
+
+         UsuarioBL.getInstance().crear(usr);
+    }
+    
 
 }

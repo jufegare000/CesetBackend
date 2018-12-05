@@ -1,13 +1,13 @@
 package co.edu.udea.ceset.bl;
 
 
+import co.edu.udea.ceset.dao.PersonDAO;
 import co.edu.udea.ceset.dao.UserDAO;
 import co.edu.udea.ceset.dao.UsuarioDAO;
+import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.User;
-import co.edu.udea.ceset.dto.Usuario;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -86,6 +86,16 @@ public class UsuarioBL implements Serializable {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
         UserDAO DAO = new UserDAO(emf);
         return DAO;
+    }
+     
+     private PersonDAO obtenerPersonDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        PersonDAO DAO = new PersonDAO(emf);
+        return DAO;
+    }
+     
+     public void crear(User usr) {
+        obtenerUserDAO().create(usr);
     }
 
 }
