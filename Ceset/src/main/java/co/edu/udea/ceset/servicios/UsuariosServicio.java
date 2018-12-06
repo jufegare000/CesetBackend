@@ -3,6 +3,7 @@ package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.auth.AuthUtils;
 import co.edu.udea.ceset.auth.Token;
+import co.edu.udea.ceset.bl.PersonBL;
 import co.edu.udea.ceset.bl.UsuarioBL;
 import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rol;
@@ -12,7 +13,9 @@ import co.edu.udea.ceset.dto.Usuario;
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
@@ -100,9 +103,21 @@ public class UsuariosServicio implements Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
+<<<<<<< Updated upstream
     public void creatUser(Person prsn) {
 
          UsuarioBL.getInstance().crear(prsn);
+=======
+    public void creatUser(User usr) {
+         
+         Person prs;
+         prs = usr.getIdPerson();
+         Collection<User> usrq = new LinkedList<User>();
+         UsuarioBL.getInstance().crear(usr);
+         //boolean b = usrq.add(usr);
+         //prs.setUserCollection(usrq);
+         //PersonBL.getInstance().crear(prs);
+>>>>>>> Stashed changes
     }
     
 

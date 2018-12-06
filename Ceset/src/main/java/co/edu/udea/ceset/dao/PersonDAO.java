@@ -27,7 +27,10 @@ public class PersonDAO implements Serializable {
 
     public PersonDAO(EntityManagerFactory emf) {
         this.emf = emf;
+
     }
+    
+    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -39,8 +42,10 @@ public class PersonDAO implements Serializable {
             person.setUserCollection(new ArrayList<User>());
         }
         EntityManager em = null;
+        person.setUserCollection(null);
         try {
             em = getEntityManager();
+           List<Person> lper = em.createNamedQuery("Person.findByEmail").setParameter("email", person.getEmail()).getResultList();
             em.getTransaction().begin();
             Collection<User> attachedUserCollection = new ArrayList<User>();
             for (User userCollectionUserToAttach : person.getUserCollection()) {
@@ -187,5 +192,6 @@ public class PersonDAO implements Serializable {
             em.close();
         }
     }
+   
     
 }
