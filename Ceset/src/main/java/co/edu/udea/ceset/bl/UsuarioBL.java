@@ -94,8 +94,8 @@ public class UsuarioBL implements Serializable {
         return DAO;
     }
      
-     public void crear(Person prsn) {
-        obtenerPersonDAO().create(prsn);
+     public void crear(User usr) {
+        obtenerUserDAO().create(usr);
     }
 
 }

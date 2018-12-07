@@ -12,6 +12,7 @@ import co.edu.udea.ceset.dao.PersonDAO;
 import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rolebyuser;
 import co.edu.udea.ceset.dto.Rolec;
+import co.edu.udea.ceset.dto.User;
 import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.persistence.EntityManagerFactory;
@@ -35,9 +36,9 @@ public class PersonServicio {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void createPerson(Person prsn) {
-        
-        obtenerPersonDAO().create(prsn);  
+    public void createPerson(User usr) {
+        Person prsn = usr.getIdPerson();
+        obtenerPersonDAO().create(prsn, usr);  
     }
       private PersonDAO obtenerPersonDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);

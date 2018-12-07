@@ -80,9 +80,11 @@ public class PersonBL implements Serializable {
         return DAO;
     }
      
-      public void crear(Person prsn) {
-        
-        obtenerPersonDAO().create(prsn);
+      public void crear(Person prsn, User usr) {
+        Person nueva; 
+        obtenerPersonDAO().create(prsn, usr);
+        //usr.setIdPerson(nueva);
+        //UsuarioBL.getInstance().crear(usr);
     }
 
 }

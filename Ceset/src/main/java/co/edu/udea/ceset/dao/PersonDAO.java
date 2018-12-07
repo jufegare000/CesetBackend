@@ -18,39 +18,40 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author jufeg
  */
 public class PersonDAO implements Serializable {
+    
+    private final String nombrePU = "ceset_PU";
+    
+     public UserDAO obtenerUserDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        UserDAO DAO = new UserDAO(emf);
+        return DAO;
+    }
 
     public PersonDAO(EntityManagerFactory emf) {
         this.emf = emf;
-
     }
-    
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Person person) {
+    public void create(Person person, User usr) {
         List<Person> lper = null;
         if (person.getUserCollection() == null) {
             person.setUserCollection(new ArrayList<User>());
         }
         EntityManager em = null;
-        person.setUserCollection(null);
         try {
             em = getEntityManager();
-            
             em.getTransaction().begin();
-            //Transacción para traer a la persona recié c
-            //lper = em.createNamedQuery("Person.findByDocument").setParameter("document", person.getDocument()).getResultList();
-                
             Collection<User> attachedUserCollection = new ArrayList<User>();
             for (User userCollectionUserToAttach : person.getUserCollection()) {
                 userCollectionUserToAttach = em.getReference(userCollectionUserToAttach.getClass(), userCollectionUserToAttach.getIdUser());
@@ -69,11 +70,13 @@ public class PersonDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            lper = em.createNamedQuery("Person.findByDocument").setParameter("document", person.getDocument()).getResultList();
+            usr.setIdPerson(lper.get(0));
+            obtenerUserDAO().create(usr);
             if (em != null) {
-                
                 em.close();
-                
             }
+
         }
     }
 
@@ -198,6 +201,5 @@ public class PersonDAO implements Serializable {
             em.close();
         }
     }
-   
     
 }

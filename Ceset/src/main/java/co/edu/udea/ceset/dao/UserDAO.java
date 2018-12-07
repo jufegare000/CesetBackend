@@ -34,18 +34,11 @@ public class UserDAO implements Serializable {
 
     public void create(User user) {
         EntityManager em = null;
-        int idgenerado;
         try {
             em = getEntityManager();
-            
             em.getTransaction().begin();
             Person idPerson = user.getIdPerson();
             if (idPerson != null) {
-                
-                PersonDAO prsn = new PersonDAO(emf);
-                prsn.create(idPerson);
-                //Se debe crear una persona para hacer la relación.
-                
                 idPerson = em.getReference(idPerson.getClass(), idPerson.getIdPerson());
                 user.setIdPerson(idPerson);
             }

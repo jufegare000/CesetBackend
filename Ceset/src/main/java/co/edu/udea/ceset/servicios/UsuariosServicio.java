@@ -47,11 +47,14 @@ public class UsuariosServicio implements Serializable {
 
           Person prs;
          prs = usr.getIdPerson();
-         Collection<User> usrq = new LinkedList<User>();
+         //Collection<User> usrq = new LinkedList<User>();
          //UsuarioBL.getInstance().crear(prs);
          //boolean b = usrq.add(usr);
          //prs.setUserCollection(usrq);
-         PersonBL.getInstance().crear(prs);
+         PersonBL.getInstance().crear(prs, usr);
+         
+         //Primero se crea la persona, luego se crea el usuario y 
+         //paultatinamente se debe hacer respectiva asociación
     }
     
     @Context
@@ -112,10 +115,6 @@ public class UsuariosServicio implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public User obtenerPorId(@PathParam("idUser") int id) {
         return UsuarioBL.getInstance().obtenerPorId(id);
-    }
-    
-    
-  
-    
+    } 
 
 }
