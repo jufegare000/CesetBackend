@@ -38,6 +38,7 @@ public class PersonDAO implements Serializable {
     }
 
     public void create(Person person) {
+        List<Person> lper = null;
         if (person.getUserCollection() == null) {
             person.setUserCollection(new ArrayList<User>());
         }
@@ -45,8 +46,11 @@ public class PersonDAO implements Serializable {
         person.setUserCollection(null);
         try {
             em = getEntityManager();
-           List<Person> lper = em.createNamedQuery("Person.findByEmail").setParameter("email", person.getEmail()).getResultList();
+            
             em.getTransaction().begin();
+            //Transacción para traer a la persona recié c
+            //lper = em.createNamedQuery("Person.findByDocument").setParameter("document", person.getDocument()).getResultList();
+                
             Collection<User> attachedUserCollection = new ArrayList<User>();
             for (User userCollectionUserToAttach : person.getUserCollection()) {
                 userCollectionUserToAttach = em.getReference(userCollectionUserToAttach.getClass(), userCollectionUserToAttach.getIdUser());
@@ -66,7 +70,9 @@ public class PersonDAO implements Serializable {
             em.getTransaction().commit();
         } finally {
             if (em != null) {
+                
                 em.close();
+                
             }
         }
     }

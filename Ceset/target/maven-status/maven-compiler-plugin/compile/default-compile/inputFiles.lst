@@ -5,11 +5,6 @@ D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\PersonJpaCo
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Rolec.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Object.java
-<<<<<<< Updated upstream
-D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\auth\AuthUtils.java
-D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\bl\RoleByUserBL.java
-=======
->>>>>>> Stashed changes
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\dto\Permiso.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\IOExepectionMapper.java
 D:\Git Basuker\CESET\Ceset\Ceset\src\main\java\co\edu\udea\ceset\excepciones\NonexistentEntityExceptionMapper.java

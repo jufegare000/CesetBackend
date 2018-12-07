@@ -37,10 +37,25 @@ import javax.ws.rs.core.SecurityContext;
 public class UsuariosServicio implements Serializable {
 
     private static final long serialVersionUID = -9066585482051897942L;
+    
     @Context
     SecurityContext securityContext;
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void creatUser(User usr) {
 
+          Person prs;
+         prs = usr.getIdPerson();
+         Collection<User> usrq = new LinkedList<User>();
+         //UsuarioBL.getInstance().crear(prs);
+         //boolean b = usrq.add(usr);
+         //prs.setUserCollection(usrq);
+         PersonBL.getInstance().crear(prs);
+    }
     
+    @Context
+   
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> obtenerPorId() {
@@ -99,26 +114,8 @@ public class UsuariosServicio implements Serializable {
         return UsuarioBL.getInstance().obtenerPorId(id);
     }
     
- 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-<<<<<<< Updated upstream
-    public void creatUser(Person prsn) {
-
-         UsuarioBL.getInstance().crear(prsn);
-=======
-    public void creatUser(User usr) {
-         
-         Person prs;
-         prs = usr.getIdPerson();
-         Collection<User> usrq = new LinkedList<User>();
-         UsuarioBL.getInstance().crear(usr);
-         //boolean b = usrq.add(usr);
-         //prs.setUserCollection(usrq);
-         //PersonBL.getInstance().crear(prs);
->>>>>>> Stashed changes
-    }
+    
+  
     
 
 }
