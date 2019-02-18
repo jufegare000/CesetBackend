@@ -8,6 +8,7 @@ co\edu\udea\ceset\dto\Rolebypermission.class
 co\edu\udea\ceset\dto\Rolec_.class
 co\edu\udea\ceset\excepciones\GenericExceptionMapper.class
 co\edu\udea\ceset\bl\RoleByUserBL.class
+co\edu\udea\ceset\utilities\Daos.class
 co\edu\udea\ceset\dao\UserDAO.class
 co\edu\udea\ceset\dto\Permission.class
 co\edu\udea\ceset\excepciones\NonexistentEntityExceptionMapper.class
@@ -44,7 +45,6 @@ co\edu\udea\ceset\properties\PropiedadesCeset.class
 co\edu\udea\ceset\dto\Rolebyuser_.class
 co\edu\udea\ceset\bl\PersonBL.class
 co\edu\udea\ceset\excepciones\PreexistingEntityExceptionMapper.class
-co\edu\udea\ceset\dao\PersonJpaController.class
 co\edu\udea\ceset\dao\RolDAO.class
 co\edu\udea\ceset\dto\Rol.class
 co\edu\udea\ceset\dto\MensajeError.class

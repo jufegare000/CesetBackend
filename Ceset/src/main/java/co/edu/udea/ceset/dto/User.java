@@ -5,6 +5,7 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -62,6 +63,7 @@ public class User implements Serializable {
     private String password;
     @Column(name = "dateCreation")
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="yyyy-mm-dd hh:mm:ss")
     private Date dateCreation;
     @Size(max = 20)
     @Column(name = "states")
@@ -105,16 +107,16 @@ public class User implements Serializable {
         return dateCreation;
     }
 
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
+    public void setDateCreation() {
+        this.dateCreation = new Date();
     }
 
     public String getStates() {
         return states;
     }
 
-    public void setStates(String states) {
-        this.states = states;
+    public void setStates() {
+        this.states = "En espera";
     }
 
     public Person getIdPerson() {

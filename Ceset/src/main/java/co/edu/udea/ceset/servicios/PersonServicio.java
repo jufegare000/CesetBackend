@@ -37,9 +37,12 @@ public class PersonServicio {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void createPerson(User usr) {
+        usr.setDateCreation();
+        usr.setStates();
         Person prsn = usr.getIdPerson();
         obtenerPersonDAO().create(prsn, usr);  
     }
+    
       private PersonDAO obtenerPersonDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
         PersonDAO DAO = new PersonDAO(emf);
