@@ -32,10 +32,10 @@ public class UsuarioDAO implements Serializable {
         prsn.setIdPerson(2);
         
         //Datos Dummies
-        usuario.setDateCreation(null);
+        usuario.setDateCreation();
         usuario.setIdUser(2);
         usuario.setPassword("6699");
-        usuario.setStates("YormanJa");
+        usuario.setStates();
        
 
         Rol rolAdmin = new Rol();

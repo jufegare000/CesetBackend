@@ -51,7 +51,7 @@ public class UsuariosServicio implements Serializable {
          //UsuarioBL.getInstance().crear(prs);
          //boolean b = usrq.add(usr);
          //prs.setUserCollection(usrq);
-         PersonBL.getInstance().crear(prs, usr);
+         //PersonBL.getInstance().crear(prs, usr);
          
          //Primero se crea la persona, luego se crea el usuario y 
          //paultatinamente se debe hacer respectiva asociación

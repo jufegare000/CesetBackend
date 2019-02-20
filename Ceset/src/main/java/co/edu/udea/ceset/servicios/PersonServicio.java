@@ -8,7 +8,9 @@ package co.edu.udea.ceset.servicios;
 import co.edu.udea.ceset.bl.PersonBL;
 import co.edu.udea.ceset.bl.RolBL;
 import co.edu.udea.ceset.bl.RoleByUserBL;
+import co.edu.udea.ceset.bl.UsuarioBL;
 import co.edu.udea.ceset.dao.PersonDAO;
+import co.edu.udea.ceset.dao.UserDAO;
 import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rolebyuser;
 import co.edu.udea.ceset.dto.Rolec;
@@ -37,17 +39,22 @@ public class PersonServicio {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void createPerson(User usr) {
-        usr.setDateCreation();
-        usr.setStates();
-        Person prsn = usr.getIdPerson();
-        obtenerPersonDAO().create(prsn, usr);  
+        Person nuevo;
+        PersonBL prbl = PersonBL.getInstance();
+        UsuarioBL usrbl = UsuarioBL.getInstance();
+        Person prsn = usr.getIdPerson(); // se obtiene la persona a crear
+                                         // Deben ser separadas ya  que
+                                         // la separación de responsbilidades así demanda
+        nuevo = prbl.crear(prsn);  
+        usr.setDateCreation(); // se asigna fecha para el creador
+        usr.setStates();        // estado de creación
+        usr.setIdPerson(nuevo);
+        usrbl.crear(usr);
+        
+        //falta enviar un mensaje de retorno que indique que el usuario efectivamente se creó
+        
     }
-    
-      private PersonDAO obtenerPersonDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
-        PersonDAO DAO = new PersonDAO(emf);
-        return DAO;
-    }
+ 
       
     @GET
     @Produces(MediaType.APPLICATION_JSON)

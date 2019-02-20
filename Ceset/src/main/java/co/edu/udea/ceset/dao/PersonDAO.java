@@ -27,12 +27,6 @@ import javax.persistence.Persistence;
 public class PersonDAO implements Serializable {
     
     private final String nombrePU = "ceset_PU";
-    
-     public UserDAO obtenerUserDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
-        UserDAO DAO = new UserDAO(emf);
-        return DAO;
-    }
 
     public PersonDAO(EntityManagerFactory emf) {
         this.emf = emf;
@@ -43,7 +37,7 @@ public class PersonDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Person person, User usr) {
+    public Person create(Person person) {
         List<Person> lper = null;
         if (person.getUserCollection() == null) {
             person.setUserCollection(new ArrayList<User>());
@@ -70,13 +64,15 @@ public class PersonDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
-            lper = em.createNamedQuery("Person.findByDocument").setParameter("document", person.getDocument()).getResultList();
-            usr.setIdPerson(lper.get(0));
-            obtenerUserDAO().create(usr);
+            lper = em.createNamedQuery("Person.findByDocument")
+                    .setParameter("document", person.getDocument())
+                    .getResultList(); // Retorna la persona recién creada
+                                      // Para asigmarlo al usuario a crear
+  //          
             if (em != null) {
                 em.close();
             }
-
+            return lper.get(0);
         }
     }
 
