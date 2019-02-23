@@ -29,7 +29,7 @@ import org.joda.time.DateTime;
  */
 public class AuthUtils {
     private static final JWSHeader JWT_HEADER = new JWSHeader(JWSAlgorithm.HS256);
-    private static final String TOKEN_SECRET = PropiedadesCeset.getInstance().getPropiedadesAutorizacion().getString("TOKEN_SECRET");;
+   // private static final String TOKEN_SECRET = PropiedadesCeset.getInstance().getPropiedadesAutorizacion().getString("TK-KEY");
     public static final String AUTH_HEADER_KEY = "Authorization";
     
     private static final String EXPIRE_ERROR_MSG = "El token ha expirado",
@@ -41,6 +41,7 @@ public class AuthUtils {
     }
 
     public static ReadOnlyJWTClaimsSet decodeToken(String authHeader) throws ParseException, JOSEException {
+        String TOKEN_SECRET = PropiedadesCeset.getInstance().getPropiedadesAutorizacion().getString("TK-KEY");
         SignedJWT signedJWT = SignedJWT.parse(getSerializedToken(authHeader));
         if (signedJWT.verify(new MACVerifier(TOKEN_SECRET))) {
             return signedJWT.getJWTClaimsSet();
@@ -48,7 +49,15 @@ public class AuthUtils {
             throw new JOSEException("Verificación del Signature falló");
         }
     }
-
+/**
+ * Aquí pueden configurar los claim para el JWT
+ * Los claim son propiedades del JWT en el que pueden encapsular información
+ * @param host
+ * @param user
+ * @param rolId
+ * @return
+ * @throws JOSEException 
+ */
     public static Token createToken(String host, User user, int rolId) throws JOSEException {
         JWTClaimsSet claim = new JWTClaimsSet();
         claim.setSubject(Integer.toString(user.getIdUser()));
@@ -60,7 +69,7 @@ public class AuthUtils {
      //   claim.setCustomClaim("ide", user.getIdentificacion());
         //claim.setCustomClaim("rol", rolId);
      //   claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray()));
-
+ String TOKEN_SECRET = PropiedadesCeset.getInstance().getPropiedadesAutorizacion().getString("TK-KEY");
         JWSSigner signer = new MACSigner(TOKEN_SECRET);
         SignedJWT jwt = new SignedJWT(JWT_HEADER, claim);
         jwt.sign(signer);

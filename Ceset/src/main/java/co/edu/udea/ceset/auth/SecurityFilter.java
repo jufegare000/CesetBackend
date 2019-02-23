@@ -48,52 +48,65 @@ public class SecurityFilter implements ContainerRequestFilter {
         UsuarioDAO DAO = new UsuarioDAO();
         return DAO;
     }
-
+/**
+ * Toda petición request que se le haga al backend es filtrada para que pase por este método
+ * @param requestContext
+ * @throws IOException 
+ */
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         SecurityContext originalContext = requestContext.getSecurityContext();
         String authHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
         
         // Si el método de la petición Http es OPTIONS no es necesario validar el token
-//        if (!requestContext.getMethod().equals("OPTIONS")) {
-//
-//            // Si no posee Token o está incorrecto se meustra mensaje de error 
-//            if (authHeader == null || authHeader.isEmpty() || authHeader.split(" ").length != 2) {
-//                throw new AuthenticationException("Usted no cuenta con permisos para llamar el WebService.");
-//            } else {
-//                JWTClaimsSet claimSet;
-//                try {
-//                    claimSet = (JWTClaimsSet) AuthUtils.decodeToken(authHeader);
-//                } catch (ParseException e) {
-//                    throw new IOException(JWT_ERROR_MSG);
-//                } catch (JOSEException e) {
-//                    throw new IOException(JWT_INVALID_MSG);
-//                }
-//
-//                // Verificamos que el token no haya expirado
-//                if (claimSet.getExpirationTime() == null) {
-//                    throw new AuthenticationException("El Token de autenticación no cuenta con Fecha de expiración.");
-//                }
-//                if (new DateTime(claimSet.getExpirationTime()).isBefore(DateTime.now())) {
-//                    throw new IOException(EXPIRE_ERROR_MSG);
-//                } else {
-//                    // Si el Subject del claim está vacío indica que se iniciará sesión por primera vez
-//                    if (claimSet.getSubject() == null || claimSet.getSubject().isEmpty()) {
-//                        // Creamos un usuario vacío
-//                        Authorizer authorizer = new Authorizer(new ArrayList<Rol>(), "",
-//                                originalContext.isSecure());
-//                        requestContext.setSecurityContext(authorizer);
-//                    } else {
-//                        // CAMBIAR TIPO USUARIO
-//                        Usuario user = obtenerUsuarioDAO().obtenerPorId(Integer.parseInt(claimSet.getSubject()));
-//                        Authorizer authorizer = new Authorizer(user.getRoles(), user.getNombreUsuario(),
-//                                originalContext.isSecure());
-//                        requestContext.setSecurityContext(authorizer);
-//                    }
-//
-//                }
-//            }
-//        }
+        if (!requestContext.getMethod().equals("OPTIONS")) {
+
+            // Si no posee Token o está incorrecto se meustra mensaje de error 
+            if (authHeader == null || authHeader.isEmpty() || authHeader.split(" ").length != 2) {
+                throw new AuthenticationException("Usted no cuenta con permisos para llamar el WebService.");
+            } else {
+                JWTClaimsSet claimSet;
+                try {
+                    claimSet = (JWTClaimsSet) AuthUtils.decodeToken(authHeader);
+                } catch (ParseException e) {
+                    throw new IOException(JWT_ERROR_MSG);
+                } catch (JOSEException e) {
+                    throw new IOException(JWT_INVALID_MSG);
+                }
+
+                // Verificamos que el token no haya expirado
+                if (claimSet.getExpirationTime() == null) {
+                    throw new AuthenticationException("El Token de autenticación no cuenta con Fecha de expiración.");
+                }
+                if (new DateTime(claimSet.getExpirationTime()).isBefore(DateTime.now())) {
+                    throw new IOException(EXPIRE_ERROR_MSG);
+                } else {
+                    // Si el Subject del claim está vacío indica que se iniciará sesión por primera vez
+                    // el subject es siempre obligatorio. Abreviado es sub
+                    if (claimSet.getSubject() == null || claimSet.getSubject().isEmpty()) {
+                        // Creamos un usuario vacío
+                        Authorizer authorizer = new Authorizer(new ArrayList<Rol>(), "",
+                                originalContext.isSecure());
+                        requestContext.setSecurityContext(authorizer);
+                    } else {
+                        // CAMBIAR TIPO USUARIO
+                       // Usuario user = obtenerUsuarioDAO().obtenerPorId(Integer.parseInt(claimSet.getSubject()));
+                       //Usuario con rol USER dummy
+                       Usuario user = new Usuario();
+                       user.setNombreUsuario("Usuario.prueba");
+                       Rol rol = new Rol();
+                       rol.setNombre("USER");
+                       List<Rol> roles = new ArrayList<Rol>();
+                       roles.add(rol);
+                       user.setRoles(roles);
+                        Authorizer authorizer = new Authorizer(user.getRoles(), user.getNombreUsuario(),
+                                originalContext.isSecure());
+                        requestContext.setSecurityContext(authorizer);
+                    }
+
+                }
+            }
+        }
 
     }
 
