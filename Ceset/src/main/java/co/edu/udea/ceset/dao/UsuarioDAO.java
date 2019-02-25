@@ -8,7 +8,6 @@ package co.edu.udea.ceset.dao;
 import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rol;
 import co.edu.udea.ceset.dto.User;
-import co.edu.udea.ceset.dto.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,6 +59,9 @@ public class UsuarioDAO implements Serializable {
      * @return Usuario
      */
     public User autenticar(String nombreUsuario, String clave) {
+        
+        
+        
         User usuario = new User();
         
         /*usuario.setEstado("ACT");

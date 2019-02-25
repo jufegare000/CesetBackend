@@ -58,18 +58,23 @@ public class AuthUtils {
  * @return
  * @throws JOSEException 
  */
-    public static Token createToken(String host, User user, int rolId) throws JOSEException {
+    public static Token createToken(String host, User user) throws JOSEException {
         JWTClaimsSet claim = new JWTClaimsSet();
         claim.setSubject(Integer.toString(user.getIdUser()));
         claim.setIssuer(host);
         claim.setIssueTime(DateTime.now().toDate());
         claim.setExpirationTime(DateTime.now().plusDays(1).toDate());
         claim.setCustomClaim("usr", user.getNameUser());
+        claim.setCustomClaim("fcre", user.getDateCreation());
+        claim.setCustomClaim("state", user.getStates());
+        claim.setCustomClaim("state", user.getRoles());
       //  claim.setCustomClaim("nom", user.getNombreCompleto());
      //   claim.setCustomClaim("ide", user.getIdentificacion());
         //claim.setCustomClaim("rol", rolId);
      //   claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray()));
- String TOKEN_SECRET = PropiedadesCeset.getInstance().getPropiedadesAutorizacion().getString("TK-KEY");
+        String TOKEN_SECRET = PropiedadesCeset.getInstance()
+                                .getPropiedadesAutorizacion()
+                                .getString("TK-KEY");
         JWSSigner signer = new MACSigner(TOKEN_SECRET);
         SignedJWT jwt = new SignedJWT(JWT_HEADER, claim);
         jwt.sign(signer);

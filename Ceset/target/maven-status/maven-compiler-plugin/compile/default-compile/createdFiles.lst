@@ -52,7 +52,6 @@ co\edu\udea\ceset\excepciones\DatabaseExepectionMapper.class
 co\edu\udea\ceset\dao\exceptions\IllegalOrphanException.class
 co\edu\udea\ceset\auth\AuthUtils.class
 co\edu\udea\ceset\servicios\PersonServicio.class
-co\edu\udea\ceset\dao\UserJpaController.class
 co\edu\udea\ceset\dto\Person_.class
 co\edu\udea\ceset\auth\SecurityFilter$User.class
 co\edu\udea\ceset\bl\RolBL.class

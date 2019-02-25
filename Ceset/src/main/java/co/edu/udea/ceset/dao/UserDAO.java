@@ -31,6 +31,23 @@ public class UserDAO implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    
+    public User autenticar(String nombreUsuario, String clave) {
+        EntityManager em = null;
+        em = getEntityManager(); 
+        User usuario = null;
+        List<User> luser = em.createNamedQuery("User.findByNameUser")
+                    .setParameter("nameUser", nombreUsuario)
+                    .getResultList(); 
+        usuario = luser.get(0);
+        if(usuario == null || !usuario.getPassword().equals(clave)){
+            return null;
+        }
+        
+        
+        return usuario;
+
+    }
 
     public void create(User user) {
         EntityManager em = null;
@@ -164,5 +181,6 @@ public class UserDAO implements Serializable {
             em.close();
         }
     }
+     
     
 }

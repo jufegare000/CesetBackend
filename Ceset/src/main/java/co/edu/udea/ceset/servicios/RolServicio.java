@@ -46,7 +46,9 @@ public class RolServicio {
     }
   
     */
+   @Consumes("application/json")
     @GET
+    @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public List<Rolec> getAll () {
         return RolBL.getInstance().getAll();

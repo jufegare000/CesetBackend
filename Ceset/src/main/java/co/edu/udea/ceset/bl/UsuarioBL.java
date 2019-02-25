@@ -53,7 +53,7 @@ public class UsuarioBL implements Serializable {
      * @return 
      */
     public User autenticar(String user, String clave) {
-        return obtenerUsuarioDAO().autenticar(user, clave);
+        return obtenerUserDAO().autenticar(user, clave);
     }
     
     public List<User> obtenerTodods(){
@@ -67,7 +67,7 @@ public class UsuarioBL implements Serializable {
      * @return : Usuario
      */
     public User obtenerPorId(int id) {
-        return obtenerUsuarioDAO().obtenerPorId(id);
+        return obtenerUserDAO().findUser(id);
     }
 
     
@@ -77,22 +77,14 @@ public class UsuarioBL implements Serializable {
      *
      * @return UsuarioDAO
      */
-    private UsuarioDAO obtenerUsuarioDAO() {
-        UsuarioDAO DAO = new UsuarioDAO();
-        return DAO;
-    }
+
     
      private UserDAO obtenerUserDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
         UserDAO DAO = new UserDAO(emf);
         return DAO;
     }
-     
-     private PersonDAO obtenerPersonDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
-        PersonDAO DAO = new PersonDAO(emf);
-        return DAO;
-    }
+
      
      public void crear(User usr) {
         obtenerUserDAO().create(usr);

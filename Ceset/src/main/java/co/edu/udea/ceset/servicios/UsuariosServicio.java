@@ -82,7 +82,7 @@ public class UsuariosServicio implements Serializable {
     public Response autenticar(
             @QueryParam("usuario") String usuario,
             @QueryParam("clave") String clave) throws JOSEException, IOException {
-        
+                int rol = 0;
                 User usuarioAutenticado;
                 usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario, clave);
 
@@ -90,13 +90,13 @@ public class UsuariosServicio implements Serializable {
                     // Verifico si el usuario tiene permisos para entrar con el rol elegido
                     for (Iterator<Rolec> it = usuarioAutenticado.getRoles().iterator(); it.hasNext();) {
                         Rolec rolIt = it.next();
-                       /* if (rolIt.getIdRole()== rol) {
-                            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado, rol);
+                        
+                            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
                             return Response.status(200)
                                     .type(MediaType.APPLICATION_JSON)
                                     .entity(token)
                                     .build();
-                        }*/
+                        
                     }
                 }
         
