@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Rolec.findByStates", query = "SELECT r FROM Rolec r WHERE r.states = :states")})
 public class Rolec implements Serializable {
 
+    @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
+    private Collection<Notifficationbyrole> notifficationbyroleCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -147,4 +150,13 @@ public class Rolec implements Serializable {
 /*    public String sqlDateFormat(Date date) {
         return this.dateFormat.format(date);
     }*/
+
+    @XmlTransient
+    public Collection<Notifficationbyrole> getNotifficationbyroleCollection() {
+        return notifficationbyroleCollection;
+    }
+
+    public void setNotifficationbyroleCollection(Collection<Notifficationbyrole> notifficationbyroleCollection) {
+        this.notifficationbyroleCollection = notifficationbyroleCollection;
+    }
 }

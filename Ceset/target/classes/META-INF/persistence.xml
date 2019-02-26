@@ -8,6 +8,21 @@
     <class>co.edu.udea.ceset.dto.Rolebyuser</class>
     <class>co.edu.udea.ceset.dto.Rolec</class>
     <class>co.edu.udea.ceset.dto.Permission</class>
+    <class>co.edu.udea.ceset.dto.Discount</class>
+    <class>co.edu.udea.ceset.dto.Notifficationbyrole</class>
+    <class>co.edu.udea.ceset.dto.Check</class>
+    <class>co.edu.udea.ceset.dto.Themes</class>
+    <class>co.edu.udea.ceset.dto.Notifficationbycheck</class>
+    <class>co.edu.udea.ceset.dto.Notiffication</class>
+    <class>co.edu.udea.ceset.dto.Expenditure</class>
+    <class>co.edu.udea.ceset.dto.Budget</class>
+    <class>co.edu.udea.ceset.dto.Cohort</class>
+    <class>co.edu.udea.ceset.dto.Expenditurebyitem</class>
+    <class>co.edu.udea.ceset.dto.Estimated</class>
+    <class>co.edu.udea.ceset.dto.Estimatedbyitem</class>
+    <class>co.edu.udea.ceset.dto.Budgetbyitem</class>
+    <class>co.edu.udea.ceset.dto.Academicactivity</class>
+    <class>co.edu.udea.ceset.dto.Item</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_ceset?zeroDateTimeBehavior=convertToNull"/>

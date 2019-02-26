@@ -5,7 +5,6 @@
  */
 package co.edu.udea.ceset.auth;
 
-import co.edu.udea.ceset.dao.UsuarioDAO;
 import co.edu.udea.ceset.dto.Rol;
 import co.edu.udea.ceset.dto.Usuario;
 import co.edu.udea.ceset.excepciones.AuthenticationException;
@@ -44,10 +43,6 @@ public class SecurityFilter implements ContainerRequestFilter {
             JWT_INVALID_MSG = "Token JWT inválido";
     private final String UNIDAD_PERSISTENCIA = "seguimiento_docente_PU";
 
-    private UsuarioDAO obtenerUsuarioDAO() {
-        UsuarioDAO DAO = new UsuarioDAO();
-        return DAO;
-    }
 /**
  * Toda petición request que se le haga al backend es filtrada para que pase por este método
  * @param requestContext

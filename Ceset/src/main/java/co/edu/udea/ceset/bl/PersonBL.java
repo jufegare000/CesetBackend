@@ -2,10 +2,7 @@ package co.edu.udea.ceset.bl;
 
 
 import co.edu.udea.ceset.dao.PersonDAO;
-import co.edu.udea.ceset.dao.UserDAO;
-import co.edu.udea.ceset.dao.UsuarioDAO;
 import co.edu.udea.ceset.dto.Person;
-import co.edu.udea.ceset.dto.User;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -52,27 +49,15 @@ public class PersonBL implements Serializable {
         return this.obtenerPersonDAO().findPersonEntities();
     }
 
-    /**
-     * Método para obtener una usuario dado un Id
-     *
-     * @param id : Id del Usuario
-     * @return : Usuario
-     */
-    public User obtenerPorId(int id) {
-        return obtenerUsuarioDAO().obtenerPorId(id);
-    }
 
     
 
     /**
-     * Método que rotorna el DAO para Usuarios
+     * Método que rotorna el DAO para Personas
      *
-     * @return UsuarioDAO
+     * @return PersonDAO
      */
-    private UsuarioDAO obtenerUsuarioDAO() {
-        UsuarioDAO DAO = new UsuarioDAO();
-        return DAO;
-    }
+
     
      private PersonDAO obtenerPersonDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);

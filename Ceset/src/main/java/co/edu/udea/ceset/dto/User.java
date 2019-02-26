@@ -47,6 +47,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class User implements Serializable {
 
     @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
+    private Collection<Academicactivity> academicactivityCollection;
+
+    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
     private Collection<Rolebyuser> rolebyuserCollection;
 
     private static final long serialVersionUID = 1L;
@@ -152,5 +155,14 @@ public class User implements Serializable {
 
     public void setRolebyuserCollection(Collection<Rolebyuser> rolebyuserCollection) {
         this.rolebyuserCollection = rolebyuserCollection;
+    }
+
+    @XmlTransient
+    public Collection<Academicactivity> getAcademicactivityCollection() {
+        return academicactivityCollection;
+    }
+
+    public void setAcademicactivityCollection(Collection<Academicactivity> academicactivityCollection) {
+        this.academicactivityCollection = academicactivityCollection;
     }
 }

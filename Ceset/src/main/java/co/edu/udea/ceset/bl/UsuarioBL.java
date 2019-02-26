@@ -1,10 +1,7 @@
 package co.edu.udea.ceset.bl;
 
 
-import co.edu.udea.ceset.dao.PersonDAO;
 import co.edu.udea.ceset.dao.UserDAO;
-import co.edu.udea.ceset.dao.UsuarioDAO;
-import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.User;
 import java.io.Serializable;
 import java.util.List;
@@ -75,7 +72,7 @@ public class UsuarioBL implements Serializable {
     /**
      * Método que rotorna el DAO para Usuarios
      *
-     * @return UsuarioDAO
+     * @return UserDAO
      */
 
     
