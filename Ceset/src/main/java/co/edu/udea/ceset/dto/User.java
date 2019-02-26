@@ -26,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -74,6 +75,9 @@ public class User implements Serializable {
     @JoinColumn(name = "IdPerson", referencedColumnName = "IdPerson")
     @ManyToOne(fetch = FetchType.LAZY)
     private Person idPerson;
+    
+    @Transient
+    private List<Rolec> roles;
 
     public User() {
     }
@@ -145,9 +149,12 @@ public class User implements Serializable {
     
     public List<Rolec> getRoles(){
         //lógica para obtener roles
-        return null;
+        return roles;
     }
 
+    public void setRoles(List<Rolec> roles){
+        this.roles = roles;
+    }
     @XmlTransient
     public Collection<Rolebyuser> getRolebyuserCollection() {
         return rolebyuserCollection;

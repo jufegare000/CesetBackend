@@ -65,13 +65,10 @@ public class AuthUtils {
         claim.setIssueTime(DateTime.now().toDate());
         claim.setExpirationTime(DateTime.now().plusDays(1).toDate());
         claim.setCustomClaim("usr", user.getNameUser());
-        claim.setCustomClaim("fcre", user.getDateCreation());
-        claim.setCustomClaim("state", user.getStates());
-        claim.setCustomClaim("state", user.getRoles());
-      //  claim.setCustomClaim("nom", user.getNombreCompleto());
-     //   claim.setCustomClaim("ide", user.getIdentificacion());
-        //claim.setCustomClaim("rol", rolId);
-     //   claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray()));
+      //claim.setCustomClaim("nom", user.getNombreCompleto());
+      //claim.setCustomClaim("ide", user.getIdentificacion());
+      // claim.setCustomClaim("rol", rolId);
+        claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray())); // [{id:1, nombre: 'ADMIN' }]
         String TOKEN_SECRET = PropiedadesCeset.getInstance()
                                 .getPropiedadesAutorizacion()
                                 .getString("TK-KEY");

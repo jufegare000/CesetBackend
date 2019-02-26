@@ -144,7 +144,7 @@ public class Rolec implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Rolec[ idRole=" + idRole + " ]";
+        return "{id:"+ String.valueOf(idRole)+",descripcion:"+description+"}";
     }
 
 /*    public String sqlDateFormat(Date date) {

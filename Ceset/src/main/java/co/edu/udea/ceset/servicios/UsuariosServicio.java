@@ -13,11 +13,13 @@ import co.edu.udea.ceset.dto.Usuario;
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.security.PermitAll;
+import javax.management.relation.Role;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -66,7 +68,7 @@ public class UsuariosServicio implements Serializable {
     public List<User> obtenerPorId() {
         return UsuarioBL.getInstance().obtenerTodods();
     }
-    
+    // Mandar la información por post o por header y la clave la deben enviar encriptada. hs264 ejemplo.
     /**
      * Métdodo para autenticar un usuario.
      *
@@ -80,17 +82,30 @@ public class UsuariosServicio implements Serializable {
     @Path("/autenticar")
     @Produces("application/json")
     public Response autenticar(
-            @QueryParam("usuario") User usuario
+            @QueryParam("usuario") String usuario
             ) throws JOSEException, IOException {
                 int rol = 0;
                 User usuarioAutenticado;
-                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
+                //usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario)
+                usuarioAutenticado = new User();
+                usuarioAutenticado.setIdUser(1);
+usuarioAutenticado.setNameUser("usuario.prueba");
+List<Rolec> roles = new ArrayList<Rolec>();
+Rolec rol1 = new Rolec();
+rol1.setIdRole(1);
+Rolec rol2 = new Rolec();
+rol2.setIdRole(2);
+roles.add(rol1);
+roles.add(rol2);
 
-                if (usuarioAutenticado != null) {
+usuarioAutenticado.setRoles(roles);
+if (usuarioAutenticado != null) {
                     // Verifico si el usuario tiene permisos para entrar con el rol elegido
                     for (Iterator<Rolec> it = usuarioAutenticado.getRoles().iterator(); it.hasNext();) {
                         Rolec rolIt = it.next();
                         
+                        // Devuelves un Response con un entity de tipo Token. 
+                        // En el token están los datos del usuario autenticado
                             Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
                             return Response.status(200)
                                     .type(MediaType.APPLICATION_JSON)
