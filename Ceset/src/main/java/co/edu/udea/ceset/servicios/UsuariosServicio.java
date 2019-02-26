@@ -80,11 +80,11 @@ public class UsuariosServicio implements Serializable {
     @Path("/autenticar")
     @Produces("application/json")
     public Response autenticar(
-            @QueryParam("usuario") String usuario,
-            @QueryParam("clave") String clave) throws JOSEException, IOException {
+            @QueryParam("usuario") User usuario
+            ) throws JOSEException, IOException {
                 int rol = 0;
                 User usuarioAutenticado;
-                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario, clave);
+                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
 
                 if (usuarioAutenticado != null) {
                     // Verifico si el usuario tiene permisos para entrar con el rol elegido

@@ -52,8 +52,8 @@ public class UsuarioBL implements Serializable {
      * @param clave
      * @return 
      */
-    public User autenticar(String user, String clave) {
-        return obtenerUserDAO().autenticar(user, clave);
+    public User autenticar(User user) {
+        return obtenerUserDAO().autenticar(user);
     }
     
     public List<User> obtenerTodods(){
