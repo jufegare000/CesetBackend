@@ -83,37 +83,33 @@ public class UsuariosServicio implements Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Response autenticar(User usuario) throws JOSEException, IOException {
-                //int rol = 0;
-                User usuarioAutenticado;
-                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
-                /*usuarioAutenticado = new User();
-                usuarioAutenticado.setIdUser(1);
-                usuarioAutenticado.setNameUser("usuario.prueba");*/
-                List<Rolec> roles = new ArrayList<Rolec>();
-                Rolec rol1 = new Rolec();
-                rol1.setIdRole(1);
-                Rolec rol2 = new Rolec();
-                rol2.setIdRole(2);
-                roles.add(rol1);
-                roles.add(rol2);
+        //int rol = 0;
+        User usuarioAutenticado;
+        usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
+        /*usuarioAutenticado = new User();
+        usuarioAutenticado.setIdUser(1);
+        usuarioAutenticado.setNameUser("usuario.prueba");*/
+        List<Rolec> roles = new ArrayList<Rolec>();
+        Rolec rol1 = new Rolec();
+        rol1.setIdRole(1);
+        Rolec rol2 = new Rolec();
+        rol2.setIdRole(2);
+        roles.add(rol1);
+        roles.add(rol2);
 
-                usuarioAutenticado.setRoles(roles);
-                if (usuarioAutenticado != null) {
-                        // Devuelves un Response con un entity de tipo Token. 
-                        // En el token están los datos del usuario autenticado
-                            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
-                            return Response.status(200)
-                                    .type(MediaType.APPLICATION_JSON)
-                                    .entity(token)
-                                    .build();
-                }
+        if (usuarioAutenticado != null) {
+            usuarioAutenticado.setRoles(roles);
+            // Devuelves un Response con un entity de tipo Token. 
+            // En el token están los datos del usuario autenticado
+            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
+            return Response.status(200)
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(token)
+                    .build();
+        }
         
-        return null;
-        /*return Response.status(200)
-                .type(MediaType.APPLICATION_JSON)
-                .entity(usuario)
-                .build();*/
-
+        return Response.status(403)
+                .build();
     }
 
    
