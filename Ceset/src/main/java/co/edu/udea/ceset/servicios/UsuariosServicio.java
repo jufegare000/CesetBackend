@@ -77,33 +77,28 @@ public class UsuariosServicio implements Serializable {
      * @return usuario en formatio JSON
      * @throws JOSEException
      */
-    @GET
+    @POST
     @PermitAll
     @Path("/autenticar")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Response autenticar(
-            @QueryParam("usuario") String usuario
-            ) throws JOSEException, IOException {
-                int rol = 0;
+    public Response autenticar(User usuario) throws JOSEException, IOException {
+                //int rol = 0;
                 User usuarioAutenticado;
-                //usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario)
-                usuarioAutenticado = new User();
+                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
+                /*usuarioAutenticado = new User();
                 usuarioAutenticado.setIdUser(1);
-usuarioAutenticado.setNameUser("usuario.prueba");
-List<Rolec> roles = new ArrayList<Rolec>();
-Rolec rol1 = new Rolec();
-rol1.setIdRole(1);
-Rolec rol2 = new Rolec();
-rol2.setIdRole(2);
-roles.add(rol1);
-roles.add(rol2);
+                usuarioAutenticado.setNameUser("usuario.prueba");*/
+                List<Rolec> roles = new ArrayList<Rolec>();
+                Rolec rol1 = new Rolec();
+                rol1.setIdRole(1);
+                Rolec rol2 = new Rolec();
+                rol2.setIdRole(2);
+                roles.add(rol1);
+                roles.add(rol2);
 
-usuarioAutenticado.setRoles(roles);
-if (usuarioAutenticado != null) {
-                    // Verifico si el usuario tiene permisos para entrar con el rol elegido
-                    for (Iterator<Rolec> it = usuarioAutenticado.getRoles().iterator(); it.hasNext();) {
-                        Rolec rolIt = it.next();
-                        
+                usuarioAutenticado.setRoles(roles);
+                if (usuarioAutenticado != null) {
                         // Devuelves un Response con un entity de tipo Token. 
                         // En el token están los datos del usuario autenticado
                             Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
@@ -111,11 +106,13 @@ if (usuarioAutenticado != null) {
                                     .type(MediaType.APPLICATION_JSON)
                                     .entity(token)
                                     .build();
-                        
-                    }
                 }
         
         return null;
+        /*return Response.status(200)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(usuario)
+                .build();*/
 
     }
 
