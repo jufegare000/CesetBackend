@@ -5,6 +5,7 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -41,12 +42,15 @@ public class Permission implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPermission")
+    @Expose
     private Integer idPermission;
     @Size(max = 10)
     @Column(name = "shortDescription")
+    @Expose
     private String shortDescription;
     @Size(max = 100)
     @Column(name = "descripcion")
+    @Expose
     private String descripcion;
     @OneToMany(mappedBy = "idPermission", fetch = FetchType.LAZY)
     private Collection<Rolebypermission> rolebypermissionCollection;

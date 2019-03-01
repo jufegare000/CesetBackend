@@ -6,6 +6,7 @@
 package co.edu.udea.ceset.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -51,6 +52,7 @@ public class User implements Serializable {
     private Collection<Academicactivity> academicactivityCollection;
 
     @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Rolebyuser> rolebyuserCollection;
 
     private static final long serialVersionUID = 1L;
@@ -74,6 +76,7 @@ public class User implements Serializable {
     private String states;
     @JoinColumn(name = "IdPerson", referencedColumnName = "IdPerson")
     @ManyToOne(fetch = FetchType.LAZY)
+    @Expose
     private Person idPerson;
     
     @Transient

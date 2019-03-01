@@ -6,9 +6,11 @@
 package co.edu.udea.ceset.auth;
 
 import co.edu.udea.ceset.dto.User;
-import co.edu.udea.ceset.dto.Usuario;
 import co.edu.udea.ceset.excepciones.AuthenticationException;
 import co.edu.udea.ceset.properties.PropiedadesCeset;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -59,16 +61,20 @@ public class AuthUtils {
  * @throws JOSEException 
  */
     public static Token createToken(String host, User user) throws JOSEException {
+        String yeison;
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        //System.out.println(gson.toJson(user));
+        yeison = gson.toJson(user).toString();
         JWTClaimsSet claim = new JWTClaimsSet();
         claim.setSubject(Integer.toString(user.getIdUser()));
         claim.setIssuer(host);
         claim.setIssueTime(DateTime.now().toDate());
         claim.setExpirationTime(DateTime.now().plusDays(1).toDate());
-        claim.setCustomClaim("usr", user.getNameUser());
+        claim.setCustomClaim("usr", yeison);
       //claim.setCustomClaim("nom", user.getNombreCompleto());
       //claim.setCustomClaim("ide", user.getIdentificacion());
       // claim.setCustomClaim("rol", rolId);
-        claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray())); // [{id:1, nombre: 'ADMIN' }]
+      //  claim.setCustomClaim("rls", Arrays.toString(user.getRoles().toArray())); // [{id:1, nombre: 'ADMIN' }]
         String TOKEN_SECRET = PropiedadesCeset.getInstance()
                                 .getPropiedadesAutorizacion()
                                 .getString("TK-KEY");

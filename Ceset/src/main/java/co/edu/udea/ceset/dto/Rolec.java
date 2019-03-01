@@ -5,6 +5,7 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -50,18 +51,22 @@ public class Rolec implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idRole")
+    @Expose
     private Integer idRole;
     @Size(max = 50)
     @Column(name = "description")
+    @Expose
     private String description;
     @Column(name = "CreatedAt")
     @Temporal(TemporalType.DATE)
+    @Expose
     private Date createdAt;
     @Column(name = "UpdatedAt")
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
     @Size(max = 20)
     @Column(name = "States")
+    @Expose
     private String states;
     @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
     private Collection<Rolebypermission> rolebypermissionCollection;

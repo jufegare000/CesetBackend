@@ -5,6 +5,7 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -43,19 +44,24 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdPerson")
+    @Expose
     private Integer idPerson;
     @Size(max = 500)
     @Column(name = "completeName")
+    @Expose
     private String completeName;
     @Size(max = 50)
     @Column(name = "documentType")
+    @Expose
     private String documentType;
     @Size(max = 20)
     @Column(name = "document")
+    @Expose
     private String document;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 100)
     @Column(name = "email")
+    @Expose
     private String email;
     @OneToMany(mappedBy = "idPerson", fetch = FetchType.LAZY)
     private Collection<User> userCollection;

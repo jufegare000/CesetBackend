@@ -49,16 +49,6 @@ public class UsuariosServicio implements Serializable {
     @Produces(MediaType.TEXT_PLAIN)
     public void creatUser(User usr) {
 
-          Person prs;
-         prs = usr.getIdPerson();
-         //Collection<User> usrq = new LinkedList<User>();
-         //UsuarioBL.getInstance().crear(prs);
-         //boolean b = usrq.add(usr);
-         //prs.setUserCollection(usrq);
-         //PersonBL.getInstance().crear(prs, usr);
-         
-         //Primero se crea la persona, luego se crea el usuario y 
-         //paultatinamente se debe hacer respectiva asociación
     }
     
     @Context
@@ -89,16 +79,8 @@ public class UsuariosServicio implements Serializable {
         /*usuarioAutenticado = new User();
         usuarioAutenticado.setIdUser(1);
         usuarioAutenticado.setNameUser("usuario.prueba");*/
-        List<Rolec> roles = new ArrayList<Rolec>();
-        Rolec rol1 = new Rolec();
-        rol1.setIdRole(1);
-        Rolec rol2 = new Rolec();
-        rol2.setIdRole(2);
-        roles.add(rol1);
-        roles.add(rol2);
 
         if (usuarioAutenticado != null) {
-            usuarioAutenticado.setRoles(roles);
             // Devuelves un Response con un entity de tipo Token. 
             // En el token están los datos del usuario autenticado
             Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);

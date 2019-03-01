@@ -5,6 +5,7 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -40,6 +41,7 @@ public class Rolebyuser implements Serializable {
     private Integer id;
     @JoinColumn(name = "idRole", referencedColumnName = "idRole")
     @ManyToOne(fetch = FetchType.LAZY)
+    @Expose
     private Rolec idRole;
     @JoinColumn(name = "idUser", referencedColumnName = "IdUser")
     @ManyToOne(fetch = FetchType.LAZY)
