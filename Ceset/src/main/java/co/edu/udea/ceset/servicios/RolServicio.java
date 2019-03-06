@@ -7,8 +7,12 @@ package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.RolBL;
 import co.edu.udea.ceset.bl.RoleByUserBL;
+import co.edu.udea.ceset.dto.Permission;
+import co.edu.udea.ceset.dto.Rolebypermission;
 import co.edu.udea.ceset.dto.Rolebyuser;
 import co.edu.udea.ceset.dto.Rolec;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
@@ -35,7 +39,24 @@ public class RolServicio {
     }
     
     
-    
+    @POST
+    @PermitAll
+    @Path("/permisos")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public Collection<Permission> createRole(List<Rolec>  rol) {
+        Collection<Rolebypermission> actual;
+        Collection<Permission> perm = new ArrayList<>();
+        Rolec act;
+        for(Rolec elem: rol){
+            act = RolBL.getInstance().obtenerPorId(elem.getIdRole());
+            actual = act.getRolebypermissionCollection();
+            for(Rolebypermission rbp: actual){
+                perm.add(rbp.getIdPermission());
+            }
+        }        
+        return perm;
+    }
 /*
     @Consumes("application/json")
     @GET
