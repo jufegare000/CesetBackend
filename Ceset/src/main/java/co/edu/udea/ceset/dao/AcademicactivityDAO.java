@@ -38,7 +38,8 @@ public class AcademicactivityDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Academicactivity academicactivity) {
+    public Academicactivity create(Academicactivity academicactivity) {
+        List<Academicactivity> lAcad = null;
         if (academicactivity.getBudgetCollection() == null) {
             academicactivity.setBudgetCollection(new ArrayList<Budget>());
         }
@@ -127,10 +128,15 @@ public class AcademicactivityDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            lAcad = em.createNamedQuery("Academicactivity.findByIdAcad")
+                    .setParameter("idAcad", academicactivity.getIdAcad())
+                    .getResultList(); // Retorna la persona recién creada
+                                      // Para asigmarlo al usuario a crear
             if (em != null) {
                 em.close();
             }
         }
+        return lAcad.get(0);
     }
 
     public void edit(Academicactivity academicactivity) throws NonexistentEntityException, Exception {

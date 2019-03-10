@@ -3,8 +3,10 @@ package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.auth.AuthUtils;
 import co.edu.udea.ceset.auth.Token;
+import co.edu.udea.ceset.bl.AcademicActivityBL;
 import co.edu.udea.ceset.bl.PersonBL;
 import co.edu.udea.ceset.bl.UsuarioBL;
+import co.edu.udea.ceset.dto.Academicactivity;
 import co.edu.udea.ceset.dto.Person;
 import co.edu.udea.ceset.dto.Rol;
 import co.edu.udea.ceset.dto.Rolec;
@@ -45,7 +47,7 @@ public class ActividadServicio implements Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void creatUser(User usr) {
+    public void createActiv(User usr) {
          //Collection<User> usrq = new LinkedList<User>();
          //UsuarioBL.getInstance().crear(prs);
          //boolean b = usrq.add(usr);
@@ -64,42 +66,7 @@ public class ActividadServicio implements Serializable {
         return UsuarioBL.getInstance().obtenerTodods();
     }
     
-    /**
-     * Métdodo para autenticar un usuario.
-     *
-     * @param usuario a autenticar
-     * @param clave cifrada del usuario
-     * @return usuario en formatio JSON
-     * @throws JOSEException
-     */
-    @GET
-    @PermitAll
-    @Path("/autenticar")
-    @Produces("application/json")
-    public Response autenticar(
-            @QueryParam("usuario") User usuario
-            ) throws JOSEException, IOException {
-                int rol = 0;
-                User usuarioAutenticado;
-                usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
-
-                if (usuarioAutenticado != null) {
-                    // Verifico si el usuario tiene permisos para entrar con el rol elegido
-                    for (Iterator<Rolec> it = usuarioAutenticado.getRoles().iterator(); it.hasNext();) {
-                        Rolec rolIt = it.next();
-                        
-                            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
-                            return Response.status(200)
-                                    .type(MediaType.APPLICATION_JSON)
-                                    .entity(token)
-                                    .build();
-                        
-                    }
-                }
-        
-        return null;
-
-    }
+    
 
    
     /**
@@ -109,10 +76,10 @@ public class ActividadServicio implements Serializable {
      * @return Usuario : Usuario en formato Json
      */
     @GET
-    @Path("/{idUser}")
+    @Path("/{idAcad}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User obtenerPorId(@PathParam("idUser") int id) {
-        return UsuarioBL.getInstance().obtenerPorId(id);
+    public Academicactivity obtenerPorId(@PathParam("idAcad") int id) {
+        return AcademicActivityBL.getInstance().getById(id);
     } 
 
 }

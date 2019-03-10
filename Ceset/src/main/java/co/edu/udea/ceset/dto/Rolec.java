@@ -57,6 +57,10 @@ public class Rolec implements Serializable {
     @Column(name = "description")
     @Expose
     private String description;
+    @Size(max = 12)
+    @Column(name = "abreviation")
+    @Expose
+    private String abreviation;
     @Column(name = "CreatedAt")
     @Temporal(TemporalType.DATE)
     @Expose
@@ -121,6 +125,16 @@ public class Rolec implements Serializable {
     public void setStates(String states) {
         this.states = states;
     }
+
+    public String getAbreviation() {
+        return abreviation;
+    }
+
+    public void setAbreviation(String abreviation) {
+        this.abreviation = abreviation;
+    }
+    
+    
 
     @XmlTransient
     public Collection<Rolebypermission> getRolebypermissionCollection() {

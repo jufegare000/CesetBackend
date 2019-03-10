@@ -65,8 +65,12 @@ public class AcademicActivityBL implements Serializable {
         return DAO;
     }
      
-      public void crear(Academicactivity academicactivity) {
-         obtenerAcadDAO().create(academicactivity);
+      public Academicactivity crear(Academicactivity academicactivity) {
+         return obtenerAcadDAO().create(academicactivity);
+    }
+      
+    public Academicactivity getById(int n){
+        return obtenerAcadDAO().findAcademicactivity(n);
     }
 
 }

@@ -45,9 +45,12 @@ public class Notiffication implements Serializable {
     @Size(max = 200)
     @Column(name = "description")
     private String description;
-    @Size(max = 12)
+    @Size(max = 200)
     @Column(name = "notiftype")
     private String notiftype;
+    @Size(max=200)
+    @Column(name="State")
+    private String stated;
     @OneToMany(mappedBy = "idNotif", fetch = FetchType.LAZY)
     private Collection<Notifficationbycheck> notifficationbycheckCollection;
     @OneToMany(mappedBy = "idNotif", fetch = FetchType.LAZY)
@@ -83,6 +86,16 @@ public class Notiffication implements Serializable {
     public void setNotiftype(String notiftype) {
         this.notiftype = notiftype;
     }
+
+    public String getStated() {
+        return stated;
+    }
+
+    public void setStated(String stated) {
+        this.stated = stated;
+    }
+    
+    
 
     @XmlTransient
     public Collection<Notifficationbycheck> getNotifficationbycheckCollection() {
