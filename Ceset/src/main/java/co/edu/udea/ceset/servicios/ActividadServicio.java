@@ -45,25 +45,25 @@ public class ActividadServicio implements Serializable {
     
     
     @POST
+    @Path("/crear")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public void createActiv(User usr) {
-         //Collection<User> usrq = new LinkedList<User>();
-         //UsuarioBL.getInstance().crear(prs);
-         //boolean b = usrq.add(usr);
-         //prs.setUserCollection(usrq);
-         //PersonBL.getInstance().crear(prs, usr);
-         
-         //Primero se crea la persona, luego se crea el usuario y 
-         //paultatinamente se debe hacer respectiva asociación
+    public Response createActivity(Academicactivity activity) throws JOSEException, IOException {
+         AcademicActivityBL.getInstance().crear(activity);
+//         if(activity.getIdUser() == null)
+//             return Response
+//                     .status(Response.Status.NOT_ACCEPTABLE)
+//                     .build();
+         return Response
+                 .status(Response.Status.ACCEPTED)
+                 .build();
     }
     
     @Context
    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> obtenerPorId() {
-        return UsuarioBL.getInstance().obtenerTodods();
+    public List<Academicactivity> obtenerPorId() {
+        return AcademicActivityBL.getInstance().obtenerTodods();
     }
     
     

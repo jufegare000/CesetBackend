@@ -39,8 +39,8 @@ public class SecurityFilter implements ContainerRequestFilter {
     HttpHeaders headers;
 
     private static final String EXPIRE_ERROR_MSG = "El token ha expirado",
-            JWT_ERROR_MSG = "No se puede convertir a JWT",
-            JWT_INVALID_MSG = "Token JWT inválido";
+                                JWT_ERROR_MSG = "No se puede convertir a JWT",
+                                JWT_INVALID_MSG = "Token JWT inválido";
     private final String UNIDAD_PERSISTENCIA = "seguimiento_docente_PU";
 
 /**
@@ -55,7 +55,6 @@ public class SecurityFilter implements ContainerRequestFilter {
         
         // Si el método de la petición Http es OPTIONS no es necesario validar el token
         if (!requestContext.getMethod().equals("OPTIONS")) {
-
             // Si no posee Token o está incorrecto se meustra mensaje de error 
             if (authHeader == null || authHeader.isEmpty() || authHeader.split(" ").length != 2) {
                 throw new AuthenticationException("Usted no cuenta con permisos para llamar el WebService.");
@@ -82,8 +81,10 @@ public class SecurityFilter implements ContainerRequestFilter {
                         // Creamos un usuario vacío
                         Authorizer authorizer = new Authorizer(new ArrayList<Rol>(), "",
                                 originalContext.isSecure());
+                        System.out.println(authorizer.isSecure);
                         requestContext.setSecurityContext(authorizer);
                     } else {
+                        System.out.println("Entró al else");
                         // CAMBIAR TIPO USUARIO
                        // Usuario user = obtenerUsuarioDAO().obtenerPorId(Integer.parseInt(claimSet.getSubject()));
                        //Usuario con rol USER dummy

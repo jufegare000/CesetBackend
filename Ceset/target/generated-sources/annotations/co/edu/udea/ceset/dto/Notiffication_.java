@@ -7,7 +7,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-06T10:00:00")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-10T23:28:41")
 @StaticMetamodel(Notiffication.class)
 public class Notiffication_ { 
 
@@ -15,6 +15,7 @@ public class Notiffication_ {
     public static volatile SingularAttribute<Notiffication, Integer> idNotif;
     public static volatile SingularAttribute<Notiffication, String> notiftype;
     public static volatile SingularAttribute<Notiffication, String> description;
+    public static volatile SingularAttribute<Notiffication, String> stated;
     public static volatile CollectionAttribute<Notiffication, Notifficationbyrole> notifficationbyroleCollection;
 
 }

@@ -35,8 +35,8 @@ public class AuthUtils {
     public static final String AUTH_HEADER_KEY = "Authorization";
     
     private static final String EXPIRE_ERROR_MSG = "El token ha expirado",
-            JWT_ERROR_MSG = "No se puede convertir a JWT",
-            JWT_INVALID_MSG = "Token JWT inválido";
+                                JWT_ERROR_MSG = "No se puede convertir a JWT",
+                                JWT_INVALID_MSG = "Token JWT inválido";
 
     public static String getSubject(String authHeader) throws ParseException, JOSEException {
         return decodeToken(authHeader).getSubject();
