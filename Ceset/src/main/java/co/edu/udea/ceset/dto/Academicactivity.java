@@ -5,10 +5,12 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,60 +61,80 @@ public class Academicactivity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdAcad")
+    @Expose
     private Integer idAcad;
     @Size(max = 300)
     @Column(name = "nameActivity")
+    @Expose
     private String nameActivity;
     @Size(max = 150)
     @Column(name = "activityType")
+    @Expose
     private String activityType;
     @Size(max = 150)
     @Column(name = "dependency")
+    @Expose
     private String dependency;
     @Size(max = 200)
     @Column(name = "investigationGroup")
+    @Expose
     private String investigationGroup;
     @Size(max = 400)
     @Column(name = "coordinatorName")
+    @Expose
     private String coordinatorName;
     @Size(max = 15)
     @Column(name = "contactTelephone")
+    @Expose
     private String contactTelephone;
     @Size(max = 150)
     @Column(name = "contactEmail")
+    @Expose
     private String contactEmail;
     @Column(name = "durationMonths")
+    @Expose
     private Integer durationMonths;
     @Size(max = 100)
     @Column(name = "contractType")
+    @Expose
     private String contractType;
     @Size(max = 100)
     @Column(name = "contractEntity")
+    @Expose
     private String contractEntity;
     @Column(name = "contractInit")
+    @Expose
     @Temporal(TemporalType.DATE)
     private Date contractInit;
     @Column(name = "contractEnd")
+    @Expose
     @Temporal(TemporalType.DATE)
     private Date contractEnd;
     @Column(name = "creationDate")
+    @Expose
     @Temporal(TemporalType.DATE)
     private Date creationDate;
     @Size(max = 50)
     @Column(name = "state")
+    @Expose
     private String state;
     @JoinColumn(name = "idUser", referencedColumnName = "IdUser")
     @ManyToOne(fetch = FetchType.LAZY)
+    @Expose
     private User idUser;
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Budget> budgetCollection;
     @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Estimated> estimatedCollection;
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Cohort> cohortCollection;
+    @Expose
     @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
     private Collection<Discount> discountCollection;
-
+    
     public Academicactivity() {
     }
 
@@ -256,14 +279,14 @@ public class Academicactivity implements Serializable {
         this.budgetCollection = budgetCollection;
     }
 
-    @XmlTransient
+       @XmlTransient
     public Collection<Estimated> getEstimatedCollection() {
         return estimatedCollection;
     }
 
     public void setEstimatedCollection(Collection<Estimated> estimatedCollection) {
         this.estimatedCollection = estimatedCollection;
-    }
+}
 
     @XmlTransient
     public Collection<Cohort> getCohortCollection() {
@@ -289,10 +312,10 @@ public class Academicactivity implements Serializable {
         hash += (idAcad != null ? idAcad.hashCode() : 0);
         return hash;
     }
-
+/*
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.Academicactivity[ idAcad=" + idAcad + " ]";
     }
-    
+    */
 }

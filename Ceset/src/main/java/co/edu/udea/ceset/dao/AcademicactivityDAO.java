@@ -7,6 +7,7 @@ package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
 import co.edu.udea.ceset.dto.Academicactivity;
+import co.edu.udea.ceset.dto.Academicactivity_;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -19,9 +20,12 @@ import java.util.Collection;
 import co.edu.udea.ceset.dto.Estimated;
 import co.edu.udea.ceset.dto.Cohort;
 import co.edu.udea.ceset.dto.Discount;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.criteria.Join;
+
 
 /**
  *
@@ -327,18 +331,22 @@ public class AcademicactivityDAO implements Serializable {
         }
     }
 
-    public List<Academicactivity> findAcademicactivityEntities() {
+    public Collection<Academicactivity> findAcademicactivityEntities() {
         return findAcademicactivityEntities(true, -1, -1);
     }
 
-    public List<Academicactivity> findAcademicactivityEntities(int maxResults, int firstResult) {
+    public Collection<Academicactivity> findAcademicactivityEntities(int maxResults, int firstResult) {
         return findAcademicactivityEntities(false, maxResults, firstResult);
     }
 
-    private List<Academicactivity> findAcademicactivityEntities(boolean all, int maxResults, int firstResult) {
+    private Collection<Academicactivity> findAcademicactivityEntities(boolean all, int maxResults, int firstResult) {
+        Root<Academicactivity> acad;
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            //acad = cq.from(Academicactivity.class); // Se trae al root
+            //Join<Academicactivity, Estimated> estimated = acad.join(Academicactivity_.estimatedCollection);
+            
             cq.select(cq.from(Academicactivity.class));
             Query q = em.createQuery(cq);
             if (!all) {
@@ -372,5 +380,6 @@ public class AcademicactivityDAO implements Serializable {
             em.close();
         }
     }
+
     
 }

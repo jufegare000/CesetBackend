@@ -32,7 +32,6 @@ public class PersonServicio {
 
     @Context
     SecurityContext securityContext;
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)

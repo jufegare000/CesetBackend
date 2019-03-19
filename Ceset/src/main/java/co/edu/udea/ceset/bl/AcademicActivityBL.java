@@ -4,6 +4,7 @@ package co.edu.udea.ceset.bl;
 import co.edu.udea.ceset.dao.AcademicactivityDAO;
 import co.edu.udea.ceset.dto.Academicactivity;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -45,7 +46,7 @@ public class AcademicActivityBL implements Serializable {
 
 
     
-    public List<Academicactivity> obtenerTodods(){
+    public Collection<Academicactivity> obtenerTodods(){
         return this.obtenerAcadDAO().findAcademicactivityEntities();
     }
 

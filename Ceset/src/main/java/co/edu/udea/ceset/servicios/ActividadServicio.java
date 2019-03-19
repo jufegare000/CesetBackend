@@ -1,17 +1,13 @@
 package co.edu.udea.ceset.servicios;
 
-
-import co.edu.udea.ceset.auth.AuthUtils;
-import co.edu.udea.ceset.auth.Token;
 import co.edu.udea.ceset.bl.AcademicActivityBL;
-import co.edu.udea.ceset.bl.PersonBL;
-import co.edu.udea.ceset.bl.UsuarioBL;
+import co.edu.udea.ceset.bl.EstimatedBL;
+import co.edu.udea.ceset.dto.AcademicActivityDTO;
+
 import co.edu.udea.ceset.dto.Academicactivity;
-import co.edu.udea.ceset.dto.Person;
-import co.edu.udea.ceset.dto.Rol;
-import co.edu.udea.ceset.dto.Rolec;
-import co.edu.udea.ceset.dto.User;
-import co.edu.udea.ceset.dto.Usuario;
+import co.edu.udea.ceset.dto.Estimated;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -40,35 +36,33 @@ public class ActividadServicio implements Serializable {
 
     private static final long serialVersionUID = -9066585482051897942L;
     
-    @Context
-    SecurityContext securityContext;
-    
-    
     @POST
-    @Path("/crear")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createActivity(Academicactivity activity) throws JOSEException, IOException {
-         AcademicActivityBL.getInstance().crear(activity);
+    public Response createActivity(AcademicActivityDTO activity) throws JOSEException, IOException {
+        int x = 10;
+        //AcademicActivityBL.getInstance().crear(activity);
 //         if(activity.getIdUser() == null)
 //             return Response
 //                     .status(Response.Status.NOT_ACCEPTABLE)
 //                     .build();
-         return Response
-                 .status(Response.Status.ACCEPTED)
-                 .build();
+        return Response
+                .status(Response.Status.ACCEPTED)
+                .build();
     }
-    
-    @Context
-   
+
+    @Path("/todas")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Academicactivity> obtenerPorId() {
-        return AcademicActivityBL.getInstance().obtenerTodods();
-    }
-    
-    
+    public String getAll() {
+        String yeison;
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        //System.out.println(gson.toJson(user));
 
-   
+        Collection<Academicactivity> acad = AcademicActivityBL.getInstance().obtenerTodods();
+        yeison = gson.toJson(acad).toString();
+        return yeison;
+    }
+
     /**
      * Método que retorna un Usuario dado un id
      *
@@ -80,6 +74,6 @@ public class ActividadServicio implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public Academicactivity obtenerPorId(@PathParam("idAcad") int id) {
         return AcademicActivityBL.getInstance().getById(id);
-    } 
+    }
 
 }

@@ -35,7 +35,8 @@ public class EstimatedDao implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Estimated estimated) {
+    public Estimated create(Estimated estimated) {
+        List<Estimated> lest = null;
         if (estimated.getEstimatedbyitemCollection() == null) {
             estimated.setEstimatedbyitemCollection(new ArrayList<Estimatedbyitem>());
         }
@@ -43,11 +44,11 @@ public class EstimatedDao implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Academicactivity idAcad = estimated.getIdAcad();
-            if (idAcad != null) {
+            //Academicactivity idAcad = estimated.getIdAcad();
+/*            if (idAcad != null) {
                 idAcad = em.getReference(idAcad.getClass(), idAcad.getIdAcad());
                 estimated.setIdAcad(idAcad);
-            }
+            }*/
             Collection<Estimatedbyitem> attachedEstimatedbyitemCollection = new ArrayList<Estimatedbyitem>();
             for (Estimatedbyitem estimatedbyitemCollectionEstimatedbyitemToAttach : estimated.getEstimatedbyitemCollection()) {
                 estimatedbyitemCollectionEstimatedbyitemToAttach = em.getReference(estimatedbyitemCollectionEstimatedbyitemToAttach.getClass(), estimatedbyitemCollectionEstimatedbyitemToAttach.getId());
@@ -55,10 +56,10 @@ public class EstimatedDao implements Serializable {
             }
             estimated.setEstimatedbyitemCollection(attachedEstimatedbyitemCollection);
             em.persist(estimated);
-            if (idAcad != null) {
-                idAcad.getEstimatedCollection().add(estimated);
+/*            if (idAcad != null) {
+                idAcad.setEstimated(estimated);
                 idAcad = em.merge(idAcad);
-            }
+            }*/
             for (Estimatedbyitem estimatedbyitemCollectionEstimatedbyitem : estimated.getEstimatedbyitemCollection()) {
                 Estimated oldIdEstimatedOfEstimatedbyitemCollectionEstimatedbyitem = estimatedbyitemCollectionEstimatedbyitem.getIdEstimated();
                 estimatedbyitemCollectionEstimatedbyitem.setIdEstimated(estimated);
@@ -70,10 +71,16 @@ public class EstimatedDao implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+              lest = em.createNamedQuery("Estimated.findByIdAcad")
+                    .setParameter("document", estimated.getIdAcad())
+                    .getResultList(); // Retorna la persona recién creada
+                                      // Para asigmarlo al usuario a crear
+  //          
             if (em != null) {
                 em.close();
             }
         }
+        return lest.get(0);
     }
 
     public void edit(Estimated estimated) throws NonexistentEntityException, Exception {
@@ -82,14 +89,14 @@ public class EstimatedDao implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Estimated persistentEstimated = em.find(Estimated.class, estimated.getIdEstimated());
-            Academicactivity idAcadOld = persistentEstimated.getIdAcad();
-            Academicactivity idAcadNew = estimated.getIdAcad();
+//            Academicactivity idAcadOld = persistentEstimated.getIdAcad();
+//            Academicactivity idAcadNew = estimated.getIdAcad();
             Collection<Estimatedbyitem> estimatedbyitemCollectionOld = persistentEstimated.getEstimatedbyitemCollection();
             Collection<Estimatedbyitem> estimatedbyitemCollectionNew = estimated.getEstimatedbyitemCollection();
-            if (idAcadNew != null) {
+/*            if (idAcadNew != null) {
                 idAcadNew = em.getReference(idAcadNew.getClass(), idAcadNew.getIdAcad());
                 estimated.setIdAcad(idAcadNew);
-            }
+            }*/
             Collection<Estimatedbyitem> attachedEstimatedbyitemCollectionNew = new ArrayList<Estimatedbyitem>();
             for (Estimatedbyitem estimatedbyitemCollectionNewEstimatedbyitemToAttach : estimatedbyitemCollectionNew) {
                 estimatedbyitemCollectionNewEstimatedbyitemToAttach = em.getReference(estimatedbyitemCollectionNewEstimatedbyitemToAttach.getClass(), estimatedbyitemCollectionNewEstimatedbyitemToAttach.getId());
@@ -98,14 +105,16 @@ public class EstimatedDao implements Serializable {
             estimatedbyitemCollectionNew = attachedEstimatedbyitemCollectionNew;
             estimated.setEstimatedbyitemCollection(estimatedbyitemCollectionNew);
             estimated = em.merge(estimated);
+            /*
             if (idAcadOld != null && !idAcadOld.equals(idAcadNew)) {
-                idAcadOld.getEstimatedCollection().remove(estimated);
+                idAcadOld.getEstimated().remove(estimated);
                 idAcadOld = em.merge(idAcadOld);
             }
             if (idAcadNew != null && !idAcadNew.equals(idAcadOld)) {
-                idAcadNew.getEstimatedCollection().add(estimated);
+                idAcadNew.getEstimated().add(estimated);
                 idAcadNew = em.merge(idAcadNew);
             }
+*/
             for (Estimatedbyitem estimatedbyitemCollectionOldEstimatedbyitem : estimatedbyitemCollectionOld) {
                 if (!estimatedbyitemCollectionNew.contains(estimatedbyitemCollectionOldEstimatedbyitem)) {
                     estimatedbyitemCollectionOldEstimatedbyitem.setIdEstimated(null);
@@ -152,11 +161,12 @@ public class EstimatedDao implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The estimated with id " + id + " no longer exists.", enfe);
             }
-            Academicactivity idAcad = estimated.getIdAcad();
+//            Academicactivity idAcad = estimated.getIdAcad();
+            /*
             if (idAcad != null) {
-                idAcad.getEstimatedCollection().remove(estimated);
+                idAcad.getEstimated().remove(estimated);
                 idAcad = em.merge(idAcad);
-            }
+            }*/
             Collection<Estimatedbyitem> estimatedbyitemCollection = estimated.getEstimatedbyitemCollection();
             for (Estimatedbyitem estimatedbyitemCollectionEstimatedbyitem : estimatedbyitemCollection) {
                 estimatedbyitemCollectionEstimatedbyitem.setIdEstimated(null);

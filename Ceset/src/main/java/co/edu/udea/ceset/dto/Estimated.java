@@ -5,9 +5,11 @@
  */
 package co.edu.udea.ceset.dto;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -44,19 +47,25 @@ public class Estimated implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdEstimated")
+    @Expose
     private Integer idEstimated;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "totalBudget")
+    @Expose
     private Double totalBudget;
     @Column(name = "improvised")
+    @Expose
     private Double improvised;
     @Column(name = "contributionsUdeA")
+    @Expose
     private Double contributionsUdeA;
     @Column(name = "contributionsFaculty")
+    @Expose
     private Double contributionsFaculty;
     @JoinColumn(name = "idAcad", referencedColumnName = "IdAcad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Academicactivity idAcad;
+    @Expose
     @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
     private Collection<Estimatedbyitem> estimatedbyitemCollection;
 
@@ -135,5 +144,4 @@ public class Estimated implements Serializable {
     public String toString() {
         return "co.edu.udea.ceset.dto.Estimated[ idEstimated=" + idEstimated + " ]";
     }
-    
 }

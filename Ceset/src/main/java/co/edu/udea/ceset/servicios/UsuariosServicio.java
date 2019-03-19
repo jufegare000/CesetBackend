@@ -76,6 +76,8 @@ public class UsuariosServicio implements Serializable {
         //int rol = 0;
         User usuarioAutenticado;
         usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
+        Token token;
+        String mensaje;
         /*usuarioAutenticado = new User();
         usuarioAutenticado.setIdUser(1);
         usuarioAutenticado.setNameUser("usuario.prueba");*/
@@ -83,15 +85,19 @@ public class UsuariosServicio implements Serializable {
         if (usuarioAutenticado != null) {
             // Devuelves un Response con un entity de tipo Token. 
             // En el token están los datos del usuario autenticado
-            Token token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
+            token = AuthUtils.createToken("auth-backend", usuarioAutenticado);
             return Response.status(200)
                     .type(MediaType.APPLICATION_JSON)
                     .entity(token)
                     .build();
+        }else{
+            mensaje = "El usuario o la contraseña son incorrectos";
+            return Response.status(403)
+                    .entity(mensaje)
+                    .build();
         }
         
-        return Response.status(403)
-                .build();
+        
     }
 
    

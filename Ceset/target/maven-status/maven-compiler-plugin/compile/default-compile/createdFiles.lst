@@ -16,6 +16,7 @@ co\edu\udea\ceset\dto\Estimatedbyitem_.class
 co\edu\udea\ceset\dto\Notifficationbyrole_.class
 co\edu\udea\ceset\dto\User_.class
 co\edu\udea\ceset\dao\ExpenditurebyitemDAO.class
+co\edu\udea\ceset\bl\EstimatedBL.class
 co\edu\udea\ceset\dto\Item.class
 co\edu\udea\ceset\bl\UsuarioBL.class
 co\edu\udea\ceset\dto\User.class
@@ -27,6 +28,7 @@ co\edu\udea\ceset\dao\cnf\JDBCConnectionPool.class
 co\edu\udea\ceset\excepciones\BusinessLogicalException.class
 co\edu\udea\ceset\excepciones\IllegalOrphanExceptionMapper.class
 co\edu\udea\ceset\dao\RolebyuserDAO.class
+co\edu\udea\ceset\dto\AcademicActivityDTO.class
 co\edu\udea\ceset\dto\Permission_.class
 co\edu\udea\ceset\dto\Rolebyuser_.class
 co\edu\udea\ceset\excepciones\PreexistingEntityExceptionMapper.class
