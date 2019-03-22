@@ -22,7 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import co.edu.udea.ceset.dto.AcademicActivityDTO;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -125,8 +125,8 @@ public class Academicactivity implements Serializable {
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
     @Expose
     private Collection<Budget> budgetCollection;
-    @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
-    @Expose
+    
+    @OneToMany(cascade= CascadeType.ALL, mappedBy = "idAcad", fetch = FetchType.LAZY)
     private Collection<Estimated> estimatedCollection;
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
     @Expose
@@ -279,7 +279,7 @@ public class Academicactivity implements Serializable {
         this.budgetCollection = budgetCollection;
     }
 
-       @XmlTransient
+    
     public Collection<Estimated> getEstimatedCollection() {
         return estimatedCollection;
     }
@@ -311,6 +311,31 @@ public class Academicactivity implements Serializable {
         int hash = 0;
         hash += (idAcad != null ? idAcad.hashCode() : 0);
         return hash;
+    }  
+    
+    public void setear(AcademicActivityDTO acad){
+        this.idAcad = acad.getIdAcad();
+        this.nameActivity = acad.getNameActivity();
+        this.activityType = acad.getActivityType();
+        this.dependency = acad.getDependency();
+        this.investigationGroup = acad.getInvestigationGroup();
+        this.coordinatorName = acad.getCoordinatorName();
+        this.contactTelephone = acad.getContactTelephone();
+        this.contactEmail = acad.getContactEmail();
+        this.durationMonths = acad.getDurationMonths();
+        this.contractType = acad.getContractType();
+        this.contractEntity = acad.getContractEntity();
+        this.contractInit = acad.getContractInit();
+        this.contractEnd = acad.getContractEnd();
+        this.creationDate = acad.getCreationDate();
+        this.state = acad.getState();
+        this.idUser = acad.getIdUser();
+        this.budgetCollection = acad.getBudgetCollection();
+        this.estimatedCollection = acad.getEstimatedCollection();
+        this.cohortCollection = acad.getCohortCollection();
+        this.discountCollection = acad.getDiscountCollection();
+        
+                
     }
 /*
     @Override

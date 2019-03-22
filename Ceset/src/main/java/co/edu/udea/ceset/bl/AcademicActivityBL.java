@@ -2,7 +2,9 @@ package co.edu.udea.ceset.bl;
 
 
 import co.edu.udea.ceset.dao.AcademicactivityDAO;
+import co.edu.udea.ceset.dto.AcademicActivityDTO;
 import co.edu.udea.ceset.dto.Academicactivity;
+import co.edu.udea.ceset.dto.Estimated;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -66,8 +68,18 @@ public class AcademicActivityBL implements Serializable {
         return DAO;
     }
      
-      public Academicactivity crear(Academicactivity academicactivity) {
-         return obtenerAcadDAO().create(academicactivity);
+      public Academicactivity crear(AcademicActivityDTO academicactivity) {
+          Academicactivity acad = new Academicactivity();
+          List<Estimated> miEstimadoL = (List<Estimated>) academicactivity.getEstimatedCollection();
+          Estimated miEstimado = miEstimadoL.get(0);
+          Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
+          // teniendo creado el nuevo estimado se debe setear a la actividad a crear
+          
+          acad.setear(academicactivity);
+          //miEstimadoL.clear();
+          miEstimadoL.set(0, miEstimadoN);
+          acad.setEstimatedCollection(miEstimadoL);
+         return obtenerAcadDAO().create(acad);
     }
       
     public Academicactivity getById(int n){

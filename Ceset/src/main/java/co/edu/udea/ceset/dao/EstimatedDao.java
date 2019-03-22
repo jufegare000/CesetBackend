@@ -71,8 +71,8 @@ public class EstimatedDao implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
-              lest = em.createNamedQuery("Estimated.findByIdAcad")
-                    .setParameter("document", estimated.getIdAcad())
+              lest = em.createNamedQuery("Estimated.findByIdEstimated")
+                    .setParameter("idEstimated", estimated.getIdEstimated().intValue())
                     .getResultList(); // Retorna la persona recién creada
                                       // Para asigmarlo al usuario a crear
   //          

@@ -41,9 +41,62 @@ public class AcademicactivityDAO implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    
+    public Academicactivity creare(Academicactivity academicactivity){
+        List<Academicactivity> lAcad = null;
+        EntityManager em = null;
+        User idUser = null ;
+        String nameUser;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            nameUser = academicactivity.getIdUser().getNameUser();
+            if (idUser != null) {
+                idUser = em.getReference(idUser.getClass(), nameUser);
+                academicactivity.setIdUser(idUser);
+            }
+            Estimated miEstimado = (Estimated)academicactivity.getEstimatedCollection().toArray()[0];
+            Collection<Estimated> attachedEstimatedCollection = new ArrayList<Estimated>();
+            
+            for (Estimated estimatedCollectionEstimatedToAttach : academicactivity.getEstimatedCollection()) {
+                estimatedCollectionEstimatedToAttach = em.getReference(estimatedCollectionEstimatedToAttach.getClass(), estimatedCollectionEstimatedToAttach.getIdEstimated());
+                attachedEstimatedCollection.add(estimatedCollectionEstimatedToAttach);
+            }
+            academicactivity.setEstimatedCollection(attachedEstimatedCollection);
+
+           
+            em.persist(academicactivity);
+            if (idUser != null) {
+                idUser.getAcademicactivityCollection().add(academicactivity);
+                idUser = em.merge(idUser);
+            }
+            for (Estimated estimatedCollectionEstimated : academicactivity.getEstimatedCollection()) {
+                Academicactivity oldIdAcadOfEstimatedCollectionEstimated = estimatedCollectionEstimated.getIdAcad();
+                estimatedCollectionEstimated.setIdAcad(academicactivity);
+                estimatedCollectionEstimated = em.merge(estimatedCollectionEstimated);
+                if (oldIdAcadOfEstimatedCollectionEstimated != null) {
+                    oldIdAcadOfEstimatedCollectionEstimated.getEstimatedCollection().remove(estimatedCollectionEstimated);
+                    oldIdAcadOfEstimatedCollectionEstimated = em.merge(oldIdAcadOfEstimatedCollectionEstimated);
+                }
+            }
+            em.getTransaction().commit();
+        } finally {
+            lAcad = em.createNamedQuery("Academicactivity.findByContractEntity")
+                    .setParameter("contractEntity", academicactivity.getContractEntity())
+                    .getResultList(); // Retorna la persona recién creada
+                                      // Para asigmarlo al usuario a crear
+            if (em != null) {
+                em.close();
+            }
+        }
+        return lAcad.get(0);
+    }
 
     public Academicactivity create(Academicactivity academicactivity) {
         List<Academicactivity> lAcad = null;
+        List<User> luser= null;
+        User usr = null; 
+        String nameUser;
         if (academicactivity.getBudgetCollection() == null) {
             academicactivity.setBudgetCollection(new ArrayList<Budget>());
         }
@@ -60,10 +113,13 @@ public class AcademicactivityDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            User idUser = academicactivity.getIdUser();
-            if (idUser != null) {
-                idUser = em.getReference(idUser.getClass(), idUser.getIdUser());
-                academicactivity.setIdUser(idUser);
+            nameUser = academicactivity.getIdUser().getNameUser();
+            if (nameUser != null) {
+                luser = em.createNamedQuery("User.findByNameUser")
+                    .setParameter("nameUser", nameUser)
+                    .getResultList(); 
+                usr = luser.get(0);
+                academicactivity.setIdUser(usr);
             }
             Collection<Budget> attachedBudgetCollection = new ArrayList<Budget>();
             for (Budget budgetCollectionBudgetToAttach : academicactivity.getBudgetCollection()) {
@@ -73,6 +129,8 @@ public class AcademicactivityDAO implements Serializable {
             academicactivity.setBudgetCollection(attachedBudgetCollection);
             Collection<Estimated> attachedEstimatedCollection = new ArrayList<Estimated>();
             for (Estimated estimatedCollectionEstimatedToAttach : academicactivity.getEstimatedCollection()) {
+                // Se debe crear el estimado antes de adjuntarselo a la actividad académica
+                
                 estimatedCollectionEstimatedToAttach = em.getReference(estimatedCollectionEstimatedToAttach.getClass(), estimatedCollectionEstimatedToAttach.getIdEstimated());
                 attachedEstimatedCollection.add(estimatedCollectionEstimatedToAttach);
             }
@@ -90,9 +148,9 @@ public class AcademicactivityDAO implements Serializable {
             }
             academicactivity.setDiscountCollection(attachedDiscountCollection);
             em.persist(academicactivity);
-            if (idUser != null) {
-                idUser.getAcademicactivityCollection().add(academicactivity);
-                idUser = em.merge(idUser);
+            if (nameUser != null) {
+                usr.getAcademicactivityCollection().add(academicactivity);
+                usr = em.merge(usr);
             }
             for (Budget budgetCollectionBudget : academicactivity.getBudgetCollection()) {
                 Academicactivity oldIdActivityOfBudgetCollectionBudget = budgetCollectionBudget.getIdActivity();
@@ -132,8 +190,8 @@ public class AcademicactivityDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
-            lAcad = em.createNamedQuery("Academicactivity.findByIdAcad")
-                    .setParameter("idAcad", academicactivity.getIdAcad())
+            lAcad = em.createNamedQuery("Academicactivity.findByContractEntity")
+                    .setParameter("contractEntity", academicactivity.getContractEntity())
                     .getResultList(); // Retorna la persona recién creada
                                       // Para asigmarlo al usuario a crear
             if (em != null) {

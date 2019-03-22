@@ -37,16 +37,22 @@ public class ActividadServicio implements Serializable {
     private static final long serialVersionUID = -9066585482051897942L;
     
     @POST
+    @PermitAll
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createActivity(AcademicActivityDTO activity) throws JOSEException, IOException {
-        int x = 10;
-        //AcademicActivityBL.getInstance().crear(activity);
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();;
+        String yeison;
+        
+        Academicactivity  nueva = AcademicActivityBL.getInstance().crear(activity);
 //         if(activity.getIdUser() == null)
 //             return Response
 //                     .status(Response.Status.NOT_ACCEPTABLE)
 //                     .build();
+        yeison = gson.toJson(nueva).toString();
         return Response
                 .status(Response.Status.ACCEPTED)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(yeison)
                 .build();
     }
 
