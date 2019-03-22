@@ -5,6 +5,7 @@ import co.edu.udea.ceset.dao.AcademicactivityDAO;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
 import co.edu.udea.ceset.dto.Academicactivity;
 import co.edu.udea.ceset.dto.Estimated;
+import co.edu.udea.ceset.utilities.Utilities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -48,11 +49,23 @@ public class AcademicActivityBL implements Serializable {
 
 
     
-    public Collection<Academicactivity> obtenerTodods(){
-        return this.obtenerAcadDAO().findAcademicactivityEntities();
+    public String obtenerTodods(){
+        String parsed;
+        Collection<Academicactivity> todas = this.obtenerAcadDAO().findAcademicactivityEntities();
+        for (Academicactivity acad   : todas) {
+                this.organizaActividad(acad);
+            }
+        parsed = Utilities.jasonizer(todas);
+        return parsed;
     }
 
-
+    public void organizaActividad(Academicactivity acad){
+        acad.getIdUser().setPassword("");
+        acad.getIdUser().setIdPerson(null);
+        acad.getIdUser().setRolebyuserCollection(null);
+        acad.getIdUser().setAcademicactivityCollection(null);
+    }
+    
     
 
     /**
@@ -68,18 +81,24 @@ public class AcademicActivityBL implements Serializable {
         return DAO;
     }
      
-      public Academicactivity crear(AcademicActivityDTO academicactivity) {
+      public String crear(AcademicActivityDTO academicactivity) {
           Academicactivity acad = new Academicactivity();
           List<Estimated> miEstimadoL = (List<Estimated>) academicactivity.getEstimatedCollection();
           Estimated miEstimado = miEstimadoL.get(0);
           Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
+          Academicactivity creado;
+          String retorno;
           // teniendo creado el nuevo estimado se debe setear a la actividad a crear
           
           acad.setear(academicactivity);
           //miEstimadoL.clear();
           miEstimadoL.set(0, miEstimadoN);
           acad.setEstimatedCollection(miEstimadoL);
-         return obtenerAcadDAO().create(acad);
+          creado = obtenerAcadDAO().create(acad);
+          this.organizaActividad(acad);
+          retorno = Utilities.jasonizer(creado);
+          
+         return retorno;
     }
       
     public Academicactivity getById(int n){

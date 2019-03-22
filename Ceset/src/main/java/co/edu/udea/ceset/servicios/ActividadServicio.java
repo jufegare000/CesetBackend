@@ -1,20 +1,13 @@
 package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.AcademicActivityBL;
-import co.edu.udea.ceset.bl.EstimatedBL;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
 
 import co.edu.udea.ceset.dto.Academicactivity;
-import co.edu.udea.ceset.dto.Estimated;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -22,11 +15,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 
 /**
  * Root resource (exposed at "usuarios" path)
@@ -35,24 +25,18 @@ import javax.ws.rs.core.SecurityContext;
 public class ActividadServicio implements Serializable {
 
     private static final long serialVersionUID = -9066585482051897942L;
-    
+
     @POST
     @PermitAll
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createActivity(AcademicActivityDTO activity) throws JOSEException, IOException {
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();;
-        String yeison;
+        String nueva;
+        nueva = AcademicActivityBL.getInstance().crear(activity);
         
-        Academicactivity  nueva = AcademicActivityBL.getInstance().crear(activity);
-//         if(activity.getIdUser() == null)
-//             return Response
-//                     .status(Response.Status.NOT_ACCEPTABLE)
-//                     .build();
-        yeison = gson.toJson(nueva).toString();
         return Response
                 .status(Response.Status.ACCEPTED)
                 .type(MediaType.APPLICATION_JSON)
-                .entity(yeison)
+                .entity(nueva)
                 .build();
     }
 
@@ -60,13 +44,9 @@ public class ActividadServicio implements Serializable {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getAll() {
-        String yeison;
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        //System.out.println(gson.toJson(user));
+        String acad = AcademicActivityBL.getInstance().obtenerTodods();
 
-        Collection<Academicactivity> acad = AcademicActivityBL.getInstance().obtenerTodods();
-        yeison = gson.toJson(acad).toString();
-        return yeison;
+        return acad;
     }
 
     /**

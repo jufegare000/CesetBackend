@@ -63,6 +63,7 @@ public class User implements Serializable {
     private Integer idUser;
     @Size(max = 15)
     @Column(name = "nameUser")
+    @Expose
     private String nameUser;
     @Size(max = 32)
     @Column(name = "password")

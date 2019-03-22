@@ -125,7 +125,7 @@ public class Academicactivity implements Serializable {
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
     @Expose
     private Collection<Budget> budgetCollection;
-    
+    @Expose
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "idAcad", fetch = FetchType.LAZY)
     private Collection<Estimated> estimatedCollection;
     @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)

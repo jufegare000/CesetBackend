@@ -9,8 +9,14 @@ package co.edu.udea.ceset.utilities;
  *
  * @author jufeg
  */
+import co.edu.udea.ceset.dto.Academicactivity;
+
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 import org.apache.log4j.Logger;
 
@@ -59,6 +65,14 @@ public class Utilities {
 
         Utilities utils = new Utilities();
         utils.logger.error("SIBU-Error:" + msg);
+    }
+    
+
+    public static String jasonizer(Object objeto){
+        String yeison;
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        yeison = gson.toJson(objeto).toString();
+        return yeison;
     }
     
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
