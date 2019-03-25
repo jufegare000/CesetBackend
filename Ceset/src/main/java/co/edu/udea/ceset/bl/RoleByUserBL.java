@@ -6,7 +6,7 @@
 package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.RolebyuserDAO;
-import co.edu.udea.ceset.dto.Rolebyuser;
+import co.udea.edu.co.dto.entities.Rolebyuser;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;

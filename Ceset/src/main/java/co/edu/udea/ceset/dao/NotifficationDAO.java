@@ -6,16 +6,16 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.edu.udea.ceset.dto.Notiffication;
+import co.udea.edu.co.dto.entities.Notiffication;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.Notifficationbycheck;
+import co.udea.edu.co.dto.entities.Notifficationbycheck;
 import java.util.ArrayList;
 import java.util.Collection;
-import co.edu.udea.ceset.dto.Notifficationbyrole;
+import co.udea.edu.co.dto.entities.Notifficationbyrole;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

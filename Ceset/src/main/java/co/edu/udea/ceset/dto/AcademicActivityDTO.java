@@ -5,6 +5,11 @@
  */
 package co.edu.udea.ceset.dto;
 
+import co.udea.edu.co.dto.entities.Estimated;
+import co.udea.edu.co.dto.entities.Budget;
+import co.udea.edu.co.dto.entities.Discount;
+import co.udea.edu.co.dto.entities.User;
+import co.udea.edu.co.dto.entities.Cohort;
 import java.util.Date;
 import java.util.Collection;
 /**
@@ -48,7 +53,7 @@ public class AcademicActivityDTO {
 
     private Collection<Budget> budgetCollection;
 
-    private Collection<Estimated> estimatedCollection;
+    private Collection<EstimatedDTO> estimatedCollection;
 
     private Collection<Cohort> cohortCollection;
 
@@ -194,11 +199,11 @@ public class AcademicActivityDTO {
         this.budgetCollection = budgetCollection;
     }
 
-    public Collection<Estimated> getEstimatedCollection() {
+    public Collection<EstimatedDTO> getEstimatedCollection() {
         return estimatedCollection;
     }
 
-    public void setEstimatedCollection(Collection<Estimated> estimatedCollection) {
+    public void setEstimatedCollection(Collection<EstimatedDTO> estimatedCollection) {
         this.estimatedCollection = estimatedCollection;
     }
 

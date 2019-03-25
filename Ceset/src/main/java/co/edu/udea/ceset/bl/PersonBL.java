@@ -2,7 +2,7 @@ package co.edu.udea.ceset.bl;
 
 
 import co.edu.udea.ceset.dao.PersonDAO;
-import co.edu.udea.ceset.dto.Person;
+import co.udea.edu.co.dto.entities.Person;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;

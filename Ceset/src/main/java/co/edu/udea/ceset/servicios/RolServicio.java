@@ -7,10 +7,10 @@ package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.RolBL;
 import co.edu.udea.ceset.bl.RoleByUserBL;
-import co.edu.udea.ceset.dto.Permission;
-import co.edu.udea.ceset.dto.Rolebypermission;
-import co.edu.udea.ceset.dto.Rolebyuser;
-import co.edu.udea.ceset.dto.Rolec;
+import co.udea.edu.co.dto.entities.Permission;
+import co.udea.edu.co.dto.entities.Rolebypermission;
+import co.udea.edu.co.dto.entities.Rolebyuser;
+import co.udea.edu.co.dto.entities.Rolec;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

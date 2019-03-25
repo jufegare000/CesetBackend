@@ -3,14 +3,15 @@ package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.AcademicactivityDAO;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
-import co.edu.udea.ceset.dto.Academicactivity;
-import co.edu.udea.ceset.dto.Estimated;
+import co.udea.edu.co.dto.entities.Academicactivity;
+import co.udea.edu.co.dto.entities.Estimated;
 import co.edu.udea.ceset.utilities.Utilities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.modelmapper.ModelMapper;
 
 /**
  * Clase de la Lógica del negocio para Usuarios
@@ -82,15 +83,18 @@ public class AcademicActivityBL implements Serializable {
     }
      
       public String crear(AcademicActivityDTO academicactivity) {
-          Academicactivity acad = new Academicactivity();
-          List<Estimated> miEstimadoL = (List<Estimated>) academicactivity.getEstimatedCollection();
+          ModelMapper modelMapper = new ModelMapper();
+          Academicactivity acad = modelMapper.map(academicactivity, Academicactivity.class);
+
+         // Academicactivity acad = new Academicactivity();
+          List<Estimated> miEstimadoL = (List<Estimated>) acad.getEstimatedCollection();
           Estimated miEstimado = miEstimadoL.get(0);
           Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
           Academicactivity creado;
           String retorno;
           // teniendo creado el nuevo estimado se debe setear a la actividad a crear
           
-          acad.setear(academicactivity);
+          //acad.setear(academicactivity);
           //miEstimadoL.clear();
           miEstimadoL.set(0, miEstimadoN);
           acad.setEstimatedCollection(miEstimadoL);

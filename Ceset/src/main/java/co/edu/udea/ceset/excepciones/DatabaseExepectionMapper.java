@@ -1,6 +1,6 @@
  package co.edu.udea.ceset.excepciones;
 
-import co.edu.udea.ceset.dto.MensajeError;
+import co.udea.edu.co.dto.entities.MensajeError;
 import javax.persistence.RollbackException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

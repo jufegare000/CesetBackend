@@ -3,7 +3,7 @@ package co.edu.udea.ceset.servicios;
 import co.edu.udea.ceset.bl.AcademicActivityBL;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
 
-import co.edu.udea.ceset.dto.Academicactivity;
+import co.udea.edu.co.dto.entities.Academicactivity;
 
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;

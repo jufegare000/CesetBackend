@@ -5,7 +5,7 @@
  */
 package co.edu.udea.ceset.auth;
 
-import co.edu.udea.ceset.dto.User;
+import co.udea.edu.co.dto.entities.User;
 import co.edu.udea.ceset.excepciones.AuthenticationException;
 import co.edu.udea.ceset.properties.PropiedadesCeset;
 import com.google.gson.Gson;

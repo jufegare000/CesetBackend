@@ -5,8 +5,8 @@
  */
 package co.edu.udea.ceset.auth;
 
-import co.edu.udea.ceset.dto.Rol;
-import co.edu.udea.ceset.dto.Usuario;
+import co.udea.edu.co.dto.entities.Rol;
+import co.udea.edu.co.dto.entities.Usuario;
 import co.edu.udea.ceset.excepciones.AuthenticationException;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jwt.JWTClaimsSet;

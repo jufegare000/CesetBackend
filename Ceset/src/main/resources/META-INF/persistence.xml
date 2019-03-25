@@ -2,27 +2,27 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="ceset_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>co.edu.udea.ceset.dto.User</class>
-    <class>co.edu.udea.ceset.dto.Person</class>
-    <class>co.edu.udea.ceset.dto.Rolebypermission</class>
-    <class>co.edu.udea.ceset.dto.Rolebyuser</class>
-    <class>co.edu.udea.ceset.dto.Rolec</class>
-    <class>co.edu.udea.ceset.dto.Permission</class>
-    <class>co.edu.udea.ceset.dto.Discount</class>
-    <class>co.edu.udea.ceset.dto.Notifficationbyrole</class>
-    <class>co.edu.udea.ceset.dto.Check</class>
-    <class>co.edu.udea.ceset.dto.Themes</class>
-    <class>co.edu.udea.ceset.dto.Notifficationbycheck</class>
-    <class>co.edu.udea.ceset.dto.Notiffication</class>
-    <class>co.edu.udea.ceset.dto.Expenditure</class>
-    <class>co.edu.udea.ceset.dto.Budget</class>
-    <class>co.edu.udea.ceset.dto.Cohort</class>
-    <class>co.edu.udea.ceset.dto.Expenditurebyitem</class>
-    <class>co.edu.udea.ceset.dto.Estimated</class>
-    <class>co.edu.udea.ceset.dto.Estimatedbyitem</class>
-    <class>co.edu.udea.ceset.dto.Budgetbyitem</class>
-    <class>co.edu.udea.ceset.dto.Academicactivity</class>
-    <class>co.edu.udea.ceset.dto.Item</class>
+    <class>co.udea.edu.co.dto.entities.Discount</class>
+    <class>co.udea.edu.co.dto.entities.Academicactivity</class>
+    <class>co.udea.edu.co.dto.entities.Permission</class>
+    <class>co.udea.edu.co.dto.entities.Rolebyuser</class>
+    <class>co.udea.edu.co.dto.entities.Expenditure</class>
+    <class>co.udea.edu.co.dto.entities.Notifficationbyrole</class>
+    <class>co.udea.edu.co.dto.entities.Person</class>
+    <class>co.udea.edu.co.dto.entities.Themes</class>
+    <class>co.udea.edu.co.dto.entities.Budgetbyitem</class>
+    <class>co.udea.edu.co.dto.entities.Estimatedbyitem</class>
+    <class>co.udea.edu.co.dto.entities.Item</class>
+    <class>co.udea.edu.co.dto.entities.Rolec</class>
+    <class>co.udea.edu.co.dto.entities.Rolebypermission</class>
+    <class>co.udea.edu.co.dto.entities.Budget</class>
+    <class>co.udea.edu.co.dto.entities.Estimated</class>
+    <class>co.udea.edu.co.dto.entities.Cohort</class>
+    <class>co.udea.edu.co.dto.entities.Notifficationbycheck</class>
+    <class>co.udea.edu.co.dto.entities.User</class>
+    <class>co.udea.edu.co.dto.entities.Notiffication</class>
+    <class>co.udea.edu.co.dto.entities.Check</class>
+    <class>co.udea.edu.co.dto.entities.Expenditurebyitem</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_ceset?zeroDateTimeBehavior=convertToNull"/>

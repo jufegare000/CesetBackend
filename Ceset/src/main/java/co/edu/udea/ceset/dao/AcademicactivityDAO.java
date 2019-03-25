@@ -6,20 +6,19 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.edu.udea.ceset.dto.Academicactivity;
-import co.edu.udea.ceset.dto.Academicactivity_;
+import co.udea.edu.co.dto.entities.Academicactivity;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.User;
-import co.edu.udea.ceset.dto.Budget;
+import co.udea.edu.co.dto.entities.User;
+import co.udea.edu.co.dto.entities.Budget;
 import java.util.ArrayList;
 import java.util.Collection;
-import co.edu.udea.ceset.dto.Estimated;
-import co.edu.udea.ceset.dto.Cohort;
-import co.edu.udea.ceset.dto.Discount;
+import co.udea.edu.co.dto.entities.Estimated;
+import co.udea.edu.co.dto.entities.Cohort;
+import co.udea.edu.co.dto.entities.Discount;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
