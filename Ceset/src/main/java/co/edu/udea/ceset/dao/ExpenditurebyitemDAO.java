@@ -11,9 +11,11 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import co.udea.edu.co.dto.entities.Expenditurebyitem;
 import co.udea.edu.co.dto.entities.Item;
 import co.udea.edu.co.dto.entities.Expenditure;
-import co.udea.edu.co.dto.entities.Expenditurebyitem;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

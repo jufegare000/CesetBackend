@@ -24,6 +24,82 @@ public class ItemDTO {
 
     private String type;
 
-    private Collection<ExpenditureDTO> expenditute;
-    private Collection<BudgetDTO> Budget;
+    private Collection<ExpenditureByItemDTO> expenditurebyitemCollection;
+
+    private Collection<EstimatedByItemDTO> estimatedbyitemCollection;
+
+    private Collection<BudgetDTO> budgetbyitemCollection;
+
+
+    public Integer getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(Integer idItem) {
+        this.idItem = idItem;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Double getStimatedValue() {
+        return stimatedValue;
+    }
+
+    public void setStimatedValue(Double stimatedValue) {
+        this.stimatedValue = stimatedValue;
+    }
+
+    public Double getRealValue() {
+        return realValue;
+    }
+
+    public void setRealValue(Double realValue) {
+        this.realValue = realValue;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Collection<ExpenditureByItemDTO> getExpenditurebyitemCollection() {
+        return expenditurebyitemCollection;
+    }
+
+    public void setExpenditurebyitemCollection(Collection<ExpenditureByItemDTO> expenditurebyitemCollection) {
+        this.expenditurebyitemCollection = expenditurebyitemCollection;
+    }
+
+    public Collection<EstimatedByItemDTO> getEstimatedbyitemCollection() {
+        return estimatedbyitemCollection;
+    }
+
+    public void setEstimatedbyitemCollection(Collection<EstimatedByItemDTO> estimatedbyitemCollection) {
+        this.estimatedbyitemCollection = estimatedbyitemCollection;
+    }
+
+    public Collection<BudgetDTO> getBudgetbyitemCollection() {
+        return budgetbyitemCollection;
+    }
+
+    public void setBudgetbyitemCollection(Collection<BudgetDTO> budgetbyitemCollection) {
+        this.budgetbyitemCollection = budgetbyitemCollection;
+    }
 }

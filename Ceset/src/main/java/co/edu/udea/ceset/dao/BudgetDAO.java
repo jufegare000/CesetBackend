@@ -11,8 +11,9 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.udea.edu.co.dto.entities.Cohort;
+
 import co.udea.edu.co.dto.entities.Academicactivity;
+import co.udea.edu.co.dto.entities.Cohort;
 import co.udea.edu.co.dto.entities.Budget;
 import co.udea.edu.co.dto.entities.Budgetbyitem;
 import java.util.ArrayList;

@@ -9,10 +9,8 @@ package co.edu.udea.ceset.utilities;
  *
  * @author jufeg
  */
-import co.udea.edu.co.dto.entities.Academicactivity;
 
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

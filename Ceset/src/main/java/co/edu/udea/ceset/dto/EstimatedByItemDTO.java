@@ -1,6 +1,6 @@
 package co.edu.udea.ceset.dto;
 
-public class EstimatedByItemDTO {
+public class  EstimatedByItemDTO {
     private Integer id;
 
     private ItemDTO idItem;
