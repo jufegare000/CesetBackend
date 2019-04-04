@@ -9,6 +9,8 @@ co\udea\edu\co\dto\entities\Rolebypermission.class
 co\udea\edu\co\dto\entities\User_.class
 co\edu\udea\ceset\dao\ThemesDAO.class
 co\edu\udea\ceset\dao\UserDAO.class
+co\edu\udea\ceset\dto\EstimatedByItemDTO.class
+co\edu\udea\ceset\dto\RoleDTO.class
 co\udea\edu\co\dto\entities\Expenditurebyitem_.class
 co\edu\udea\ceset\excepciones\NonexistentEntityExceptionMapper.class
 co\edu\udea\ceset\dto\PersonDTO.class
@@ -47,6 +49,7 @@ co\edu\udea\ceset\dao\exceptions\IllegalOrphanException.class
 co\udea\edu\co\dto\entities\Expenditurebyitem.class
 co\udea\edu\co\dto\entities\Rolec_.class
 co\udea\edu\co\dto\entities\Rol.class
+co\edu\udea\ceset\dto\ExpenditureByItemDTO.class
 co\udea\edu\co\dto\entities\Discount.class
 co\udea\edu\co\dto\entities\Person.class
 co\edu\udea\ceset\dto\UserDTO.class
@@ -93,6 +96,7 @@ co\udea\edu\co\dto\entities\Notiffication_.class
 co\udea\edu\co\dto\entities\Discount_.class
 co\udea\edu\co\dto\entities\Notiffication.class
 co\edu\udea\ceset\excepciones\PreexistingEntityException.class
+co\edu\udea\ceset\dto\BudgetByItemDTO.class
 co\edu\udea\ceset\dao\CheckDAO.class
 co\edu\udea\ceset\properties\PropiedadesCeset.class
 co\udea\edu\co\dto\entities\Cohort.class

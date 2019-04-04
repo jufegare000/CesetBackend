@@ -4,27 +4,26 @@
  * and open the template in the editor.
  */
 package co.edu.udea.ceset.dao;
-
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
 import co.udea.edu.co.dto.entities.Academicactivity;
 import co.udea.edu.co.dto.entities.Budget;
 import co.udea.edu.co.dto.entities.Cohort;
 import java.util.ArrayList;
 import java.util.Collection;
 import co.udea.edu.co.dto.entities.Themes;
+import co.udea.edu.co.dto.entities.Groupe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class CohortDAO implements Serializable {
 
@@ -43,6 +42,9 @@ public class CohortDAO implements Serializable {
         }
         if (cohort.getThemesCollection() == null) {
             cohort.setThemesCollection(new ArrayList<Themes>());
+        }
+        if (cohort.getGroupeCollection() == null) {
+            cohort.setGroupeCollection(new ArrayList<Groupe>());
         }
         EntityManager em = null;
         try {
@@ -65,6 +67,12 @@ public class CohortDAO implements Serializable {
                 attachedThemesCollection.add(themesCollectionThemesToAttach);
             }
             cohort.setThemesCollection(attachedThemesCollection);
+            Collection<Groupe> attachedGroupeCollection = new ArrayList<Groupe>();
+            for (Groupe groupeCollectionGroupeToAttach : cohort.getGroupeCollection()) {
+                groupeCollectionGroupeToAttach = em.getReference(groupeCollectionGroupeToAttach.getClass(), groupeCollectionGroupeToAttach.getIdGroup());
+                attachedGroupeCollection.add(groupeCollectionGroupeToAttach);
+            }
+            cohort.setGroupeCollection(attachedGroupeCollection);
             em.persist(cohort);
             if (idActivity != null) {
                 idActivity.getCohortCollection().add(cohort);
@@ -88,6 +96,15 @@ public class CohortDAO implements Serializable {
                     oldIdCohortOfThemesCollectionThemes = em.merge(oldIdCohortOfThemesCollectionThemes);
                 }
             }
+            for (Groupe groupeCollectionGroupe : cohort.getGroupeCollection()) {
+                Cohort oldIdCohortOfGroupeCollectionGroupe = groupeCollectionGroupe.getIdCohort();
+                groupeCollectionGroupe.setIdCohort(cohort);
+                groupeCollectionGroupe = em.merge(groupeCollectionGroupe);
+                if (oldIdCohortOfGroupeCollectionGroupe != null) {
+                    oldIdCohortOfGroupeCollectionGroupe.getGroupeCollection().remove(groupeCollectionGroupe);
+                    oldIdCohortOfGroupeCollectionGroupe = em.merge(oldIdCohortOfGroupeCollectionGroupe);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -108,6 +125,8 @@ public class CohortDAO implements Serializable {
             Collection<Budget> budgetCollectionNew = cohort.getBudgetCollection();
             Collection<Themes> themesCollectionOld = persistentCohort.getThemesCollection();
             Collection<Themes> themesCollectionNew = cohort.getThemesCollection();
+            Collection<Groupe> groupeCollectionOld = persistentCohort.getGroupeCollection();
+            Collection<Groupe> groupeCollectionNew = cohort.getGroupeCollection();
             if (idActivityNew != null) {
                 idActivityNew = em.getReference(idActivityNew.getClass(), idActivityNew.getIdAcad());
                 cohort.setIdActivity(idActivityNew);
@@ -126,6 +145,13 @@ public class CohortDAO implements Serializable {
             }
             themesCollectionNew = attachedThemesCollectionNew;
             cohort.setThemesCollection(themesCollectionNew);
+            Collection<Groupe> attachedGroupeCollectionNew = new ArrayList<Groupe>();
+            for (Groupe groupeCollectionNewGroupeToAttach : groupeCollectionNew) {
+                groupeCollectionNewGroupeToAttach = em.getReference(groupeCollectionNewGroupeToAttach.getClass(), groupeCollectionNewGroupeToAttach.getIdGroup());
+                attachedGroupeCollectionNew.add(groupeCollectionNewGroupeToAttach);
+            }
+            groupeCollectionNew = attachedGroupeCollectionNew;
+            cohort.setGroupeCollection(groupeCollectionNew);
             cohort = em.merge(cohort);
             if (idActivityOld != null && !idActivityOld.equals(idActivityNew)) {
                 idActivityOld.getCohortCollection().remove(cohort);
@@ -166,6 +192,23 @@ public class CohortDAO implements Serializable {
                     if (oldIdCohortOfThemesCollectionNewThemes != null && !oldIdCohortOfThemesCollectionNewThemes.equals(cohort)) {
                         oldIdCohortOfThemesCollectionNewThemes.getThemesCollection().remove(themesCollectionNewThemes);
                         oldIdCohortOfThemesCollectionNewThemes = em.merge(oldIdCohortOfThemesCollectionNewThemes);
+                    }
+                }
+            }
+            for (Groupe groupeCollectionOldGroupe : groupeCollectionOld) {
+                if (!groupeCollectionNew.contains(groupeCollectionOldGroupe)) {
+                    groupeCollectionOldGroupe.setIdCohort(null);
+                    groupeCollectionOldGroupe = em.merge(groupeCollectionOldGroupe);
+                }
+            }
+            for (Groupe groupeCollectionNewGroupe : groupeCollectionNew) {
+                if (!groupeCollectionOld.contains(groupeCollectionNewGroupe)) {
+                    Cohort oldIdCohortOfGroupeCollectionNewGroupe = groupeCollectionNewGroupe.getIdCohort();
+                    groupeCollectionNewGroupe.setIdCohort(cohort);
+                    groupeCollectionNewGroupe = em.merge(groupeCollectionNewGroupe);
+                    if (oldIdCohortOfGroupeCollectionNewGroupe != null && !oldIdCohortOfGroupeCollectionNewGroupe.equals(cohort)) {
+                        oldIdCohortOfGroupeCollectionNewGroupe.getGroupeCollection().remove(groupeCollectionNewGroupe);
+                        oldIdCohortOfGroupeCollectionNewGroupe = em.merge(oldIdCohortOfGroupeCollectionNewGroupe);
                     }
                 }
             }
@@ -212,6 +255,11 @@ public class CohortDAO implements Serializable {
             for (Themes themesCollectionThemes : themesCollection) {
                 themesCollectionThemes.setIdCohort(null);
                 themesCollectionThemes = em.merge(themesCollectionThemes);
+            }
+            Collection<Groupe> groupeCollection = cohort.getGroupeCollection();
+            for (Groupe groupeCollectionGroupe : groupeCollection) {
+                groupeCollectionGroupe.setIdCohort(null);
+                groupeCollectionGroupe = em.merge(groupeCollectionGroupe);
             }
             em.remove(cohort);
             em.getTransaction().commit();
@@ -269,3 +317,4 @@ public class CohortDAO implements Serializable {
     }
     
 }
+

@@ -23,6 +23,10 @@
     <class>co.udea.edu.co.dto.entities.Notiffication</class>
     <class>co.udea.edu.co.dto.entities.Check</class>
     <class>co.udea.edu.co.dto.entities.Expenditurebyitem</class>
+    <class>co.udea.edu.co.dto.entities.Expenditurebygroup</class>
+    <class>co.udea.edu.co.dto.entities.Budgetbyexpenditure</class>
+    <class>co.udea.edu.co.dto.entities.Estimatedbyexpenditure</class>
+    <class>co.udea.edu.co.dto.entities.Groupe</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_ceset?zeroDateTimeBehavior=convertToNull"/>

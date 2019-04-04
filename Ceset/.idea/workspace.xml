@@ -6,44 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9dcd36-1e5c-4303-b6d4-06b3b7b65d97" name="Default Changelist" comment="">
+    <list default="true" id="35df9be1-7a94-4ed3-8176-6b718979e053" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstimatedBL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstimatedBL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CohortDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CohortDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/DiscountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/DiscountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ItemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedByItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedByItemDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ItemDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Budget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Cohort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Cohort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset.war" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/AcademicActivityBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/AcademicActivityBL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CohortDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CohortDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/DiscountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/DiscountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ItemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dto/AcademicActivityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dto/AcademicActivityDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/ActividadServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/ActividadServicio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/utilities/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/utilities/Utilities.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/EstimatedBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/EstimatedBL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/CohortDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/CohortDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/DiscountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/DiscountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ItemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/ActividadServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/ActividadServicio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/utilities/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/utilities/Utilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ThemesDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ThemesDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,188 +39,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="EduconCESET" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/AcademicActivityDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="49" column="3" selection-start-line="49" selection-start-column="3" selection-end-line="75" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ItemDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-              <folding>
-                <element signature="e#721#722#0" expanded="true" />
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#831#832#0" expanded="true" />
-                <element signature="e#869#870#0" expanded="true" />
-                <element signature="e#903#904#0" expanded="true" />
-                <element signature="e#957#958#0" expanded="true" />
-                <element signature="e#1003#1004#0" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
-                <element signature="e#1125#1126#0" expanded="true" />
-                <element signature="e#1169#1170#0" expanded="true" />
-                <element signature="e#1209#1210#0" expanded="true" />
-                <element signature="e#1245#1246#0" expanded="true" />
-                <element signature="e#1303#1304#0" expanded="true" />
-                <element signature="e#1353#1354#0" expanded="true" />
-                <element signature="e#1389#1390#0" expanded="true" />
-                <element signature="e#1421#1422#0" expanded="true" />
-                <element signature="e#1471#1472#0" expanded="true" />
-                <element signature="e#1513#1514#0" expanded="true" />
-                <element signature="e#1544#1545#0" expanded="true" />
-                <element signature="e#1571#1572#0" expanded="true" />
-                <element signature="e#1611#1612#0" expanded="true" />
-                <element signature="e#1643#1644#0" expanded="true" />
-                <element signature="e#1723#1724#0" expanded="true" />
-                <element signature="e#1773#1774#0" expanded="true" />
-                <element signature="e#2039#2040#0" expanded="true" />
-                <element signature="e#2087#2088#0" expanded="true" />
-                <element signature="e#2331#2332#0" expanded="true" />
-                <element signature="e#2376#2377#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetByItemDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-              <folding>
-                <element signature="e#178#179#0" expanded="true" />
-                <element signature="e#203#204#0" expanded="true" />
-                <element signature="e#240#241#0" expanded="true" />
-                <element signature="e#268#269#0" expanded="true" />
-                <element signature="e#306#307#0" expanded="true" />
-                <element signature="e#337#338#0" expanded="true" />
-                <element signature="e#388#389#0" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-                <element signature="e#462#463#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Budgetbyitem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="45" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.0/modelmapper-2.3.0.jar!/org/modelmapper/ModelMapper.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.0/modelmapper-2.3.0.jar!/org/modelmapper/internal/util/Assert.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="153">
+              <caret line="114" column="48" lean-forward="true" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dependenc</find>
-      <find>stimated</find>
-      <find>item</find>
-      <find>crear</find>
-      <find>estimated</find>
-      <find>header</find>
-      <find>authHeader</find>
-      <find>expenditure</find>
-      <find>stimatedbyit</find>
+      <find>create</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/AcademicActivityDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimatedbyitem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimated.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Academicactivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Item.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ExpenditureByItemDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/AcademicActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/UserDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/RoleDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Expenditurebyitem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedByItemDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetByItemDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ItemDTO.java" />
-      </list>
-    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -254,6 +79,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -304,7 +131,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="co" type="462c0819:PsiDirectoryNode" />
               <item name="ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EduconCESET" type="b2602c69:ProjectViewProjectNode" />
@@ -314,7 +141,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="co" type="462c0819:PsiDirectoryNode" />
               <item name="ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="servicios" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EduconCESET" type="b2602c69:ProjectViewProjectNode" />
@@ -329,30 +156,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553611399030" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="co.udea.edu.co.dto.entities" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn" />
-    </option>
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554390028861" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -366,18 +177,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Unnamed">
-    <configuration name="All in EduconCESET" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EduconCESET" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/EduconCESET_war/" />
-      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8084/EduconCESET_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="EduconCESET:war">
@@ -387,7 +189,8 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_EduconCESET_2" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_EduconCESET_4" />
+        <option name="HTTP_PORT" value="8084" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -395,7 +198,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56603" />
+        <option name="DEBUG_PORT" value="61883" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -449,69 +252,52 @@
         </option>
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.All in EduconCESET" />
-      <item itemvalue="Tomcat Server.Unnamed" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in EduconCESET" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fd9dcd36-1e5c-4303-b6d4-06b3b7b65d97" name="Default Changelist" comment="" />
-      <created>1553118753804</created>
+      <changelist id="35df9be1-7a94-4ed3-8176-6b718979e053" name="Default Changelist" comment="" />
+      <created>1554386041273</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1553118753804</updated>
-      <workItem from="1553118769330" duration="2254000" />
-      <workItem from="1553463467117" duration="8076000" />
-      <workItem from="1553604705559" duration="6309000" />
+      <updated>1554386041273</updated>
+      <workItem from="1554386046650" duration="939000" />
+      <workItem from="1554387250457" duration="3122000" />
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="All_in_EduconCESET - 2019.03.24 at 16h 49m 53s.xml">
-      <configuration name="All in EduconCESET" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_EduconCESET - 2019.03.24 at 16h 59m 40s.xml">
-      <configuration name="All in EduconCESET" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16639000" />
+    <option name="totallyTimeSpent" value="4061000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.56374806" visible="true" weight="0.26626325" />
-      <window_info id="Structure" order="1" sideWeight="0.4362519" side_tool="true" weight="0.2624811" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" sideWeight="0.43820226" side_tool="true" weight="0.24659607" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.32872504" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.63464445" weight="0.39477727" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32872504" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39631337" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.36535552" side_tool="true" weight="0.39938557" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Application Servers" order="13" sideWeight="0.49924356" weight="0.32872504" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49848714" weight="0.39784947" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32872504" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32872504" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -521,430 +307,33 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="9" visible="true" weight="0.1376702" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java</url>
-          <line>86</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="((ItemDTO)((EstimatedByItemDTO)((java.util.ArrayList)((EstimatedDTO)((java.util.ArrayList)academicactivity.estimatedCollection).get(0)).estimatedbyitemCollection).get(0)).idItem).Budget" custom="co.edu.udea.ceset.dto.EstimatedByItemDTO,co.edu.udea.ceset.dto.ItemDTO,java.util.ArrayList,co.edu.udea.ceset.dto.EstimatedDTO" />
-      </configuration>
-    </watches-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetbyexpenditureJpaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/SecurityFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#5917#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="221" column="27" selection-start-line="221" selection-start-column="27" selection-end-line="221" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ExpenditureDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#806#807#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#995#996#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1350#1351#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1499#1500#0" expanded="true" />
-            <element signature="e#1550#1551#0" expanded="true" />
-            <element signature="e#1590#1591#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1706#1707#0" expanded="true" />
-            <element signature="e#1740#1741#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Rolec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="76" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/RoleDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#403#404#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#813#814#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1201#1202#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ExpenditureByItemDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Academicactivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/AcademicActivityDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimated.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="67" column="65" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding>
-            <element signature="e#1816#1817#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Expenditurebyitem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimatedbyitem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="48" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedByItemDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="49" column="3" selection-start-line="49" selection-start-column="3" selection-end-line="75" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Budgetbyitem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="45" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/ItemDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding>
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#869#870#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
-            <element signature="e#957#958#0" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1245#1246#0" expanded="true" />
-            <element signature="e#1303#1304#0" expanded="true" />
-            <element signature="e#1353#1354#0" expanded="true" />
-            <element signature="e#1389#1390#0" expanded="true" />
-            <element signature="e#1421#1422#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1513#1514#0" expanded="true" />
-            <element signature="e#1544#1545#0" expanded="true" />
-            <element signature="e#1571#1572#0" expanded="true" />
-            <element signature="e#1611#1612#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#2039#2040#0" expanded="true" />
-            <element signature="e#2087#2088#0" expanded="true" />
-            <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#2376#2377#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetByItemDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.0/modelmapper-2.3.0.jar!/org/modelmapper/internal/util/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.0/modelmapper-2.3.0.jar!/org/modelmapper/ModelMapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="114" column="48" lean-forward="true" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>EduconCESET:war</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
+      <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>EduconCESET</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: com.codahale.metrics:metrics-core:3.0.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

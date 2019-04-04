@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Budget.findByContributionsUdeA", query = "SELECT b FROM Budget b WHERE b.contributionsUdeA = :contributionsUdeA")
     , @NamedQuery(name = "Budget.findByContributionsFaculty", query = "SELECT b FROM Budget b WHERE b.contributionsFaculty = :contributionsFaculty")})
 public class Budget implements Serializable {
+    @OneToMany(mappedBy = "idBudget", fetch = FetchType.LAZY)
+    private Collection<Budgetbyexpenditure> budgetbyexpenditureCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -145,6 +147,15 @@ public class Budget implements Serializable {
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.Budget[ idBudget=" + idBudget + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Budgetbyexpenditure> getBudgetbyexpenditureCollection() {
+        return budgetbyexpenditureCollection;
+    }
+
+    public void setBudgetbyexpenditureCollection(Collection<Budgetbyexpenditure> budgetbyexpenditureCollection) {
+        this.budgetbyexpenditureCollection = budgetbyexpenditureCollection;
     }
     
 }

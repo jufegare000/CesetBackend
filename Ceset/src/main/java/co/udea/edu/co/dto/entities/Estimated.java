@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Estimated.findByContributionsUdeA", query = "SELECT e FROM Estimated e WHERE e.contributionsUdeA = :contributionsUdeA")
     , @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")})
 public class Estimated implements Serializable {
+    @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
+    private Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -141,5 +143,14 @@ public class Estimated implements Serializable {
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.Estimated[ idEstimated=" + idEstimated + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Estimatedbyexpenditure> getEstimatedbyexpenditureCollection() {
+        return estimatedbyexpenditureCollection;
+    }
+
+    public void setEstimatedbyexpenditureCollection(Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection) {
+        this.estimatedbyexpenditureCollection = estimatedbyexpenditureCollection;
     }
 }

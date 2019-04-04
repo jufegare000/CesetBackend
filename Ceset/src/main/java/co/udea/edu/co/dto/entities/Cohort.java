@@ -41,6 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cohort.findByEndDate", query = "SELECT c FROM Cohort c WHERE c.endDate = :endDate")
     , @NamedQuery(name = "Cohort.findByStates", query = "SELECT c FROM Cohort c WHERE c.states = :states")})
 public class Cohort implements Serializable {
+    @OneToMany(mappedBy = "idCohort", fetch = FetchType.LAZY)
+    private Collection<Groupe> groupeCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -140,6 +142,15 @@ public class Cohort implements Serializable {
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.Cohort[ idCohort=" + idCohort + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Groupe> getGroupeCollection() {
+        return groupeCollection;
+    }
+
+    public void setGroupeCollection(Collection<Groupe> groupeCollection) {
+        this.groupeCollection = groupeCollection;
     }
     
 }
