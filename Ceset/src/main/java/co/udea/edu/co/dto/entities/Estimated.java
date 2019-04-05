@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Estimated.findByTotalBudget", query = "SELECT e FROM Estimated e WHERE e.totalBudget = :totalBudget")
     , @NamedQuery(name = "Estimated.findByImprovised", query = "SELECT e FROM Estimated e WHERE e.improvised = :improvised")
     , @NamedQuery(name = "Estimated.findByContributionsUdeA", query = "SELECT e FROM Estimated e WHERE e.contributionsUdeA = :contributionsUdeA")
-    , @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")})
+    , @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")
+    , @NamedQuery(name = "Estimated.findLast", query = "SELECT e FROM Estimated e ORDER BY e.idEstimated DESC")})
 public class Estimated implements Serializable {
     @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
     private Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection;
@@ -68,6 +69,10 @@ public class Estimated implements Serializable {
     @Expose
     @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
     private Collection<Estimatedbyitem> estimatedbyitemCollection;
+    @Expose
+    @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
+    private Collection<Estimatedbyexpenditure> estimatedbyExpenditure;
+
 
     public Estimated() {
     }
@@ -152,5 +157,13 @@ public class Estimated implements Serializable {
 
     public void setEstimatedbyexpenditureCollection(Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection) {
         this.estimatedbyexpenditureCollection = estimatedbyexpenditureCollection;
+    }
+
+    public Collection<Estimatedbyexpenditure> getEstimatedbyExpenditure() {
+        return estimatedbyExpenditure;
+    }
+
+    public void setEstimatedbyExpenditure(Collection<Estimatedbyexpenditure> estimatedbyExpenditure) {
+        this.estimatedbyExpenditure = estimatedbyExpenditure;
     }
 }

@@ -54,7 +54,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Academicactivity.findByContractInit", query = "SELECT a FROM Academicactivity a WHERE a.contractInit = :contractInit")
     , @NamedQuery(name = "Academicactivity.findByContractEnd", query = "SELECT a FROM Academicactivity a WHERE a.contractEnd = :contractEnd")
     , @NamedQuery(name = "Academicactivity.findByCreationDate", query = "SELECT a FROM Academicactivity a WHERE a.creationDate = :creationDate")
-    , @NamedQuery(name = "Academicactivity.findByState", query = "SELECT a FROM Academicactivity a WHERE a.state = :state")})
+    , @NamedQuery(name = "Academicactivity.findByState", query = "SELECT a FROM Academicactivity a WHERE a.state = :state")
+        ,@NamedQuery(name = "Academicactivity.findLast", query = "SELECT e FROM Academicactivity e ORDER BY e.idAcad DESC")})
 public class Academicactivity implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -32,7 +32,8 @@ public class EstimatedbyexpenditureDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Estimatedbyexpenditure estimatedbyexpenditure) {
+    public Estimatedbyexpenditure create(Estimatedbyexpenditure estimatedbyexpenditure) {
+        List<Estimatedbyexpenditure> lEstm = null;
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,10 +50,12 @@ public class EstimatedbyexpenditureDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            lEstm = em.createNamedQuery("Estimatedbyexpenditure.findLast").setMaxResults(1).getResultList();
             if (em != null) {
                 em.close();
             }
         }
+        return lEstm.get(0);
     }
 
     public void edit(Estimatedbyexpenditure estimatedbyexpenditure) throws NonexistentEntityException, Exception {

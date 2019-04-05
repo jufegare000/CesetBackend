@@ -57,8 +57,8 @@ public class EstimatedBL implements Serializable {
     }
      
       public Estimated crear(Estimated estmd) {
-          getEstimatedDAO().create(estmd);
-        return null;
+
+        return getEstimatedDAO().create(estmd);
                 
     }
 

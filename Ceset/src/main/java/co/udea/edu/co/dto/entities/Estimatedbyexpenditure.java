@@ -5,6 +5,8 @@
  */
 package co.udea.edu.co.dto.entities;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -34,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Estimatedbyexpenditure.findById", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.id = :id"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByDescription", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.description = :description"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByQuantity1", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.quantity1 = :quantity1"),
-    @NamedQuery(name = "Estimatedbyexpenditure.findByMeasureUnit", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.measureUnit = :measureUnit"),
+    @NamedQuery(name = "Estimatedbyexpenditure.findByMeasureUnit", query = "SELECT e FROM   Estimatedbyexpenditure e WHERE e.measureUnit = :measureUnit"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByQuantity2", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.quantity2 = :quantity2"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByStimatedValue", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.stimatedValue = :stimatedValue"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByTypeE", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.typeE = :typeE"),
@@ -42,7 +44,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Estimatedbyexpenditure.findByFp", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.fp = :fp"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByUnitValFP", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.unitValFP = :unitValFP"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByTotalValFP", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.totalValFP = :totalValFP"),
-    @NamedQuery(name = "Estimatedbyexpenditure.findByObservation", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.observation = :observation")})
+    @NamedQuery(name = "Estimatedbyexpenditure.findByObservation", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.observation = :observation"),
+        @NamedQuery(name = "Estimatedbyexpenditure.findLast", query = "SELECT e FROM Estimatedbyexpenditure e ORDER BY e.id DESC")})
 public class Estimatedbyexpenditure implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,41 +54,52 @@ public class Estimatedbyexpenditure implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Size(max = 200)
+    @Expose
     @Column(name = "description")
     private String description;
+    @Expose
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "quantity1")
     private Double quantity1;
     @Size(max = 20)
+    @Expose
     @Column(name = "measureUnit")
     private String measureUnit;
+    @Expose
     @Column(name = "quantity2")
     private Double quantity2;
     @Column(name = "stimatedValue")
+    @Expose
     private Double stimatedValue;
     @Size(max = 2)
     @Column(name = "typeE")
+    @Expose
     private String typeE;
     @Basic(optional = false)
     @NotNull
     @Column(name = "totalValue")
+    @Expose
     private double totalValue;
     @Basic(optional = false)
     @NotNull
     @Column(name = "FP")
+    @Expose
     private double fp;
     @Basic(optional = false)
     @NotNull
     @Column(name = "unitValFP")
+    @Expose
     private double unitValFP;
     @Basic(optional = false)
     @NotNull
     @Column(name = "totalValFP")
+    @Expose
     private double totalValFP;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10000)
     @Column(name = "observation")
+    @Expose
     private String observation;
     @JoinColumn(name = "IdEstimated", referencedColumnName = "IdEstimated")
     @ManyToOne(fetch = FetchType.LAZY)

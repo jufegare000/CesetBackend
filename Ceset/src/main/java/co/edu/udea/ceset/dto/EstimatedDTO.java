@@ -20,6 +20,7 @@ public class EstimatedDTO {
     private Double contributionsFaculty;
     private AcademicActivityDTO idAcad;
     private Collection<EstimatedByItemDTO> estimatedbyitemCollection;
+    private Collection<EstiamtedByExpenditureDTO> estimatedbyExpenditure;
 
     public EstimatedDTO() {
     }
@@ -78,5 +79,13 @@ public class EstimatedDTO {
 
     public void setEstimatedbyitemCollection(Collection<EstimatedByItemDTO> estimatedbyitemCollection) {
         this.estimatedbyitemCollection = estimatedbyitemCollection;
+    }
+
+    public Collection<EstiamtedByExpenditureDTO> getEstimatedbyExpenditure() {
+        return estimatedbyExpenditure;
+    }
+
+    public void setEstimatedbyExpenditure(Collection<EstiamtedByExpenditureDTO> estimatedbyExpenditure) {
+        this.estimatedbyExpenditure = estimatedbyExpenditure;
     }
 }
