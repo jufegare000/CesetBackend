@@ -36,7 +36,8 @@ public class CohortDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Cohort cohort) {
+    public Cohort create(Cohort cohort) {
+        List<Cohort> crt = null;
         if (cohort.getBudgetCollection() == null) {
             cohort.setBudgetCollection(new ArrayList<Budget>());
         }
@@ -107,10 +108,14 @@ public class CohortDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            crt = em.createNamedQuery("Cohort.findLast")
+                    .setMaxResults(1)
+                    .getResultList(); // retorna cohorte recién creada
             if (em != null) {
                 em.close();
             }
         }
+        return crt.get(0);
     }
 
     public void edit(Cohort cohort) throws NonexistentEntityException, Exception {

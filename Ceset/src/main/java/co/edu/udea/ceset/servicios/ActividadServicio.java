@@ -52,8 +52,8 @@ public class ActividadServicio implements Serializable {
     /**
      * Método que retorna un Usuario dado un id
      *
-     * @param id : id del Usuario
-     * @return Usuario : Usuario en formato Json
+     * @param id : id de la actividad
+     * @return acad : actividad retornada
      */
     @GET
     @Path("/{idAcad}")

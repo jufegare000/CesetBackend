@@ -60,7 +60,6 @@ co\edu\udea\ceset\dao\NotifficationbyroleDAO.class
 co\udea\edu\co\dto\entities\Item_.class
 co\edu\udea\ceset\dao\exceptions\PreexistingEntityException.class
 co\udea\edu\co\dto\entities\MensajeError.class
-co\edu\udea\ceset\dao\EstimatedDao.class
 co\edu\udea\ceset\excepciones\GenericExceptionMapper.class
 co\edu\udea\ceset\dao\BudgetDAO.class
 co\edu\udea\ceset\bl\RoleByUserBL.class
@@ -69,6 +68,7 @@ co\udea\edu\co\dto\entities\Check_.class
 co\edu\udea\ceset\utilities\Daos.class
 co\udea\edu\co\dto\entities\User.class
 co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.class
+co\edu\udea\ceset\dao\EstimatedDAO.class
 co\edu\udea\ceset\auth\Token.class
 co\edu\udea\ceset\auth\SecurityFilter$Authorizer.class
 co\udea\edu\co\dto\entities\Item.class

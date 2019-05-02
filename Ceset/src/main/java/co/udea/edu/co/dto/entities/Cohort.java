@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cohort.findByIdCohort", query = "SELECT c FROM Cohort c WHERE c.idCohort = :idCohort")
     , @NamedQuery(name = "Cohort.findByInitDate", query = "SELECT c FROM Cohort c WHERE c.initDate = :initDate")
     , @NamedQuery(name = "Cohort.findByEndDate", query = "SELECT c FROM Cohort c WHERE c.endDate = :endDate")
-    , @NamedQuery(name = "Cohort.findByStates", query = "SELECT c FROM Cohort c WHERE c.states = :states")})
+    , @NamedQuery(name = "Cohort.findByStates", query = "SELECT c FROM Cohort c WHERE c.states = :states")
+    ,@NamedQuery(name = "Cohort.findLast", query = "SELECT c FROM Cohort c ORDER BY c.idCohort DESC")})
 public class Cohort implements Serializable {
     @OneToMany(mappedBy = "idCohort", fetch = FetchType.LAZY)
     private Collection<Groupe> groupeCollection;
