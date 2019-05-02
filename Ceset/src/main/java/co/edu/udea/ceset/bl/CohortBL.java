@@ -4,8 +4,8 @@ import co.edu.udea.ceset.dao.CohortDAO;
 import co.edu.udea.ceset.dao.EstimatedbyexpenditureDAO;
 import co.edu.udea.ceset.dto.CohortDTO;
 import co.edu.udea.ceset.utilities.Utilities;
-import co.udea.edu.co.dto.entities.Cohort;
-import co.udea.edu.co.dto.entities.Estimatedbyexpenditure;
+import co.edu.udea.ceset.dto.entities.Cohort;
+import co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.EntityManagerFactory;

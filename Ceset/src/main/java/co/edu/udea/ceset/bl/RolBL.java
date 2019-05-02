@@ -6,7 +6,7 @@
 package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.RolDAO;
-import co.udea.edu.co.dto.entities.Rolec;
+import co.edu.udea.ceset.dto.entities.Rolec;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

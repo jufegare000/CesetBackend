@@ -5,11 +5,11 @@
  */
 package co.edu.udea.ceset.dto;
 
-import co.udea.edu.co.dto.entities.Estimated;
-import co.udea.edu.co.dto.entities.Budget;
-import co.udea.edu.co.dto.entities.Discount;
-import co.udea.edu.co.dto.entities.User;
-import co.udea.edu.co.dto.entities.Cohort;
+import co.edu.udea.ceset.dto.entities.Estimated;
+import co.edu.udea.ceset.dto.entities.Budget;
+import co.edu.udea.ceset.dto.entities.Discount;
+import co.edu.udea.ceset.dto.entities.User;
+import co.edu.udea.ceset.dto.entities.Cohort;
 import java.util.Date;
 import java.util.Collection;
 /**

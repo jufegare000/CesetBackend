@@ -12,10 +12,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import co.udea.edu.co.dto.entities.Academicactivity;
-import co.udea.edu.co.dto.entities.Cohort;
-import co.udea.edu.co.dto.entities.Budget;
-import co.udea.edu.co.dto.entities.Budgetbyitem;
+import co.edu.udea.ceset.dto.entities.Academicactivity;
+import co.edu.udea.ceset.dto.entities.Cohort;
+import co.edu.udea.ceset.dto.entities.Budget;
+import co.edu.udea.ceset.dto.entities.Budgetbyitem;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

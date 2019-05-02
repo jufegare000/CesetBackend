@@ -9,9 +9,9 @@ import co.edu.udea.ceset.bl.PersonBL;
 
 import co.edu.udea.ceset.bl.UsuarioBL;
 
-import co.udea.edu.co.dto.entities.User;
-import co.udea.edu.co.dto.entities.Notiffication;
-import co.udea.edu.co.dto.entities.Person;
+import co.edu.udea.ceset.dto.entities.User;
+import co.edu.udea.ceset.dto.entities.Notiffication;
+import co.edu.udea.ceset.dto.entities.Person;
 import java.util.List;
 
 import javax.ws.rs.Consumes;

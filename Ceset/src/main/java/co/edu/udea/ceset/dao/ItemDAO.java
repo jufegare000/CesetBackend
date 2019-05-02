@@ -12,13 +12,13 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import co.udea.edu.co.dto.entities.Expenditurebyitem;
+import co.edu.udea.ceset.dto.entities.Expenditurebyitem;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import co.udea.edu.co.dto.entities.Estimatedbyitem;
-import co.udea.edu.co.dto.entities.Budgetbyitem;
-import co.udea.edu.co.dto.entities.Item;
+import co.edu.udea.ceset.dto.entities.Estimatedbyitem;
+import co.edu.udea.ceset.dto.entities.Budgetbyitem;
+import co.edu.udea.ceset.dto.entities.Item;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

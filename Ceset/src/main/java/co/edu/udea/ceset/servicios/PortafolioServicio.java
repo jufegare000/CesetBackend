@@ -5,11 +5,10 @@
  */
 package co.edu.udea.ceset.servicios;
 
-
 import co.edu.udea.ceset.bl.AcademicActivityBL;
 import co.edu.udea.ceset.bl.PortafolioBL;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
-import co.udea.edu.co.dto.entities.Portafolio;
+import co.edu.udea.ceset.dto.entities.Portafolio;
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -17,13 +16,15 @@ import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 /**
  *
  * @author Juan
  */
 @Path("/portafolio")
-public class PortafolioServicio implements Serializable{
-      private static final long serialVersionUID = -9066585482051897942L;
+public class PortafolioServicio implements Serializable {
+
+    private static final long serialVersionUID = -9066585482051897942L;
 
     @POST
     @PermitAll
@@ -31,13 +32,14 @@ public class PortafolioServicio implements Serializable{
     public Response createPortafolio(Portafolio port) throws JOSEException, IOException {
         String nueva;
         nueva = PortafolioBL.getInstance().crear(port);
-        
+
         return Response
                 .status(Response.Status.ACCEPTED)
                 .type(MediaType.APPLICATION_JSON)
                 .entity(nueva)
                 .build();
     }
+
     @Path("/todas")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,4 +48,5 @@ public class PortafolioServicio implements Serializable{
 
         return acad;
     }
+
 }

@@ -7,7 +7,7 @@ package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.PortafolioDAO;
 import co.edu.udea.ceset.utilities.Utilities;
-import co.udea.edu.co.dto.entities.Portafolio;
+import co.edu.udea.ceset.dto.entities.Portafolio;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Collection;
@@ -35,7 +35,7 @@ public class PortafolioBL {
         }
         return singletonInstance;
     }
-    
+     
     public String crear(Portafolio port){
         Portafolio nuevo;
         nuevo = obtenerDAO().create(port);
@@ -44,7 +44,7 @@ public class PortafolioBL {
         
     }
     
-    private PortafolioDAO obtenerDAO() {
+   private PortafolioDAO obtenerDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
         PortafolioDAO DAO = new PortafolioDAO(emf);
         return DAO;

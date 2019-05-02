@@ -2,7 +2,7 @@ package co.edu.udea.ceset.bl;
 
 
 import co.edu.udea.ceset.dao.EstimatedDAO;
-import co.udea.edu.co.dto.entities.Estimated;
+import co.edu.udea.ceset.dto.entities.Estimated;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;

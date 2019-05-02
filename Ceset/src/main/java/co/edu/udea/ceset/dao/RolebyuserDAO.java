@@ -6,14 +6,14 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.udea.edu.co.dto.entities.Rolebyuser;
+import co.edu.udea.ceset.dto.entities.Rolebyuser;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.udea.edu.co.dto.entities.Rolec;
-import co.udea.edu.co.dto.entities.User;
+import co.edu.udea.ceset.dto.entities.Rolec;
+import co.edu.udea.ceset.dto.entities.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

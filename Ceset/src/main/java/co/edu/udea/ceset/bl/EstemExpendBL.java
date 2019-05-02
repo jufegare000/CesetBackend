@@ -1,7 +1,7 @@
 package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.EstimatedbyexpenditureDAO;
-import co.udea.edu.co.dto.entities.Estimatedbyexpenditure;
+import co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

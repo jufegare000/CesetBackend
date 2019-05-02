@@ -5,8 +5,8 @@
  */
 package co.edu.udea.ceset.dao;
 
-import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.udea.edu.co.dto.entities.Portafolio;
+import co.edu.udea.ceset.dto.entities.Portafolio;
+import co.edu.udea.ceset.dto.entities.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -32,7 +32,7 @@ public class PortafolioDAO implements Serializable {
     }
 
     public Portafolio create(Portafolio portafolio) {
-        List <Portafolio> nuevo;
+        List<Portafolio> nuevo;
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -45,7 +45,7 @@ public class PortafolioDAO implements Serializable {
                 em.close();
             }
         }
-        return  nuevo.get(0);
+        return nuevo.get(0);
     }
 
     public void edit(Portafolio portafolio) throws NonexistentEntityException, Exception {
@@ -137,5 +137,5 @@ public class PortafolioDAO implements Serializable {
             em.close();
         }
     }
-    
+
 }

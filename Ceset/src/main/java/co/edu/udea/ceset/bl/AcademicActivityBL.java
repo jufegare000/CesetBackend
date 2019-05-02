@@ -2,8 +2,8 @@ package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.AcademicactivityDAO;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
-import co.udea.edu.co.dto.entities.Academicactivity;
-import co.udea.edu.co.dto.entities.Estimated;
+import co.edu.udea.ceset.dto.entities.Academicactivity;
+import co.edu.udea.ceset.dto.entities.Estimated;
 import co.edu.udea.ceset.utilities.Utilities;
 import java.io.Serializable;
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import co.udea.edu.co.dto.entities.Estimatedbyexpenditure;
+import co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure;
 import org.modelmapper.ModelMapper;
 
 /**

@@ -2,7 +2,7 @@ package co.edu.udea.ceset.servicios;
 
 import co.edu.udea.ceset.bl.CohortBL;
 import co.edu.udea.ceset.dto.CohortDTO;
-import co.udea.edu.co.dto.entities.Cohort;
+import co.edu.udea.ceset.dto.entities.Cohort;
 import com.nimbusds.jose.JOSEException;
 
 import javax.annotation.security.PermitAll;

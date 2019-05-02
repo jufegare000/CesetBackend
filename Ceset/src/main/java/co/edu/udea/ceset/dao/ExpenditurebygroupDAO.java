@@ -6,7 +6,7 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.udea.edu.co.dto.entities.Expenditurebygroup;
+import co.edu.udea.ceset.dto.entities.Expenditurebygroup;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
