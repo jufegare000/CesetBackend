@@ -55,9 +55,8 @@ public class Portafolio implements Serializable {
     @Expose
     private Integer id;
     @Column(name = "diligencyDate")
-    @Temporal(TemporalType.DATE)
     @Expose
-    private Date diligencyDate;
+    private String diligencyDate;
     @Size(max = 100)
     @Column(name = "serviceState")
     @Expose
@@ -127,11 +126,11 @@ public class Portafolio implements Serializable {
         this.id = id;
     }
 
-    public Date getDiligencyDate() {
+    public String getDiligencyDate() {
         return diligencyDate;
     }
 
-    public void setDiligencyDate(Date diligencyDate) {
+    public void setDiligencyDate(String diligencyDate) {
         this.diligencyDate = diligencyDate;
     }
 

@@ -27,6 +27,7 @@ import co.edu.udea.ceset.dto.AcademicActivityDTO;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -57,6 +58,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Academicactivity.findByState", query = "SELECT a FROM Academicactivity a WHERE a.state = :state")
         ,@NamedQuery(name = "Academicactivity.findLast", query = "SELECT e FROM Academicactivity e ORDER BY e.idAcad DESC")})
 public class Academicactivity implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idPort")
+    private int idPort;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -345,4 +350,12 @@ public class Academicactivity implements Serializable {
         return "co.edu.udea.ceset.dto.Academicactivity[ idAcad=" + idAcad + " ]";
     }
     */
+
+    public int getIdPort() {
+        return idPort;
+    }
+
+    public void setIdPort(int idPort) {
+        this.idPort = idPort;
+    }
 }
