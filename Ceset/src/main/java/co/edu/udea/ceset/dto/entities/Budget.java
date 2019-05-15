@@ -56,9 +56,6 @@ public class Budget implements Serializable {
     private Double contributionsUdeA;
     @Column(name = "contributionsFaculty")
     private Double contributionsFaculty;
-    @JoinColumn(name = "idCohort", referencedColumnName = "IdCohort")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cohort idCohort;
     @JoinColumn(name = "idActivity", referencedColumnName = "IdAcad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Academicactivity idActivity;
@@ -112,13 +109,6 @@ public class Budget implements Serializable {
         this.contributionsFaculty = contributionsFaculty;
     }
 
-    public Cohort getIdCohort() {
-        return idCohort;
-    }
-
-    public void setIdCohort(Cohort idCohort) {
-        this.idCohort = idCohort;
-    }
 
     public Academicactivity getIdActivity() {
         return idActivity;

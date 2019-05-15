@@ -57,10 +57,7 @@ public class Groupe implements Serializable {
     @Size(max = 20)
     @Column(name = "states")
     private String states;
-    @JoinColumn(name = "IdCohort", referencedColumnName = "IdCohort")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cohort idCohort;
-
+    
     public Groupe() {
     }
 
@@ -108,13 +105,6 @@ public class Groupe implements Serializable {
         this.states = states;
     }
 
-    public Cohort getIdCohort() {
-        return idCohort;
-    }
-
-    public void setIdCohort(Cohort idCohort) {
-        this.idCohort = idCohort;
-    }
 
     @Override
     public int hashCode() {

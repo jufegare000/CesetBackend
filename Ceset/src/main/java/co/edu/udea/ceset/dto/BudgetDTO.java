@@ -23,8 +23,6 @@ public class BudgetDTO {
 
     private Double contributionsFaculty;
 
-    private CohortDTO idCohort;
-
     private AcademicActivityDTO idActivity;
 
     private Collection<ItemDTO> items;

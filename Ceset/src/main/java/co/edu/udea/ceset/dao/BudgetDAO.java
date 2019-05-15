@@ -13,7 +13,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import co.edu.udea.ceset.dto.entities.Academicactivity;
-import co.edu.udea.ceset.dto.entities.Cohort;
 import co.edu.udea.ceset.dto.entities.Budget;
 import co.edu.udea.ceset.dto.entities.Budgetbyitem;
 import java.util.ArrayList;
@@ -45,11 +44,7 @@ public class BudgetDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cohort idCohort = budget.getIdCohort();
-            if (idCohort != null) {
-                idCohort = em.getReference(idCohort.getClass(), idCohort.getIdCohort());
-                budget.setIdCohort(idCohort);
-            }
+
             Academicactivity idActivity = budget.getIdActivity();
             if (idActivity != null) {
                 idActivity = em.getReference(idActivity.getClass(), idActivity.getIdAcad());
@@ -62,10 +57,7 @@ public class BudgetDAO implements Serializable {
             }
             budget.setBudgetbyitemCollection(attachedBudgetbyitemCollection);
             em.persist(budget);
-            if (idCohort != null) {
-                idCohort.getBudgetCollection().add(budget);
-                idCohort = em.merge(idCohort);
-            }
+
             if (idActivity != null) {
                 idActivity.getBudgetCollection().add(budget);
                 idActivity = em.merge(idActivity);
@@ -93,16 +85,12 @@ public class BudgetDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Budget persistentBudget = em.find(Budget.class, budget.getIdBudget());
-            Cohort idCohortOld = persistentBudget.getIdCohort();
-            Cohort idCohortNew = budget.getIdCohort();
+
             Academicactivity idActivityOld = persistentBudget.getIdActivity();
             Academicactivity idActivityNew = budget.getIdActivity();
             Collection<Budgetbyitem> budgetbyitemCollectionOld = persistentBudget.getBudgetbyitemCollection();
             Collection<Budgetbyitem> budgetbyitemCollectionNew = budget.getBudgetbyitemCollection();
-            if (idCohortNew != null) {
-                idCohortNew = em.getReference(idCohortNew.getClass(), idCohortNew.getIdCohort());
-                budget.setIdCohort(idCohortNew);
-            }
+
             if (idActivityNew != null) {
                 idActivityNew = em.getReference(idActivityNew.getClass(), idActivityNew.getIdAcad());
                 budget.setIdActivity(idActivityNew);
@@ -115,14 +103,7 @@ public class BudgetDAO implements Serializable {
             budgetbyitemCollectionNew = attachedBudgetbyitemCollectionNew;
             budget.setBudgetbyitemCollection(budgetbyitemCollectionNew);
             budget = em.merge(budget);
-            if (idCohortOld != null && !idCohortOld.equals(idCohortNew)) {
-                idCohortOld.getBudgetCollection().remove(budget);
-                idCohortOld = em.merge(idCohortOld);
-            }
-            if (idCohortNew != null && !idCohortNew.equals(idCohortOld)) {
-                idCohortNew.getBudgetCollection().add(budget);
-                idCohortNew = em.merge(idCohortNew);
-            }
+        
             if (idActivityOld != null && !idActivityOld.equals(idActivityNew)) {
                 idActivityOld.getBudgetCollection().remove(budget);
                 idActivityOld = em.merge(idActivityOld);
@@ -177,11 +158,7 @@ public class BudgetDAO implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The budget with id " + id + " no longer exists.", enfe);
             }
-            Cohort idCohort = budget.getIdCohort();
-            if (idCohort != null) {
-                idCohort.getBudgetCollection().remove(budget);
-                idCohort = em.merge(idCohort);
-            }
+
             Academicactivity idActivity = budget.getIdActivity();
             if (idActivity != null) {
                 idActivity.getBudgetCollection().remove(budget);

@@ -20,7 +20,6 @@
     <class>co.edu.udea.ceset.dto.entities.Permission</class>
     <class>co.edu.udea.ceset.dto.entities.Budget</class>
     <class>co.edu.udea.ceset.dto.entities.Expenditure</class>
-    <class>co.edu.udea.ceset.dto.entities.Cohort</class>
     <class>co.edu.udea.ceset.dto.entities.Groupe</class>
     <class>co.edu.udea.ceset.dto.entities.Rolec</class>
     <class>co.edu.udea.ceset.dto.entities.Discount</class>

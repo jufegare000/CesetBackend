@@ -9,15 +9,15 @@ import co.edu.udea.ceset.dto.entities.Estimated;
 import co.edu.udea.ceset.dto.entities.Budget;
 import co.edu.udea.ceset.dto.entities.Discount;
 import co.edu.udea.ceset.dto.entities.User;
-import co.edu.udea.ceset.dto.entities.Cohort;
+
 import java.util.Date;
 import java.util.Collection;
+
 /**
  *
  * @author jufeg
  */
 public class AcademicActivityDTO {
-    
 
     private Integer idAcad;
 
@@ -55,14 +55,11 @@ public class AcademicActivityDTO {
 
     private Collection<EstimatedDTO> estimatedCollection;
 
-    private Collection<Cohort> cohortCollection;
-
-
     private Collection<Discount> discountCollection;
 
     public AcademicActivityDTO() {
     }
-    
+
     public Integer getIdAcad() {
         return idAcad;
     }
@@ -207,14 +204,6 @@ public class AcademicActivityDTO {
         this.estimatedCollection = estimatedCollection;
     }
 
-    public Collection<Cohort> getCohortCollection() {
-        return cohortCollection;
-    }
-
-    public void setCohortCollection(Collection<Cohort> cohortCollection) {
-        this.cohortCollection = cohortCollection;
-    }
-
     public Collection<Discount> getDiscountCollection() {
         return discountCollection;
     }
@@ -222,8 +211,5 @@ public class AcademicActivityDTO {
     public void setDiscountCollection(Collection<Discount> discountCollection) {
         this.discountCollection = discountCollection;
     }
-    
-    
-    
-    
+
 }

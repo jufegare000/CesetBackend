@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Cohort;
 import co.edu.udea.ceset.dto.entities.Groupe;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -37,16 +36,9 @@ public class GroupDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cohort idCohort = groupe.getIdCohort();
-            if (idCohort != null) {
-                idCohort = em.getReference(idCohort.getClass(), idCohort.getIdCohort());
-                groupe.setIdCohort(idCohort);
-            }
+
             em.persist(groupe);
-            if (idCohort != null) {
-                idCohort.getGroupeCollection().add(groupe);
-                idCohort = em.merge(idCohort);
-            }
+
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -61,21 +53,7 @@ public class GroupDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Groupe persistentGroupe = em.find(Groupe.class, groupe.getIdGroup());
-            Cohort idCohortOld = persistentGroupe.getIdCohort();
-            Cohort idCohortNew = groupe.getIdCohort();
-            if (idCohortNew != null) {
-                idCohortNew = em.getReference(idCohortNew.getClass(), idCohortNew.getIdCohort());
-                groupe.setIdCohort(idCohortNew);
-            }
-            groupe = em.merge(groupe);
-            if (idCohortOld != null && !idCohortOld.equals(idCohortNew)) {
-                idCohortOld.getGroupeCollection().remove(groupe);
-                idCohortOld = em.merge(idCohortOld);
-            }
-            if (idCohortNew != null && !idCohortNew.equals(idCohortOld)) {
-                idCohortNew.getGroupeCollection().add(groupe);
-                idCohortNew = em.merge(idCohortNew);
-            }
+
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -105,11 +83,7 @@ public class GroupDAO implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The groupe with id " + id + " no longer exists.", enfe);
             }
-            Cohort idCohort = groupe.getIdCohort();
-            if (idCohort != null) {
-                idCohort.getGroupeCollection().remove(groupe);
-                idCohort = em.merge(idCohort);
-            }
+
             em.remove(groupe);
             em.getTransaction().commit();
         } finally {

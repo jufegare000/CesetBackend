@@ -135,9 +135,6 @@ public class Academicactivity implements Serializable {
     @Expose
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "idAcad", fetch = FetchType.LAZY)
     private Collection<Estimated> estimatedCollection;
-    @OneToMany(mappedBy = "idActivity", fetch = FetchType.LAZY)
-    @Expose
-    private Collection<Cohort> cohortCollection;
     @Expose
     @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
     private Collection<Discount> discountCollection;
@@ -296,15 +293,6 @@ public class Academicactivity implements Serializable {
 }
 
     @XmlTransient
-    public Collection<Cohort> getCohortCollection() {
-        return cohortCollection;
-    }
-
-    public void setCohortCollection(Collection<Cohort> cohortCollection) {
-        this.cohortCollection = cohortCollection;
-    }
-
-    @XmlTransient
     public Collection<Discount> getDiscountCollection() {
         return discountCollection;
     }
@@ -319,37 +307,6 @@ public class Academicactivity implements Serializable {
         hash += (idAcad != null ? idAcad.hashCode() : 0);
         return hash;
     }  
-    /*
-    public void setear(AcademicActivityDTO acad){
-        this.idAcad = acad.getIdAcad();
-        this.nameActivity = acad.getNameActivity();
-        this.activityType = acad.getActivityType();
-        this.dependency = acad.getDependency();
-        this.investigationGroup = acad.getInvestigationGroup();
-        this.coordinatorName = acad.getCoordinatorName();
-        this.contactTelephone = acad.getContactTelephone();
-        this.contactEmail = acad.getContactEmail();
-        this.durationMonths = acad.getDurationMonths();
-        this.contractType = acad.getContractType();
-        this.contractEntity = acad.getContractEntity();
-        this.contractInit = acad.getContractInit();
-        this.contractEnd = acad.getContractEnd();
-        this.creationDate = acad.getCreationDate();
-        this.state = acad.getState();
-        this.idUser = acad.getIdUser();
-        this.budgetCollection = acad.getBudgetCollection();
-        this.estimatedCollection = acad.getEstimatedCollection();
-        this.cohortCollection = acad.getCohortCollection();
-        this.discountCollection = acad.getDiscountCollection();
-        
-                
-    }*/
-/*
-    @Override
-    public String toString() {
-        return "co.edu.udea.ceset.dto.Academicactivity[ idAcad=" + idAcad + " ]";
-    }
-    */
 
     public int getIdPort() {
         return idPort;

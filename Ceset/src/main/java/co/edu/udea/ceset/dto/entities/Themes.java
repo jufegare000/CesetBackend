@@ -81,9 +81,6 @@ public class Themes implements Serializable {
     @Size(max = 500)
     @Column(name = "universityLink")
     private String universityLink;
-    @JoinColumn(name = "idCohort", referencedColumnName = "IdCohort")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cohort idCohort;
 
     public Themes() {
     }
@@ -178,14 +175,6 @@ public class Themes implements Serializable {
 
     public void setUniversityLink(String universityLink) {
         this.universityLink = universityLink;
-    }
-
-    public Cohort getIdCohort() {
-        return idCohort;
-    }
-
-    public void setIdCohort(Cohort idCohort) {
-        this.idCohort = idCohort;
     }
 
     @Override
