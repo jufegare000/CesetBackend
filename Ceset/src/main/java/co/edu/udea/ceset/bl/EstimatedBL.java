@@ -1,7 +1,6 @@
 package co.edu.udea.ceset.bl;
 
 
-import co.edu.udea.ceset.dao.EstimatedDAO;
 import co.edu.udea.ceset.dto.entities.Estimated;
 import java.io.Serializable;
 import java.util.List;
@@ -49,7 +48,7 @@ public class EstimatedBL implements Serializable {
      * @return PersonDAO
      */
 
-    
+    /*
      private EstimatedDAO getEstimatedDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
         EstimatedDAO DAO = new EstimatedDAO(emf);
@@ -65,4 +64,5 @@ public class EstimatedBL implements Serializable {
       public List<Estimated> getAll() {
         return getEstimatedDAO().findEstimatedEntities();
     }
+    */
 }

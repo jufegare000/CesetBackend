@@ -11,8 +11,8 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Rolec;
 import co.edu.udea.ceset.dto.entities.Permission;
+import co.edu.udea.ceset.dto.entities.Rolec;
 import co.edu.udea.ceset.dto.entities.Rolebypermission;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,7 +20,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class RolebypermissionDAO implements Serializable {
 
@@ -38,24 +38,24 @@ public class RolebypermissionDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Rolec idRole = rolebypermission.getIdRole();
-            if (idRole != null) {
-                idRole = em.getReference(idRole.getClass(), idRole.getIdRole());
-                rolebypermission.setIdRole(idRole);
-            }
             Permission idPermission = rolebypermission.getIdPermission();
             if (idPermission != null) {
                 idPermission = em.getReference(idPermission.getClass(), idPermission.getIdPermission());
                 rolebypermission.setIdPermission(idPermission);
             }
-            em.persist(rolebypermission);
+            Rolec idRole = rolebypermission.getIdRole();
             if (idRole != null) {
-                idRole.getRolebypermissionCollection().add(rolebypermission);
-                idRole = em.merge(idRole);
+                idRole = em.getReference(idRole.getClass(), idRole.getIdRole());
+                rolebypermission.setIdRole(idRole);
             }
+            em.persist(rolebypermission);
             if (idPermission != null) {
                 idPermission.getRolebypermissionCollection().add(rolebypermission);
                 idPermission = em.merge(idPermission);
+            }
+            if (idRole != null) {
+                idRole.getRolebypermissionCollection().add(rolebypermission);
+                idRole = em.merge(idRole);
             }
             em.getTransaction().commit();
         } finally {
@@ -71,27 +71,19 @@ public class RolebypermissionDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Rolebypermission persistentRolebypermission = em.find(Rolebypermission.class, rolebypermission.getId());
-            Rolec idRoleOld = persistentRolebypermission.getIdRole();
-            Rolec idRoleNew = rolebypermission.getIdRole();
             Permission idPermissionOld = persistentRolebypermission.getIdPermission();
             Permission idPermissionNew = rolebypermission.getIdPermission();
-            if (idRoleNew != null) {
-                idRoleNew = em.getReference(idRoleNew.getClass(), idRoleNew.getIdRole());
-                rolebypermission.setIdRole(idRoleNew);
-            }
+            Rolec idRoleOld = persistentRolebypermission.getIdRole();
+            Rolec idRoleNew = rolebypermission.getIdRole();
             if (idPermissionNew != null) {
                 idPermissionNew = em.getReference(idPermissionNew.getClass(), idPermissionNew.getIdPermission());
                 rolebypermission.setIdPermission(idPermissionNew);
             }
+            if (idRoleNew != null) {
+                idRoleNew = em.getReference(idRoleNew.getClass(), idRoleNew.getIdRole());
+                rolebypermission.setIdRole(idRoleNew);
+            }
             rolebypermission = em.merge(rolebypermission);
-            if (idRoleOld != null && !idRoleOld.equals(idRoleNew)) {
-                idRoleOld.getRolebypermissionCollection().remove(rolebypermission);
-                idRoleOld = em.merge(idRoleOld);
-            }
-            if (idRoleNew != null && !idRoleNew.equals(idRoleOld)) {
-                idRoleNew.getRolebypermissionCollection().add(rolebypermission);
-                idRoleNew = em.merge(idRoleNew);
-            }
             if (idPermissionOld != null && !idPermissionOld.equals(idPermissionNew)) {
                 idPermissionOld.getRolebypermissionCollection().remove(rolebypermission);
                 idPermissionOld = em.merge(idPermissionOld);
@@ -99,6 +91,14 @@ public class RolebypermissionDAO implements Serializable {
             if (idPermissionNew != null && !idPermissionNew.equals(idPermissionOld)) {
                 idPermissionNew.getRolebypermissionCollection().add(rolebypermission);
                 idPermissionNew = em.merge(idPermissionNew);
+            }
+            if (idRoleOld != null && !idRoleOld.equals(idRoleNew)) {
+                idRoleOld.getRolebypermissionCollection().remove(rolebypermission);
+                idRoleOld = em.merge(idRoleOld);
+            }
+            if (idRoleNew != null && !idRoleNew.equals(idRoleOld)) {
+                idRoleNew.getRolebypermissionCollection().add(rolebypermission);
+                idRoleNew = em.merge(idRoleNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -129,15 +129,15 @@ public class RolebypermissionDAO implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The rolebypermission with id " + id + " no longer exists.", enfe);
             }
-            Rolec idRole = rolebypermission.getIdRole();
-            if (idRole != null) {
-                idRole.getRolebypermissionCollection().remove(rolebypermission);
-                idRole = em.merge(idRole);
-            }
             Permission idPermission = rolebypermission.getIdPermission();
             if (idPermission != null) {
                 idPermission.getRolebypermissionCollection().remove(rolebypermission);
                 idPermission = em.merge(idPermission);
+            }
+            Rolec idRole = rolebypermission.getIdRole();
+            if (idRole != null) {
+                idRole.getRolebypermissionCollection().remove(rolebypermission);
+                idRole = em.merge(idRole);
             }
             em.remove(rolebypermission);
             em.getTransaction().commit();

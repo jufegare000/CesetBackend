@@ -32,6 +32,7 @@ public class PersonServicio {
 
     @Context
     SecurityContext securityContext;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -53,14 +54,14 @@ public class PersonServicio {
             usr.setStates();        // estado de creación
             usr.setIdPerson(nuevo);
             usrbl.crear(usr);
-            
+
         } catch (Exception e) {
             status = 500;
         }
-      return Response.status(status)
-                    .type(MediaType.APPLICATION_JSON)
-                    .entity(nuevo)
-                    .build();
+        return Response.status(status)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(nuevo)
+                .build();
 
         //falta enviar un mensaje de retorno que indique que el usuario efectivamente se creó
     }

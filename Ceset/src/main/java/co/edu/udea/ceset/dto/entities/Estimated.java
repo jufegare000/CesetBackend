@@ -6,6 +6,7 @@
 package co.edu.udea.ceset.dto.entities;
 
 import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -26,23 +27,19 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_estimated")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Estimated.findAll", query = "SELECT e FROM Estimated e")
-    , @NamedQuery(name = "Estimated.findByIdEstimated", query = "SELECT e FROM Estimated e WHERE e.idEstimated = :idEstimated")
-    , @NamedQuery(name = "Estimated.findByTotalBudget", query = "SELECT e FROM Estimated e WHERE e.totalBudget = :totalBudget")
-    , @NamedQuery(name = "Estimated.findByImprovised", query = "SELECT e FROM Estimated e WHERE e.improvised = :improvised")
-    , @NamedQuery(name = "Estimated.findByContributionsUdeA", query = "SELECT e FROM Estimated e WHERE e.contributionsUdeA = :contributionsUdeA")
-    , @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")
-    , @NamedQuery(name = "Estimated.findLast", query = "SELECT e FROM Estimated e ORDER BY e.idEstimated DESC")})
+    @NamedQuery(name = "Estimated.findAll", query = "SELECT e FROM Estimated e"),
+    @NamedQuery(name = "Estimated.findByIdEstimated", query = "SELECT e FROM Estimated e WHERE e.idEstimated = :idEstimated"),
+    @NamedQuery(name = "Estimated.findByTotalBudget", query = "SELECT e FROM Estimated e WHERE e.totalBudget = :totalBudget"),
+    @NamedQuery(name = "Estimated.findByImprovised", query = "SELECT e FROM Estimated e WHERE e.improvised = :improvised"),
+    @NamedQuery(name = "Estimated.findByContributionsUdeA", query = "SELECT e FROM Estimated e WHERE e.contributionsUdeA = :contributionsUdeA"),
+    @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")})
 public class Estimated implements Serializable {
-    @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
-    private Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,13 +63,9 @@ public class Estimated implements Serializable {
     @JoinColumn(name = "idAcad", referencedColumnName = "IdAcad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Academicactivity idAcad;
-    @Expose
     @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
-    private Collection<Estimatedbyitem> estimatedbyitemCollection;
     @Expose
-    @OneToMany(mappedBy = "idEstimated", fetch = FetchType.LAZY)
-    private Collection<Estimatedbyexpenditure> estimatedbyExpenditure;
-
+    private Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection;
 
     public Estimated() {
     }
@@ -130,12 +123,12 @@ public class Estimated implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Estimatedbyitem> getEstimatedbyitemCollection() {
-        return estimatedbyitemCollection;
+    public Collection<Estimatedbyexpenditure> getEstimatedbyexpenditureCollection() {
+        return estimatedbyexpenditureCollection;
     }
 
-    public void setEstimatedbyitemCollection(Collection<Estimatedbyitem> estimatedbyitemCollection) {
-        this.estimatedbyitemCollection = estimatedbyitemCollection;
+    public void setEstimatedbyexpenditureCollection(Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection) {
+        this.estimatedbyexpenditureCollection = estimatedbyexpenditureCollection;
     }
 
     @Override
@@ -146,24 +139,21 @@ public class Estimated implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Estimated)) {
+            return false;
+        }
+        Estimated other = (Estimated) object;
+        if ((this.idEstimated == null && other.idEstimated != null) || (this.idEstimated != null && !this.idEstimated.equals(other.idEstimated))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Estimated[ idEstimated=" + idEstimated + " ]";
+        return "co.edu.udea.ceset.dto.entities.Estimated[ idEstimated=" + idEstimated + " ]";
     }
-
-    @XmlTransient
-    public Collection<Estimatedbyexpenditure> getEstimatedbyexpenditureCollection() {
-        return estimatedbyexpenditureCollection;
-    }
-
-    public void setEstimatedbyexpenditureCollection(Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection) {
-        this.estimatedbyexpenditureCollection = estimatedbyexpenditureCollection;
-    }
-
-    public Collection<Estimatedbyexpenditure> getEstimatedbyExpenditure() {
-        return estimatedbyExpenditure;
-    }
-
-    public void setEstimatedbyExpenditure(Collection<Estimatedbyexpenditure> estimatedbyExpenditure) {
-        this.estimatedbyExpenditure = estimatedbyExpenditure;
-    }
+    
 }

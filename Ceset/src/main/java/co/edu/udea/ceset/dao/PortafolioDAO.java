@@ -5,16 +5,21 @@
  */
 package co.edu.udea.ceset.dao;
 
-import co.edu.udea.ceset.dto.entities.Portafolio;
-import co.edu.udea.ceset.dto.entities.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dao.exceptions.IllegalOrphanException;
+import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import co.edu.udea.ceset.dto.entities.User;
+import co.edu.udea.ceset.dto.entities.Academicactivity;
+import co.edu.udea.ceset.dto.entities.Portafolio;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -32,12 +37,39 @@ public class PortafolioDAO implements Serializable {
     }
 
     public Portafolio create(Portafolio portafolio) {
-        List<Portafolio> nuevo;
+         List<Portafolio> nuevo;
+        if (portafolio.getAcademicactivityCollection() == null) {
+            portafolio.setAcademicactivityCollection(new ArrayList<Academicactivity>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            User idUser = portafolio.getIdUser();
+            if (idUser != null) {
+                idUser = em.getReference(idUser.getClass(), idUser.getIdUser());
+                portafolio.setIdUser(idUser);
+            }
+            Collection<Academicactivity> attachedAcademicactivityCollection = new ArrayList<Academicactivity>();
+            for (Academicactivity academicactivityCollectionAcademicactivityToAttach : portafolio.getAcademicactivityCollection()) {
+                academicactivityCollectionAcademicactivityToAttach = em.getReference(academicactivityCollectionAcademicactivityToAttach.getClass(), academicactivityCollectionAcademicactivityToAttach.getIdAcad());
+                attachedAcademicactivityCollection.add(academicactivityCollectionAcademicactivityToAttach);
+            }
+            portafolio.setAcademicactivityCollection(attachedAcademicactivityCollection);
             em.persist(portafolio);
+            if (idUser != null) {
+                idUser.getPortafolioCollection().add(portafolio);
+                idUser = em.merge(idUser);
+            }
+            for (Academicactivity academicactivityCollectionAcademicactivity : portafolio.getAcademicactivityCollection()) {
+                Portafolio oldIdPortOfAcademicactivityCollectionAcademicactivity = academicactivityCollectionAcademicactivity.getIdPort();
+                academicactivityCollectionAcademicactivity.setIdPort(portafolio);
+                academicactivityCollectionAcademicactivity = em.merge(academicactivityCollectionAcademicactivity);
+                if (oldIdPortOfAcademicactivityCollectionAcademicactivity != null) {
+                    oldIdPortOfAcademicactivityCollectionAcademicactivity.getAcademicactivityCollection().remove(academicactivityCollectionAcademicactivity);
+                    oldIdPortOfAcademicactivityCollectionAcademicactivity = em.merge(oldIdPortOfAcademicactivityCollectionAcademicactivity);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             nuevo = em.createNamedQuery("Portafolio.findLast").setMaxResults(1).getResultList();
@@ -48,12 +80,59 @@ public class PortafolioDAO implements Serializable {
         return nuevo.get(0);
     }
 
-    public void edit(Portafolio portafolio) throws NonexistentEntityException, Exception {
+    public void edit(Portafolio portafolio) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Portafolio persistentPortafolio = em.find(Portafolio.class, portafolio.getId());
+            User idUserOld = persistentPortafolio.getIdUser();
+            User idUserNew = portafolio.getIdUser();
+            Collection<Academicactivity> academicactivityCollectionOld = persistentPortafolio.getAcademicactivityCollection();
+            Collection<Academicactivity> academicactivityCollectionNew = portafolio.getAcademicactivityCollection();
+            List<String> illegalOrphanMessages = null;
+            for (Academicactivity academicactivityCollectionOldAcademicactivity : academicactivityCollectionOld) {
+                if (!academicactivityCollectionNew.contains(academicactivityCollectionOldAcademicactivity)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Academicactivity " + academicactivityCollectionOldAcademicactivity + " since its idPort field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            if (idUserNew != null) {
+                idUserNew = em.getReference(idUserNew.getClass(), idUserNew.getIdUser());
+                portafolio.setIdUser(idUserNew);
+            }
+            Collection<Academicactivity> attachedAcademicactivityCollectionNew = new ArrayList<Academicactivity>();
+            for (Academicactivity academicactivityCollectionNewAcademicactivityToAttach : academicactivityCollectionNew) {
+                academicactivityCollectionNewAcademicactivityToAttach = em.getReference(academicactivityCollectionNewAcademicactivityToAttach.getClass(), academicactivityCollectionNewAcademicactivityToAttach.getIdAcad());
+                attachedAcademicactivityCollectionNew.add(academicactivityCollectionNewAcademicactivityToAttach);
+            }
+            academicactivityCollectionNew = attachedAcademicactivityCollectionNew;
+            portafolio.setAcademicactivityCollection(academicactivityCollectionNew);
             portafolio = em.merge(portafolio);
+            if (idUserOld != null && !idUserOld.equals(idUserNew)) {
+                idUserOld.getPortafolioCollection().remove(portafolio);
+                idUserOld = em.merge(idUserOld);
+            }
+            if (idUserNew != null && !idUserNew.equals(idUserOld)) {
+                idUserNew.getPortafolioCollection().add(portafolio);
+                idUserNew = em.merge(idUserNew);
+            }
+            for (Academicactivity academicactivityCollectionNewAcademicactivity : academicactivityCollectionNew) {
+                if (!academicactivityCollectionOld.contains(academicactivityCollectionNewAcademicactivity)) {
+                    Portafolio oldIdPortOfAcademicactivityCollectionNewAcademicactivity = academicactivityCollectionNewAcademicactivity.getIdPort();
+                    academicactivityCollectionNewAcademicactivity.setIdPort(portafolio);
+                    academicactivityCollectionNewAcademicactivity = em.merge(academicactivityCollectionNewAcademicactivity);
+                    if (oldIdPortOfAcademicactivityCollectionNewAcademicactivity != null && !oldIdPortOfAcademicactivityCollectionNewAcademicactivity.equals(portafolio)) {
+                        oldIdPortOfAcademicactivityCollectionNewAcademicactivity.getAcademicactivityCollection().remove(academicactivityCollectionNewAcademicactivity);
+                        oldIdPortOfAcademicactivityCollectionNewAcademicactivity = em.merge(oldIdPortOfAcademicactivityCollectionNewAcademicactivity);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -71,7 +150,7 @@ public class PortafolioDAO implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -82,6 +161,22 @@ public class PortafolioDAO implements Serializable {
                 portafolio.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The portafolio with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            Collection<Academicactivity> academicactivityCollectionOrphanCheck = portafolio.getAcademicactivityCollection();
+            for (Academicactivity academicactivityCollectionOrphanCheckAcademicactivity : academicactivityCollectionOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Portafolio (" + portafolio + ") cannot be destroyed since the Academicactivity " + academicactivityCollectionOrphanCheckAcademicactivity + " in its academicactivityCollection field has a non-nullable idPort field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            User idUser = portafolio.getIdUser();
+            if (idUser != null) {
+                idUser.getPortafolioCollection().remove(portafolio);
+                idUser = em.merge(idUser);
             }
             em.remove(portafolio);
             em.getTransaction().commit();
@@ -137,5 +232,5 @@ public class PortafolioDAO implements Serializable {
             em.close();
         }
     }
-
+    
 }

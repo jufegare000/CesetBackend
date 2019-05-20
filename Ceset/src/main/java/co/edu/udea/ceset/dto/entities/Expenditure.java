@@ -24,22 +24,21 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_expenditure")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Expenditure.findAll", query = "SELECT e FROM Expenditure e")
-    , @NamedQuery(name = "Expenditure.findByIdExpend", query = "SELECT e FROM Expenditure e WHERE e.idExpend = :idExpend")
-    , @NamedQuery(name = "Expenditure.findByDescription", query = "SELECT e FROM Expenditure e WHERE e.description = :description")
-    , @NamedQuery(name = "Expenditure.findByQuantity1", query = "SELECT e FROM Expenditure e WHERE e.quantity1 = :quantity1")
-    , @NamedQuery(name = "Expenditure.findByMeasureUnit", query = "SELECT e FROM Expenditure e WHERE e.measureUnit = :measureUnit")
-    , @NamedQuery(name = "Expenditure.findByQuantity2", query = "SELECT e FROM Expenditure e WHERE e.quantity2 = :quantity2")
-    , @NamedQuery(name = "Expenditure.findByStimatedValue", query = "SELECT e FROM Expenditure e WHERE e.stimatedValue = :stimatedValue")
-    , @NamedQuery(name = "Expenditure.findByTypeE", query = "SELECT e FROM Expenditure e WHERE e.typeE = :typeE")})
+    @NamedQuery(name = "Expenditure.findAll", query = "SELECT e FROM Expenditure e"),
+    @NamedQuery(name = "Expenditure.findByIdExpend", query = "SELECT e FROM Expenditure e WHERE e.idExpend = :idExpend"),
+    @NamedQuery(name = "Expenditure.findByDescription", query = "SELECT e FROM Expenditure e WHERE e.description = :description"),
+    @NamedQuery(name = "Expenditure.findByQuantity1", query = "SELECT e FROM Expenditure e WHERE e.quantity1 = :quantity1"),
+    @NamedQuery(name = "Expenditure.findByMeasureUnit", query = "SELECT e FROM Expenditure e WHERE e.measureUnit = :measureUnit"),
+    @NamedQuery(name = "Expenditure.findByQuantity2", query = "SELECT e FROM Expenditure e WHERE e.quantity2 = :quantity2"),
+    @NamedQuery(name = "Expenditure.findByStimatedValue", query = "SELECT e FROM Expenditure e WHERE e.stimatedValue = :stimatedValue"),
+    @NamedQuery(name = "Expenditure.findByTypeE", query = "SELECT e FROM Expenditure e WHERE e.typeE = :typeE")})
 public class Expenditure implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,8 +62,6 @@ public class Expenditure implements Serializable {
     @Column(name = "typeE")
     private String typeE;
     @OneToMany(mappedBy = "idExpend", fetch = FetchType.LAZY)
-    private Collection<Expenditurebyitem> expenditurebyitemCollection;
-    @OneToMany(mappedBy = "idExpend", fetch = FetchType.LAZY)
     private Collection<Check> checkCollection;
 
     public Expenditure() {
@@ -74,7 +71,7 @@ public class Expenditure implements Serializable {
         this.idExpend = idExpend;
     }
 
-    public Integer getIdExpend() {
+   public Integer getIdExpend() {
         return idExpend;
     }
 
@@ -131,15 +128,6 @@ public class Expenditure implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Expenditurebyitem> getExpenditurebyitemCollection() {
-        return expenditurebyitemCollection;
-    }
-
-    public void setExpenditurebyitemCollection(Collection<Expenditurebyitem> expenditurebyitemCollection) {
-        this.expenditurebyitemCollection = expenditurebyitemCollection;
-    }
-
-    @XmlTransient
     public Collection<Check> getCheckCollection() {
         return checkCollection;
     }
@@ -157,7 +145,7 @@ public class Expenditure implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Expenditure[ idExpend=" + idExpend + " ]";
+        return "co.edu.udea.ceset.dto.entities.Expenditure_1[ idExpend=" + idExpend + " ]";
     }
     
 }

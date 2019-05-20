@@ -5,7 +5,6 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
-import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,29 +22,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_rolebypermission")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rolebypermission.findAll", query = "SELECT r FROM Rolebypermission r")
-    , @NamedQuery(name = "Rolebypermission.findById", query = "SELECT r FROM Rolebypermission r WHERE r.id = :id")})
+    @NamedQuery(name = "Rolebypermission.findAll", query = "SELECT r FROM Rolebypermission r"),
+    @NamedQuery(name = "Rolebypermission.findById", query = "SELECT r FROM Rolebypermission r WHERE r.id = :id")})
 public class Rolebypermission implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @JoinColumn(name = "idPermission", referencedColumnName = "idPermission")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Permission idPermission;
     @JoinColumn(name = "idRole", referencedColumnName = "idRole")
     @ManyToOne(fetch = FetchType.LAZY)
     private Rolec idRole;
-    @JoinColumn(name = "idPermission", referencedColumnName = "idPermission")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Expose
-    private Permission idPermission;
 
     public Rolebypermission() {
     }
@@ -62,20 +59,20 @@ public class Rolebypermission implements Serializable {
         this.id = id;
     }
 
-    public Rolec getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(Rolec idRole) {
-        this.idRole = idRole;
-    }
-
     public Permission getIdPermission() {
         return idPermission;
     }
 
     public void setIdPermission(Permission idPermission) {
         this.idPermission = idPermission;
+    }
+
+    public Rolec getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(Rolec idRole) {
+        this.idRole = idRole;
     }
 
     @Override
@@ -86,8 +83,21 @@ public class Rolebypermission implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Rolebypermission)) {
+            return false;
+        }
+        Rolebypermission other = (Rolebypermission) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Rolebypermission[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Rolebypermission[ id=" + id + " ]";
     }
     
 }

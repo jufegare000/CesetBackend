@@ -8,7 +8,6 @@ co\edu\udea\ceset\dto\entities\Budgetbyexpenditure.class
 co\edu\udea\ceset\dto\entities\Permission_.class
 co\edu\udea\ceset\dto\entities\Usuario.class
 co\edu\udea\ceset\dao\EstimatedbyexpenditureDAO.class
-co\edu\udea\ceset\dao\GroupDAO.class
 co\edu\udea\ceset\dao\ThemesDAO.class
 co\edu\udea\ceset\dao\UserDAO.class
 co\edu\udea\ceset\dto\entities\Estimatedbyitem_.class
@@ -21,7 +20,7 @@ co\edu\udea\ceset\dto\entities\Notifficationbycheck.class
 co\edu\udea\ceset\dto\entities\Rolec_.class
 co\edu\udea\ceset\servicios\PortafolioServicio.class
 co\edu\udea\ceset\servicios\UsuariosServicio.class
-co\edu\udea\ceset\dao\CohortDAO.class
+co\edu\udea\ceset\dao\NotifficationbyDAO.class
 co\edu\udea\ceset\dto\entities\Discount_.class
 co\edu\udea\ceset\dao\ExpenditurebyitemDAO.class
 co\edu\udea\ceset\dto\entities\Person_.class
@@ -33,7 +32,6 @@ co\edu\udea\ceset\bl\UsuarioBL.class
 co\edu\udea\ceset\dao\AcademicactivityDAO.class
 co\edu\udea\ceset\dto\ExpenditureDTO.class
 co\edu\udea\ceset\dao\RolebypermissionDAO.class
-co\edu\udea\ceset\dto\entities\Cohort.class
 co\edu\udea\ceset\dto\entities\Discount.class
 co\edu\udea\ceset\dao\cnf\JDBCConnectionPool.class
 co\edu\udea\ceset\dto\entities\Portafolio_.class
@@ -48,8 +46,6 @@ co\edu\udea\ceset\dto\ItemDTO.class
 co\edu\udea\ceset\dto\entities\User_.class
 co\edu\udea\ceset\excepciones\PreexistingEntityExceptionMapper.class
 co\edu\udea\ceset\dao\EstimatedbyitemDAO.class
-co\edu\udea\ceset\dao\RolDAO.class
-co\edu\udea\ceset\dto\entities\Permiso.class
 co\edu\udea\ceset\dao\NotifficationbycheckDAO.class
 co\edu\udea\ceset\excepciones\DatabaseExepectionMapper.class
 co\edu\udea\ceset\dao\exceptions\IllegalOrphanException.class
@@ -65,26 +61,22 @@ co\edu\udea\ceset\dto\entities\Budgetbyitem.class
 co\edu\udea\ceset\dto\entities\Budget.class
 co\edu\udea\ceset\dto\ExpenditureByItemDTO.class
 co\edu\udea\ceset\dto\entities\Item.class
-co\edu\udea\ceset\dto\entities\Persona.class
 co\edu\udea\ceset\dto\entities\Estimatedbyexpenditure.class
 co\edu\udea\ceset\dto\UserDTO.class
 co\edu\udea\ceset\bl\AcademicActivityBL.class
 co\edu\udea\ceset\dao\ExpenditurebygroupDAO.class
 co\edu\udea\ceset\dto\entities\Expenditurebygroup.class
 co\edu\udea\ceset\dto\entities\Item_.class
-co\edu\udea\ceset\servicios\CohortServicio.class
-co\edu\udea\ceset\bl\CohortBL.class
 co\edu\udea\ceset\dto\entities\Rolebyuser.class
-co\edu\udea\ceset\dao\NotifficationbyroleDAO.class
 co\edu\udea\ceset\dto\entities\Themes_.class
 co\edu\udea\ceset\dto\entities\Check.class
 co\edu\udea\ceset\dto\entities\Person.class
 co\edu\udea\ceset\dao\exceptions\PreexistingEntityException.class
-co\edu\udea\ceset\dto\entities\Object.class
 co\edu\udea\ceset\excepciones\GenericExceptionMapper.class
 co\edu\udea\ceset\dao\BudgetDAO.class
 co\edu\udea\ceset\bl\RoleByUserBL.class
 co\edu\udea\ceset\dto\EstimatedDTO.class
+co\edu\udea\ceset\dao\GroupeDAO.class
 co\edu\udea\ceset\dto\entities\Permission.class
 co\edu\udea\ceset\utilities\Daos.class
 co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.class
@@ -105,10 +97,10 @@ co\edu\udea\ceset\auth\SecurityFilter.class
 co\edu\udea\ceset\dto\entities\Notiffication_.class
 co\edu\udea\ceset\servicios\ActividadServicio.class
 co\edu\udea\ceset\dao\PersonDAO.class
+co\edu\udea\ceset\dao\RoleDAO.class
 co\edu\udea\ceset\excepciones\AuthenticationException.class
 co\edu\udea\ceset\dto\entities\Check_.class
 co\edu\udea\ceset\excepciones\NonexistentEntityException.class
-co\edu\udea\ceset\dto\CohortDTO.class
 co\edu\udea\ceset\dto\entities\Expenditure_.class
 co\edu\udea\ceset\filtros\CORSFilter.class
 co\edu\udea\ceset\excepciones\PreexistingEntityException.class
@@ -125,7 +117,6 @@ co\edu\udea\ceset\dto\entities\Groupe.class
 co\edu\udea\ceset\dto\entities\Budgetbyitem_.class
 co\edu\udea\ceset\dto\entities\Notifficationbyrole.class
 co\edu\udea\ceset\auth\exceptions\PreexistingEntityException.class
-co\edu\udea\ceset\dto\entities\Cohort_.class
 co\edu\udea\ceset\dto\entities\Themes.class
 co\edu\udea\ceset\dto\entities\exceptions\NonexistentEntityException.class
 co\edu\udea\ceset\dao\PermissionDAO.class
@@ -143,5 +134,4 @@ co\edu\udea\ceset\dto\entities\Rol.class
 co\edu\udea\ceset\dto\entities\Notiffication.class
 co\edu\udea\ceset\bl\RolBL.class
 co\edu\udea\ceset\dto\NotifficationDTO.class
-co\edu\udea\ceset\dao\BudgetJpaController.class
 co\edu\udea\ceset\dto\entities\Notifficationbyrole_.class

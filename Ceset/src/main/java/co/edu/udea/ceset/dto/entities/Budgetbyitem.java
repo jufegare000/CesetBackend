@@ -22,26 +22,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_budgetbyitem")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Budgetbyitem.findAll", query = "SELECT b FROM Budgetbyitem b")
-    , @NamedQuery(name = "Budgetbyitem.findById", query = "SELECT b FROM Budgetbyitem b WHERE b.id = :id")})
+    @NamedQuery(name = "Budgetbyitem.findAll", query = "SELECT b FROM Budgetbyitem b"),
+    @NamedQuery(name = "Budgetbyitem.findById", query = "SELECT b FROM Budgetbyitem b WHERE b.id = :id"),
+    @NamedQuery(name = "Budgetbyitem.findByIdBudget", query = "SELECT b FROM Budgetbyitem b WHERE b.idBudget = :idBudget")})
 public class Budgetbyitem implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "idBudget", referencedColumnName = "IdBudget")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Budget idBudget;
-    @JoinColumn(name = "idItem", referencedColumnName = "IdItem")
+    @Column(name = "IdBudget")
+    private Integer idBudget;
+    @JoinColumn(name = "IdItem", referencedColumnName = "IdItem")
     @ManyToOne(fetch = FetchType.LAZY)
     private Item idItem;
 
@@ -60,11 +59,11 @@ public class Budgetbyitem implements Serializable {
         this.id = id;
     }
 
-    public Budget getIdBudget() {
+    public Integer getIdBudget() {
         return idBudget;
     }
 
-    public void setIdBudget(Budget idBudget) {
+    public void setIdBudget(Integer idBudget) {
         this.idBudget = idBudget;
     }
 
@@ -83,11 +82,22 @@ public class Budgetbyitem implements Serializable {
         return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Budgetbyitem)) {
+            return false;
+        }
+        Budgetbyitem other = (Budgetbyitem) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Budgetbyitem[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Budgetbyitem[ id=" + id + " ]";
     }
     
 }

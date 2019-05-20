@@ -6,23 +6,19 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dto.entities.Expenditurebyitem;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import co.edu.udea.ceset.dto.entities.Expenditurebyitem;
-import co.edu.udea.ceset.dto.entities.Item;
-import co.edu.udea.ceset.dto.entities.Expenditure;
-
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class ExpenditurebyitemDAO implements Serializable {
 
@@ -40,25 +36,7 @@ public class ExpenditurebyitemDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Item idItem = expenditurebyitem.getIdItem();
-            if (idItem != null) {
-                idItem = em.getReference(idItem.getClass(), idItem.getIdItem());
-                expenditurebyitem.setIdItem(idItem);
-            }
-            Expenditure idExpend = expenditurebyitem.getIdExpend();
-            if (idExpend != null) {
-                idExpend = em.getReference(idExpend.getClass(), idExpend.getIdExpend());
-                expenditurebyitem.setIdExpend(idExpend);
-            }
             em.persist(expenditurebyitem);
-            if (idItem != null) {
-                idItem.getExpenditurebyitemCollection().add(expenditurebyitem);
-                idItem = em.merge(idItem);
-            }
-            if (idExpend != null) {
-                idExpend.getExpenditurebyitemCollection().add(expenditurebyitem);
-                idExpend = em.merge(idExpend);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -72,36 +50,7 @@ public class ExpenditurebyitemDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Expenditurebyitem persistentExpenditurebyitem = em.find(Expenditurebyitem.class, expenditurebyitem.getId());
-            Item idItemOld = persistentExpenditurebyitem.getIdItem();
-            Item idItemNew = expenditurebyitem.getIdItem();
-            Expenditure idExpendOld = persistentExpenditurebyitem.getIdExpend();
-            Expenditure idExpendNew = expenditurebyitem.getIdExpend();
-            if (idItemNew != null) {
-                idItemNew = em.getReference(idItemNew.getClass(), idItemNew.getIdItem());
-                expenditurebyitem.setIdItem(idItemNew);
-            }
-            if (idExpendNew != null) {
-                idExpendNew = em.getReference(idExpendNew.getClass(), idExpendNew.getIdExpend());
-                expenditurebyitem.setIdExpend(idExpendNew);
-            }
             expenditurebyitem = em.merge(expenditurebyitem);
-            if (idItemOld != null && !idItemOld.equals(idItemNew)) {
-                idItemOld.getExpenditurebyitemCollection().remove(expenditurebyitem);
-                idItemOld = em.merge(idItemOld);
-            }
-            if (idItemNew != null && !idItemNew.equals(idItemOld)) {
-                idItemNew.getExpenditurebyitemCollection().add(expenditurebyitem);
-                idItemNew = em.merge(idItemNew);
-            }
-            if (idExpendOld != null && !idExpendOld.equals(idExpendNew)) {
-                idExpendOld.getExpenditurebyitemCollection().remove(expenditurebyitem);
-                idExpendOld = em.merge(idExpendOld);
-            }
-            if (idExpendNew != null && !idExpendNew.equals(idExpendOld)) {
-                idExpendNew.getExpenditurebyitemCollection().add(expenditurebyitem);
-                idExpendNew = em.merge(idExpendNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -130,16 +79,6 @@ public class ExpenditurebyitemDAO implements Serializable {
                 expenditurebyitem.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The expenditurebyitem with id " + id + " no longer exists.", enfe);
-            }
-            Item idItem = expenditurebyitem.getIdItem();
-            if (idItem != null) {
-                idItem.getExpenditurebyitemCollection().remove(expenditurebyitem);
-                idItem = em.merge(idItem);
-            }
-            Expenditure idExpend = expenditurebyitem.getIdExpend();
-            if (idExpend != null) {
-                idExpend.getExpenditurebyitemCollection().remove(expenditurebyitem);
-                idExpend = em.merge(idExpend);
             }
             em.remove(expenditurebyitem);
             em.getTransaction().commit();

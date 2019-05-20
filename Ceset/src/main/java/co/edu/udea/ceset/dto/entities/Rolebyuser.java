@@ -6,6 +6,7 @@
 package co.edu.udea.ceset.dto.entities;
 
 import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,28 +24,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_rolebyuser")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rolebyuser.findAll", query = "SELECT r FROM Rolebyuser r")
-    , @NamedQuery(name = "Rolebyuser.findById", query = "SELECT r FROM Rolebyuser r WHERE r.id = :id")})
+    @NamedQuery(name = "Rolebyuser.findAll", query = "SELECT r FROM Rolebyuser r"),
+    @NamedQuery(name = "Rolebyuser.findById", query = "SELECT r FROM Rolebyuser r WHERE r.id = :id")})
 public class Rolebyuser implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @JoinColumn(name = "idRole", referencedColumnName = "idRole")
     @ManyToOne(fetch = FetchType.LAZY)
     @Expose
     private Rolec idRole;
-    @JoinColumn(name = "idUser", referencedColumnName = "IdUser")
+    @JoinColumn(name = "IdUser", referencedColumnName = "IdUser")
     @ManyToOne(fetch = FetchType.LAZY)
+
     private User idUser;
 
     public Rolebyuser() {
@@ -86,8 +87,21 @@ public class Rolebyuser implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Rolebyuser)) {
+            return false;
+        }
+        Rolebyuser other = (Rolebyuser) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Rolebyuser[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Rolebyuser[ id=" + id + " ]";
     }
     
 }

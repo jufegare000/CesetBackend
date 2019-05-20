@@ -5,7 +5,7 @@
  */
 package co.edu.udea.ceset.bl;
 
-import co.edu.udea.ceset.dao.RolDAO;
+import co.edu.udea.ceset.dao.RoleDAO;
 import co.edu.udea.ceset.dto.entities.Rolec;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,18 +39,18 @@ public class RolBL {
     }
 
     public List<Rolec> getAll() {
-        return obtenerRolDao().findRolecEntities();
+        return obtenerRolDao().findRoleEntities();
     }
 
-    public RolDAO obtenerRolDao() {
+    public RoleDAO obtenerRolDao() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
-        RolDAO DAO = new RolDAO(emf);
+        RoleDAO DAO = new RoleDAO(emf);
         return DAO;
 
     }
    
     public Rolec obtenerPorId(int id) {
-        return obtenerRolDao().findRolec(id);
+        return obtenerRolDao().findRole(id);
     }
     
     public void crear(String descripcion) {

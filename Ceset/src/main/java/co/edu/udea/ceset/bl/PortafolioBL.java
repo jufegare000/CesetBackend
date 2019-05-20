@@ -6,6 +6,7 @@
 package co.edu.udea.ceset.bl;
 
 import co.edu.udea.ceset.dao.PortafolioDAO;
+import co.edu.udea.ceset.dto.entities.Academicactivity;
 import co.edu.udea.ceset.utilities.Utilities;
 import co.edu.udea.ceset.dto.entities.Portafolio;
 import javax.persistence.EntityManagerFactory;
@@ -38,7 +39,8 @@ public class PortafolioBL {
      
     public String crear(Portafolio port){
         Portafolio nuevo;
-        nuevo = obtenerDAO().create(port);
+        nuevo = obtenerDAO
+                ().create(port);
         String retorno = Utilities.jasonizer(nuevo);
         return retorno;
         
@@ -53,7 +55,20 @@ public class PortafolioBL {
     public String obtenerTodods() {
         String parsed;
         Collection<Portafolio> todas = this.obtenerDAO().findPortafolioEntities();
+        //todas = this.parsear(todas);
         parsed = Utilities.jasonizer(todas);
         return parsed;
+    }
+
+    public Collection<Portafolio> parsear(Collection<Portafolio> todas){
+        Collection<Portafolio> portas = null;
+        for (Portafolio actual : todas) {
+            actual.setIdUser(null);
+            for (Academicactivity acad: actual.getAcademicactivityCollection()){
+                acad.setIdUser(null);
+            }
+            portas.add(actual);
+        }
+        return portas;
     }
 }

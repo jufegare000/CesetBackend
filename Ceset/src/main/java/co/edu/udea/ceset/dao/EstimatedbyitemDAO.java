@@ -6,21 +6,19 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dto.entities.Estimatedbyitem;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Item;
-import co.edu.udea.ceset.dto.entities.Estimated;
-import co.edu.udea.ceset.dto.entities.Estimatedbyitem;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class EstimatedbyitemDAO implements Serializable {
 
@@ -38,25 +36,7 @@ public class EstimatedbyitemDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Item idItem = estimatedbyitem.getIdItem();
-            if (idItem != null) {
-                idItem = em.getReference(idItem.getClass(), idItem.getIdItem());
-                estimatedbyitem.setIdItem(idItem);
-            }
-            Estimated idEstimated = estimatedbyitem.getIdEstimated();
-            if (idEstimated != null) {
-                idEstimated = em.getReference(idEstimated.getClass(), idEstimated.getIdEstimated());
-                estimatedbyitem.setIdEstimated(idEstimated);
-            }
             em.persist(estimatedbyitem);
-            if (idItem != null) {
-                idItem.getEstimatedbyitemCollection().add(estimatedbyitem);
-                idItem = em.merge(idItem);
-            }
-            if (idEstimated != null) {
-                idEstimated.getEstimatedbyitemCollection().add(estimatedbyitem);
-                idEstimated = em.merge(idEstimated);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -70,36 +50,7 @@ public class EstimatedbyitemDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Estimatedbyitem persistentEstimatedbyitem = em.find(Estimatedbyitem.class, estimatedbyitem.getId());
-            Item idItemOld = persistentEstimatedbyitem.getIdItem();
-            Item idItemNew = estimatedbyitem.getIdItem();
-            Estimated idEstimatedOld = persistentEstimatedbyitem.getIdEstimated();
-            Estimated idEstimatedNew = estimatedbyitem.getIdEstimated();
-            if (idItemNew != null) {
-                idItemNew = em.getReference(idItemNew.getClass(), idItemNew.getIdItem());
-                estimatedbyitem.setIdItem(idItemNew);
-            }
-            if (idEstimatedNew != null) {
-                idEstimatedNew = em.getReference(idEstimatedNew.getClass(), idEstimatedNew.getIdEstimated());
-                estimatedbyitem.setIdEstimated(idEstimatedNew);
-            }
             estimatedbyitem = em.merge(estimatedbyitem);
-            if (idItemOld != null && !idItemOld.equals(idItemNew)) {
-                idItemOld.getEstimatedbyitemCollection().remove(estimatedbyitem);
-                idItemOld = em.merge(idItemOld);
-            }
-            if (idItemNew != null && !idItemNew.equals(idItemOld)) {
-                idItemNew.getEstimatedbyitemCollection().add(estimatedbyitem);
-                idItemNew = em.merge(idItemNew);
-            }
-            if (idEstimatedOld != null && !idEstimatedOld.equals(idEstimatedNew)) {
-                idEstimatedOld.getEstimatedbyitemCollection().remove(estimatedbyitem);
-                idEstimatedOld = em.merge(idEstimatedOld);
-            }
-            if (idEstimatedNew != null && !idEstimatedNew.equals(idEstimatedOld)) {
-                idEstimatedNew.getEstimatedbyitemCollection().add(estimatedbyitem);
-                idEstimatedNew = em.merge(idEstimatedNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -128,16 +79,6 @@ public class EstimatedbyitemDAO implements Serializable {
                 estimatedbyitem.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The estimatedbyitem with id " + id + " no longer exists.", enfe);
-            }
-            Item idItem = estimatedbyitem.getIdItem();
-            if (idItem != null) {
-                idItem.getEstimatedbyitemCollection().remove(estimatedbyitem);
-                idItem = em.merge(idItem);
-            }
-            Estimated idEstimated = estimatedbyitem.getIdEstimated();
-            if (idEstimated != null) {
-                idEstimated.getEstimatedbyitemCollection().remove(estimatedbyitem);
-                idEstimated = em.merge(idEstimated);
             }
             em.remove(estimatedbyitem);
             em.getTransaction().commit();

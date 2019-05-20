@@ -83,24 +83,24 @@ public class AcademicActivityBL implements Serializable {
         Academicactivity acad = modelMapper.map(academicactivity, Academicactivity.class);
 
         // Academicactivity acad = new Academicactivity();
-        List<Estimated> miEstimadoL = (List<Estimated>) acad.getEstimatedCollection();
-        Estimated miEstimado = miEstimadoL.get(0);
-        Collection<Estimatedbyexpenditure> expends = miEstimado.getEstimatedbyexpenditureCollection();
+        //List<Estimated> miEstimadoL = (List<Estimated>) acad.getEstimatedCollection();
+        //Estimated miEstimado = miEstimadoL.get(0);
+        //Collection<Estimatedbyexpenditure> expends = miEstimado.getEstimatedbyexpenditureCollection();
         List<Estimatedbyexpenditure> expendsCres = new LinkedList<>();
         Estimatedbyexpenditure nu = null;
-        for (Estimatedbyexpenditure expend : expends) {
+        /*for (Estimatedbyexpenditure expend : expends) {
             nu = EstemExpendBL.getInstance().crear(expend);
             expendsCres.add(nu);
-        }
-        miEstimado.setEstimatedbyexpenditureCollection(null);
-        miEstimado.setEstimatedbyexpenditureCollection(expendsCres);
-        Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
+        }*/
+        //miEstimado.setEstimatedbyexpenditureCollection(null);
+        //miEstimado.setEstimatedbyexpenditureCollection(expendsCres);
+//        Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
 
         Academicactivity creado;
         String retorno;
         // teniendo creado el nuevo estimado se debe setear a la actividad a crear
-        miEstimadoL.set(0, miEstimadoN);
-        acad.setEstimatedCollection(miEstimadoL);
+       // miEstimadoL.set(0, miEstimadoN);
+        //acad.setEstimatedCollection(miEstimadoL);
         creado = obtenerAcadDAO().create(acad);
         this.organizaActividad(acad);
         retorno = Utilities.jasonizer(creado);

@@ -5,13 +5,11 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,41 +25,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_user")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findByIdUser", query = "SELECT u FROM User u WHERE u.idUser = :idUser")
-    , @NamedQuery(name = "User.findByNameUser", query = "SELECT u FROM User u WHERE u.nameUser = :nameUser")
-    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
-    , @NamedQuery(name = "User.findByDateCreation", query = "SELECT u FROM User u WHERE u.dateCreation = :dateCreation")
-    , @NamedQuery(name = "User.findByStates", query = "SELECT u FROM User u WHERE u.states = :states")})
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+    @NamedQuery(name = "User.findByIdUser", query = "SELECT u FROM User u WHERE u.idUser = :idUser"),
+    @NamedQuery(name = "User.findByNameUser", query = "SELECT u FROM User u WHERE u.nameUser = :nameUser"),
+    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+    @NamedQuery(name = "User.findByDateCreation", query = "SELECT u FROM User u WHERE u.dateCreation = :dateCreation"),
+    @NamedQuery(name = "User.findByStates", query = "SELECT u FROM User u WHERE u.states = :states")})
 public class User implements Serializable {
-
-    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
-    private Collection<Academicactivity> academicactivityCollection;
-
-    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
-    @Expose
-    private Collection<Rolebyuser> rolebyuserCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdUser")
+    @Expose
     private Integer idUser;
-    @Size(max = 15)
+    @Size(max = 100)
     @Column(name = "nameUser")
     @Expose
     private String nameUser;
@@ -69,19 +59,23 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Column(name = "dateCreation")
+    @Expose
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern="yyyy-mm-dd hh:mm:ss")
     private Date dateCreation;
     @Size(max = 20)
     @Column(name = "states")
+    @Expose
     private String states;
     @JoinColumn(name = "IdPerson", referencedColumnName = "IdPerson")
     @ManyToOne(fetch = FetchType.LAZY)
-    @Expose
     private Person idPerson;
-    
-    @Transient
-    private List<Rolec> roles;
+    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
+    private Collection<Academicactivity> academicactivityCollection;
+    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
+    @Expose
+    private Collection<Rolebyuser> rolebyuserCollection;
+    @OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
+    private Collection<Portafolio> portafolioCollection;
 
     public User() {
     }
@@ -119,7 +113,8 @@ public class User implements Serializable {
     }
 
     public void setDateCreation() {
-        this.dateCreation = new Date();
+        Date dateCreation = new Date();
+        this.dateCreation = dateCreation;
     }
 
     public String getStates() {
@@ -127,7 +122,8 @@ public class User implements Serializable {
     }
 
     public void setStates() {
-        this.states = "En espera";
+        String states = "Activo";
+        this.states = states;
     }
 
     public Person getIdPerson() {
@@ -138,27 +134,15 @@ public class User implements Serializable {
         this.idPerson = idPerson;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idUser != null ? idUser.hashCode() : 0);
-        return hash;
+    @XmlTransient
+    public Collection<Academicactivity> getAcademicactivityCollection() {
+        return academicactivityCollection;
     }
 
-   
-    @Override
-    public String toString() {
-        return "co.edu.udea.ceset.dto.User[ idUser=" + idUser + " ]";
-    }
-    
-    public List<Rolec> getRoles(){
-        //lógica para obtener roles
-        return roles;
+    public void setAcademicactivityCollection(Collection<Academicactivity> academicactivityCollection) {
+        this.academicactivityCollection = academicactivityCollection;
     }
 
-    public void setRoles(List<Rolec> roles){
-        this.roles = roles;
-    }
     @XmlTransient
     public Collection<Rolebyuser> getRolebyuserCollection() {
         return rolebyuserCollection;
@@ -169,11 +153,37 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Academicactivity> getAcademicactivityCollection() {
-        return academicactivityCollection;
+    public Collection<Portafolio> getPortafolioCollection() {
+        return portafolioCollection;
     }
 
-    public void setAcademicactivityCollection(Collection<Academicactivity> academicactivityCollection) {
-        this.academicactivityCollection = academicactivityCollection;
+    public void setPortafolioCollection(Collection<Portafolio> portafolioCollection) {
+        this.portafolioCollection = portafolioCollection;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idUser != null ? idUser.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof User)) {
+            return false;
+        }
+        User other = (User) object;
+        if ((this.idUser == null && other.idUser != null) || (this.idUser != null && !this.idUser.equals(other.idUser))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "co.edu.udea.ceset.dto.entities.User[ idUser=" + idUser + " ]";
+    }
+    
 }

@@ -5,6 +5,8 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -54,40 +56,55 @@ public class Budgetbyexpenditure implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    @Expose
     private Integer id;
     @Size(max = 200)
     @Column(name = "description")
+    @Expose
     private String description;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "quantity1")
+    @Expose
     private Double quantity1;
     @Size(max = 20)
     @Column(name = "measureUnit")
+    @Expose
     private String measureUnit;
     @Column(name = "quantity2")
+    @Expose
     private Double quantity2;
     @Column(name = "stimatedValue")
+    @Expose
     private Double stimatedValue;
     @Size(max = 2)
     @Column(name = "typeE")
+    @Expose
     private String typeE;
     @Column(name = "totalValue")
+    @Expose
     private Double totalValue;
     @Column(name = "FP")
+    @Expose
     private Double fp;
     @Column(name = "unitValFP")
+    @Expose
     private Double unitValFP;
     @Column(name = "totalValFP")
+    @Expose
     private Double totalValFP;
     @Size(max = 10000)
     @Column(name = "observation1")
+    @Expose
     private String observation1;
     @Size(max = 10000)
     @Column(name = "observation2")
+    @Expose
     private String observation2;
     @Column(name = "checked")
+    @Expose
     private Boolean checked;
     @Column(name = "actualizationDate")
+    @Expose
     @Temporal(TemporalType.DATE)
     private Date actualizationDate;
     @JoinColumn(name = "IdBudget", referencedColumnName = "IdBudget")
@@ -235,9 +252,23 @@ public class Budgetbyexpenditure implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Budgetbyexpenditure)) {
+            return false;
+        }
+        Budgetbyexpenditure other = (Budgetbyexpenditure) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "co.udea.edu.co.dto.entities.Budgetbyexpenditure[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Budgetbyexpenditure[ id=" + id + " ]";
     }
     
 }

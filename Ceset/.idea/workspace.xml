@@ -8,37 +8,123 @@
   <component name="ChangeListManager">
     <list default="true" id="35df9be1-7a94-4ed3-8176-6b718979e053" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/CohortBL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetJpaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CohortDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/GroupDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/GroupDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ThemesDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/AcademicActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/AcademicActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/BudgetDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/CohortDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstimatedBL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstimatedBL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/RolBL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/RolBL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetbyexpenditureDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetbyitemDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CheckDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/DiscountDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedbyexpenditureDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedbyitemDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditureDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditurebygroupDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/GroupDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ItemDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/NotifficationDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/NotifficationbycheckDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/NotifficationbyroleDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PermissionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PersonDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/RolDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/RolebypermissionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/RolebyuserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/UserDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Cohort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyexpenditure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyexpenditure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Check.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Check.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimated.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyexpenditure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyexpenditure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditurebygroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditurebygroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditurebyitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Expenditurebyitem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Groupe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Groupe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notiffication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notiffication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notifficationbycheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notifficationbycheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notifficationbyrole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Notifficationbyrole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Permiso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Persona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebypermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebypermission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebyuser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebyuser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolec.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Themes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Themes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/CohortServicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PersonServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PersonServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/auth/AuthUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/auth/AuthUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/AcademicActivityBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/AcademicActivityBL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/EstimatedBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/EstimatedBL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/RolBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/bl/RolBL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CohortDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CohortDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ThemesDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CheckDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/CheckDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/DiscountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/DiscountDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/EstimatedDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/EstimatedDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/ItemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/NotifficationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/NotifficationDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/NotifficationbycheckDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/NotifficationbycheckDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/NotifficationbyroleDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/PermissionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/PermissionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/PersonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/PersonDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/RolDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/RolebypermissionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/RolebypermissionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/RolebyuserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/RolebyuserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/PersonServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/PersonServicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/UsuariosServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ceset/WEB-INF/classes/co/edu/udea/ceset/servicios/UsuariosServicio.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/auth/AuthUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/auth/AuthUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/EstimatedBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/EstimatedBL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/RolBL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/bl/RolBL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/AcademicactivityDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/BudgetbyitemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/CohortDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ThemesDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dto/AcademicActivityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dto/AcademicActivityDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/CheckDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/CheckDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/DiscountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/DiscountDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/EstimatedbyitemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditureDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ExpenditurebyitemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/ItemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/NotifficationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/NotifficationDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/NotifficationbycheckDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/NotifficationbycheckDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/NotifficationbyroleDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/PermissionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/PermissionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/PersonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/PersonDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/RolDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/RolebypermissionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/RolebypermissionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/RolebyuserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/RolebyuserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/PersonServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/PersonServicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/UsuariosServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/edu/udea/ceset/servicios/UsuariosServicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,103 +133,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/EduconCESET$Tomcat_8_5_39.ic" NAME="Tomcat 8.5.39 Coverage Results" MODIFIED="1558047632055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/target/classes/META-INF/persistence.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-              <folding>
-                <element signature="e#4363#4364#0" expanded="true" />
-                <element signature="e#4391#4392#0" expanded="true" />
-                <element signature="e#4421#4422#0" expanded="true" />
-                <element signature="e#4446#4447#0" expanded="true" />
-                <element signature="e#4483#4484#0" expanded="true" />
-                <element signature="e#4511#4512#0" expanded="true" />
-                <element signature="e#4551#4552#0" expanded="true" />
-                <element signature="e#4587#4588#0" expanded="true" />
-                <element signature="e#4645#4646#0" expanded="true" />
-                <element signature="e#4695#4696#0" expanded="true" />
-                <element signature="e#4734#4735#0" expanded="true" />
-                <element signature="e#4769#4770#0" expanded="true" />
-                <element signature="e#4825#4826#0" expanded="true" />
-                <element signature="e#4873#4874#0" expanded="true" />
-                <element signature="e#4911#4912#0" expanded="true" />
-                <element signature="e#4945#4946#0" expanded="true" />
-                <element signature="e#4999#5000#0" expanded="true" />
-                <element signature="e#5045#5046#0" expanded="true" />
-                <element signature="e#5089#5090#0" expanded="true" />
-                <element signature="e#5129#5130#0" expanded="true" />
-                <element signature="e#5195#5196#0" expanded="true" />
-                <element signature="e#5253#5254#0" expanded="true" />
-                <element signature="e#5296#5297#0" expanded="true" />
-                <element signature="e#5335#5336#0" expanded="true" />
-                <element signature="e#5399#5400#0" expanded="true" />
-                <element signature="e#5455#5456#0" expanded="true" />
-                <element signature="e#5494#5495#0" expanded="true" />
-                <element signature="e#5529#5530#0" expanded="true" />
-                <element signature="e#5585#5586#0" expanded="true" />
-                <element signature="e#5633#5634#0" expanded="true" />
-                <element signature="e#5672#5673#0" expanded="true" />
-                <element signature="e#5707#5708#0" expanded="true" />
-                <element signature="e#5763#5764#0" expanded="true" />
-                <element signature="e#5811#5812#0" expanded="true" />
-                <element signature="e#5853#5854#0" expanded="true" />
-                <element signature="e#5890#5891#0" expanded="true" />
-                <element signature="e#5951#5952#0" expanded="true" />
-                <element signature="e#6003#6004#0" expanded="true" />
-                <element signature="e#6039#6040#0" expanded="true" />
-                <element signature="e#6071#6072#0" expanded="true" />
-                <element signature="e#6121#6122#0" expanded="true" />
-                <element signature="e#6163#6164#0" expanded="true" />
-                <element signature="e#6201#6202#0" expanded="true" />
-                <element signature="e#6235#6236#0" expanded="true" />
-                <element signature="e#6289#6290#0" expanded="true" />
-                <element signature="e#6335#6336#0" expanded="true" />
-                <element signature="e#6376#6377#0" expanded="true" />
-                <element signature="e#6413#6414#0" expanded="true" />
-                <element signature="e#6473#6474#0" expanded="true" />
-                <element signature="e#6525#6526#0" expanded="true" />
-                <element signature="e#6572#6573#0" expanded="true" />
-                <element signature="e#6615#6616#0" expanded="true" />
-                <element signature="e#6787#6788#0" expanded="true" />
-                <element signature="e#6819#6820#0" expanded="true" />
-                <element signature="e#6869#6870#0" expanded="true" />
-                <element signature="e#6911#6912#0" expanded="true" />
-                <element signature="e#6952#6953#0" expanded="true" />
-                <element signature="e#6989#6990#0" expanded="true" />
-                <element signature="e#7049#7050#0" expanded="true" />
-                <element signature="e#7101#7102#0" expanded="true" />
-                <element signature="e#7138#7139#0" expanded="true" />
-                <element signature="e#7171#7172#0" expanded="true" />
-                <element signature="e#7223#7224#0" expanded="true" />
-                <element signature="e#7267#7268#0" expanded="true" />
-                <element signature="e#7303#7304#0" expanded="true" />
-                <element signature="e#7335#7336#0" expanded="true" />
-                <element signature="e#7385#7386#0" expanded="true" />
-                <element signature="e#7427#7428#0" expanded="true" />
-                <element signature="e#7615#7616#0" expanded="true" />
-                <element signature="e#7698#7699#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="114">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -151,8 +150,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+            <state relative-caret-position="340">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,35 +180,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="229">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="183">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="289">
+              <caret line="145" column="27" selection-start-line="145" selection-start-column="27" selection-end-line="145" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/UserDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Groupe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="41" column="43" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="43" />
+            <state relative-caret-position="277">
+              <caret line="84" column="26" lean-forward="true" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Themes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -196,17 +225,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimated.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="65" column="30" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="30" />
+            <state relative-caret-position="-21">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -228,6 +248,13 @@
       <find>decodeto</find>
       <find>diligencyDate</find>
       <find>date</find>
+      <find>obtenerDAO</find>
+      <find>transient</find>
+      <find>user</find>
+      <find>fo</find>
+      <find>academicact</find>
+      <find>academicac</find>
+      <find>acade</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -251,11 +278,23 @@
         <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/CohortBL.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/CohortServicio.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Cohort.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Portafolio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolec.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebyuser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimated.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyexpenditure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Groupe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyexpenditure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Themes.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java" />
       </list>
     </option>
@@ -279,8 +318,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -321,37 +358,20 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EduconCESET" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EduconCESET" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ceset" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ceset" type="462c0819:PsiDirectoryNode" />
               <item name="servicios" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556829334127" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558387072746" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -467,19 +487,21 @@
       <workItem from="1557261970885" duration="929000" />
       <workItem from="1557412193071" duration="3745000" />
       <workItem from="1557420529064" duration="856000" />
-      <workItem from="1557935469413" duration="1988000" />
+      <workItem from="1557935469413" duration="11443000" />
+      <workItem from="1558044391048" duration="3499000" />
+      <workItem from="1558369521380" duration="6213000" />
+      <workItem from="1558381934320" duration="4721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56851000" />
+    <option name="totallyTimeSpent" value="80739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48681056" visible="true" weight="0.31164902" />
-      <window_info id="Structure" order="1" sideWeight="0.51318944" side_tool="true" visible="true" weight="0.31164902" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48233488" visible="true" weight="0.3260212" />
+      <window_info id="Structure" order="1" sideWeight="0.51766515" side_tool="true" visible="true" weight="0.3260212" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -488,8 +510,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.359447" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39631337" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.359447" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.35176653" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -497,7 +519,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32872504" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.24731183" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -511,7 +533,8 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" visible="true" weight="0.14145234" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.14145234" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,15 +545,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java</url>
-          <line>47</line>
+          <line>44</line>
           <properties />
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDAO.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java</url>
@@ -544,124 +561,69 @@
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/UserDAO.java</url>
+          <line>321</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java</url>
+          <line>108</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java</url>
+          <line>56</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="((Portafolio)((java.util.Vector)todas).get(0)).idUser" custom="co.edu.udea.ceset.dto.entities.Portafolio,java.util.Vector" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/BudgetbyexpenditureJpaController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstiamtedByExpenditureDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-          <folding>
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#999#1000#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1259#1260#0" expanded="true" />
-            <element signature="e#1299#1300#0" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
-            <element signature="e#1393#1394#0" expanded="true" />
-            <element signature="e#1443#1444#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-            <element signature="e#1503#1504#0" expanded="true" />
-            <element signature="e#1545#1546#0" expanded="true" />
-            <element signature="e#1579#1580#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
-            <element signature="e#1649#1650#0" expanded="true" />
-            <element signature="e#1701#1702#0" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1799#1800#0" expanded="true" />
-            <element signature="e#1835#1836#0" expanded="true" />
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1899#1900#0" expanded="true" />
-            <element signature="e#1931#1932#0" expanded="true" />
-            <element signature="e#1981#1982#0" expanded="true" />
-            <element signature="e#2023#2024#0" expanded="true" />
-            <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2145#2146#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2227#2228#0" expanded="true" />
-            <element signature="e#2261#2262#0" expanded="true" />
-            <element signature="e#2315#2316#0" expanded="true" />
-            <element signature="e#2361#2362#0" expanded="true" />
-            <element signature="e#2405#2406#0" expanded="true" />
-            <element signature="e#2439#2440#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2545#2546#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/EstimatedDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.26-b08/jersey-common-2.26-b08.jar!/org/glassfish/jersey/process/internal/RequestScope.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/ApplicationHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="364" selection-start-line="364" selection-end-line="364" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="281" selection-start-line="281" selection-end-line="281" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/EstimatedDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstimatedBL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimated.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Academicactivity.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/AcademicactivityDAO.java">
@@ -671,28 +633,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/CohortServicio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/CohortBL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1474#1475#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/CohortServicio.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/CohortBL.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/EstemExpendBL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
@@ -713,28 +655,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Estimatedbyexpenditure.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.26-b08/jersey-common-2.26-b08.jar!/org/glassfish/jersey/internal/Errors.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="168" selection-start-line="168" selection-end-line="168" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/User.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/SecurityFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/ContainerFilteringStage.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -749,20 +670,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/ServerRuntime.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CohortDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/CohortDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Cohort.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.26-b08/jersey-common-2.26-b08.jar!/org/glassfish/jersey/message/internal/OutboundMessageContext.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -782,41 +690,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/udea/edu/co/dto/entities/Portafolio.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="128" column="27" selection-start-line="128" selection-start-column="27" selection-end-line="128" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/UsuarioBL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -824,131 +697,293 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/SecurityFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+        <state relative-caret-position="-191">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Check.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="255">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding>
+            <element signature="e#2211#2212#0" expanded="true" />
+            <element signature="e#2249#2250#0" expanded="true" />
+            <element signature="e#2284#2285#0" expanded="true" />
+            <element signature="e#2314#2315#0" expanded="true" />
+            <element signature="e#2361#2362#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
+            <element signature="e#2437#2438#0" expanded="true" />
+            <element signature="e#2471#2472#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2571#2572#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2643#2644#0" expanded="true" />
+            <element signature="e#2697#2698#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2775#2776#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2845#2846#0" expanded="true" />
+            <element signature="e#2879#2880#0" expanded="true" />
+            <element signature="e#2919#2920#0" expanded="true" />
+            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#3003#3004#0" expanded="true" />
+            <element signature="e#3043#3044#0" expanded="true" />
+            <element signature="e#3694#3695#0" expanded="true" />
+            <element signature="e#3782#3783#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/ExpenditureDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state>
+          <folding>
+            <element signature="e#0#7994#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/internal/JavaResourceMethodDispatcherProvider.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="122">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.26-b08/jersey-common-2.26-b08.jar!/org/glassfish/jersey/internal/Errors.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
+          <folding>
+            <element signature="e#4339#4475#0" expanded="true" />
+            <element signature="e#4474#4475#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8439#8440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/ApplicationHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="364" selection-start-line="364" selection-end-line="364" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/containers/jersey-container-servlet-core/2.26-b08/jersey-container-servlet-core-2.26-b08.jar!/org/glassfish/jersey/servlet/WebComponent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="166" column="19" selection-start-line="166" selection-start-column="19" selection-end-line="166" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.26-b08/jersey-common-2.26-b08.jar!/org/glassfish/jersey/process/internal/RequestScope.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/ServerRuntime.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Rolebyuser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="42" column="23" lean-forward="true" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="43" />
+        <state relative-caret-position="251">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/UsuarioBL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="132">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1507#1508#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#2285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/UsuariosServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#1582#1583#0" expanded="true" />
+            <element signature="e#1644#1645#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/auth/AuthUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dao/PortafolioDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="53" column="132" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="132" />
+          <folding>
+            <element signature="e#10222#10223#0" expanded="true" />
+            <element signature="e#10281#10282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.26-b08/jersey-server-2.26-b08.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="281" selection-start-line="281" selection-end-line="281" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar!/javax/persistence/CascadeType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/ActividadServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/AcademicActivityBL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimatedbyexpenditure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Estimated.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="65" column="30" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="30" />
+        <state relative-caret-position="319">
+          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budgetbyexpenditure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Budget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Academicactivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="145" column="27" selection-start-line="145" selection-start-column="27" selection-end-line="145" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Groupe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="84" column="26" lean-forward="true" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Themes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/dto/entities/Portafolio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+        <state relative-caret-position="183">
+          <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
           <folding>
-            <element signature="e#4363#4364#0" expanded="true" />
-            <element signature="e#4391#4392#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="e#4446#4447#0" expanded="true" />
-            <element signature="e#4483#4484#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4551#4552#0" expanded="true" />
-            <element signature="e#4587#4588#0" expanded="true" />
-            <element signature="e#4645#4646#0" expanded="true" />
-            <element signature="e#4695#4696#0" expanded="true" />
-            <element signature="e#4734#4735#0" expanded="true" />
-            <element signature="e#4769#4770#0" expanded="true" />
-            <element signature="e#4825#4826#0" expanded="true" />
-            <element signature="e#4873#4874#0" expanded="true" />
-            <element signature="e#4911#4912#0" expanded="true" />
-            <element signature="e#4945#4946#0" expanded="true" />
-            <element signature="e#4999#5000#0" expanded="true" />
-            <element signature="e#5045#5046#0" expanded="true" />
-            <element signature="e#5089#5090#0" expanded="true" />
-            <element signature="e#5129#5130#0" expanded="true" />
-            <element signature="e#5195#5196#0" expanded="true" />
-            <element signature="e#5253#5254#0" expanded="true" />
-            <element signature="e#5296#5297#0" expanded="true" />
-            <element signature="e#5335#5336#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
-            <element signature="e#5494#5495#0" expanded="true" />
-            <element signature="e#5529#5530#0" expanded="true" />
-            <element signature="e#5585#5586#0" expanded="true" />
-            <element signature="e#5633#5634#0" expanded="true" />
-            <element signature="e#5672#5673#0" expanded="true" />
-            <element signature="e#5707#5708#0" expanded="true" />
-            <element signature="e#5763#5764#0" expanded="true" />
-            <element signature="e#5811#5812#0" expanded="true" />
-            <element signature="e#5853#5854#0" expanded="true" />
-            <element signature="e#5890#5891#0" expanded="true" />
-            <element signature="e#5951#5952#0" expanded="true" />
-            <element signature="e#6003#6004#0" expanded="true" />
-            <element signature="e#6039#6040#0" expanded="true" />
-            <element signature="e#6071#6072#0" expanded="true" />
-            <element signature="e#6121#6122#0" expanded="true" />
-            <element signature="e#6163#6164#0" expanded="true" />
-            <element signature="e#6201#6202#0" expanded="true" />
-            <element signature="e#6235#6236#0" expanded="true" />
-            <element signature="e#6289#6290#0" expanded="true" />
-            <element signature="e#6335#6336#0" expanded="true" />
-            <element signature="e#6376#6377#0" expanded="true" />
-            <element signature="e#6413#6414#0" expanded="true" />
-            <element signature="e#6473#6474#0" expanded="true" />
-            <element signature="e#6525#6526#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6615#6616#0" expanded="true" />
-            <element signature="e#6787#6788#0" expanded="true" />
-            <element signature="e#6819#6820#0" expanded="true" />
-            <element signature="e#6869#6870#0" expanded="true" />
-            <element signature="e#6911#6912#0" expanded="true" />
-            <element signature="e#6952#6953#0" expanded="true" />
-            <element signature="e#6989#6990#0" expanded="true" />
-            <element signature="e#7049#7050#0" expanded="true" />
-            <element signature="e#7101#7102#0" expanded="true" />
-            <element signature="e#7138#7139#0" expanded="true" />
-            <element signature="e#7171#7172#0" expanded="true" />
-            <element signature="e#7223#7224#0" expanded="true" />
-            <element signature="e#7267#7268#0" expanded="true" />
-            <element signature="e#7303#7304#0" expanded="true" />
-            <element signature="e#7335#7336#0" expanded="true" />
-            <element signature="e#7385#7386#0" expanded="true" />
-            <element signature="e#7427#7428#0" expanded="true" />
-            <element signature="e#7615#7616#0" expanded="true" />
-            <element signature="e#7698#7699#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/servicios/PortafolioServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/bl/PortafolioBL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/edu/udea/ceset/utilities/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
         </state>
       </provider>
     </entry>

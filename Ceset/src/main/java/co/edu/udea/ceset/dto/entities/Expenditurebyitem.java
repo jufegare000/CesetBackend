@@ -9,12 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,28 +19,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_expenditurebyitem")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Expenditurebyitem.findAll", query = "SELECT e FROM Expenditurebyitem e")
-    , @NamedQuery(name = "Expenditurebyitem.findById", query = "SELECT e FROM Expenditurebyitem e WHERE e.id = :id")})
+    @NamedQuery(name = "Expenditurebyitem.findAll", query = "SELECT e FROM Expenditurebyitem e"),
+    @NamedQuery(name = "Expenditurebyitem.findById", query = "SELECT e FROM Expenditurebyitem e WHERE e.id = :id"),
+    @NamedQuery(name = "Expenditurebyitem.findByIdItem", query = "SELECT e FROM Expenditurebyitem e WHERE e.idItem = :idItem"),
+    @NamedQuery(name = "Expenditurebyitem.findByIdExpend", query = "SELECT e FROM Expenditurebyitem e WHERE e.idExpend = :idExpend")})
 public class Expenditurebyitem implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
-    @JoinColumn(name = "idItem", referencedColumnName = "IdItem")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Item idItem;
-    @JoinColumn(name = "IdExpend", referencedColumnName = "IdExpend")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Expenditure idExpend;
+    @Column(name = "idItem")
+    private Integer idItem;
+    @Column(name = "IdExpend")
+    private Integer idExpend;
 
     public Expenditurebyitem() {
     }
@@ -60,19 +56,19 @@ public class Expenditurebyitem implements Serializable {
         this.id = id;
     }
 
-    public Item getIdItem() {
+    public Integer getIdItem() {
         return idItem;
     }
 
-    public void setIdItem(Item idItem) {
+    public void setIdItem(Integer idItem) {
         this.idItem = idItem;
     }
 
-    public Expenditure getIdExpend() {
+    public Integer getIdExpend() {
         return idExpend;
     }
 
-    public void setIdExpend(Expenditure idExpend) {
+    public void setIdExpend(Integer idExpend) {
         this.idExpend = idExpend;
     }
 
@@ -84,8 +80,21 @@ public class Expenditurebyitem implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Expenditurebyitem)) {
+            return false;
+        }
+        Expenditurebyitem other = (Expenditurebyitem) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Expenditurebyitem[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Expenditurebyitem[ id=" + id + " ]";
     }
     
 }

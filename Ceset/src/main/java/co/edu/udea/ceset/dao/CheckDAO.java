@@ -13,16 +13,13 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import co.edu.udea.ceset.dto.entities.Expenditure;
-import co.edu.udea.ceset.dto.entities.Notifficationbycheck;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class CheckDAO implements Serializable {
 
@@ -36,9 +33,6 @@ public class CheckDAO implements Serializable {
     }
 
     public void create(Check check) {
-        if (check.getNotifficationbycheckCollection() == null) {
-            check.setNotifficationbycheckCollection(new ArrayList<Notifficationbycheck>());
-        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -48,25 +42,10 @@ public class CheckDAO implements Serializable {
                 idExpend = em.getReference(idExpend.getClass(), idExpend.getIdExpend());
                 check.setIdExpend(idExpend);
             }
-            Collection<Notifficationbycheck> attachedNotifficationbycheckCollection = new ArrayList<Notifficationbycheck>();
-            for (Notifficationbycheck notifficationbycheckCollectionNotifficationbycheckToAttach : check.getNotifficationbycheckCollection()) {
-                notifficationbycheckCollectionNotifficationbycheckToAttach = em.getReference(notifficationbycheckCollectionNotifficationbycheckToAttach.getClass(), notifficationbycheckCollectionNotifficationbycheckToAttach.getId());
-                attachedNotifficationbycheckCollection.add(notifficationbycheckCollectionNotifficationbycheckToAttach);
-            }
-            check.setNotifficationbycheckCollection(attachedNotifficationbycheckCollection);
             em.persist(check);
             if (idExpend != null) {
                 idExpend.getCheckCollection().add(check);
                 idExpend = em.merge(idExpend);
-            }
-            for (Notifficationbycheck notifficationbycheckCollectionNotifficationbycheck : check.getNotifficationbycheckCollection()) {
-                Check oldIdCheckOfNotifficationbycheckCollectionNotifficationbycheck = notifficationbycheckCollectionNotifficationbycheck.getIdCheck();
-                notifficationbycheckCollectionNotifficationbycheck.setIdCheck(check);
-                notifficationbycheckCollectionNotifficationbycheck = em.merge(notifficationbycheckCollectionNotifficationbycheck);
-                if (oldIdCheckOfNotifficationbycheckCollectionNotifficationbycheck != null) {
-                    oldIdCheckOfNotifficationbycheckCollectionNotifficationbycheck.getNotifficationbycheckCollection().remove(notifficationbycheckCollectionNotifficationbycheck);
-                    oldIdCheckOfNotifficationbycheckCollectionNotifficationbycheck = em.merge(oldIdCheckOfNotifficationbycheckCollectionNotifficationbycheck);
-                }
             }
             em.getTransaction().commit();
         } finally {
@@ -84,19 +63,10 @@ public class CheckDAO implements Serializable {
             Check persistentCheck = em.find(Check.class, check.getIdCheck());
             Expenditure idExpendOld = persistentCheck.getIdExpend();
             Expenditure idExpendNew = check.getIdExpend();
-            Collection<Notifficationbycheck> notifficationbycheckCollectionOld = persistentCheck.getNotifficationbycheckCollection();
-            Collection<Notifficationbycheck> notifficationbycheckCollectionNew = check.getNotifficationbycheckCollection();
             if (idExpendNew != null) {
                 idExpendNew = em.getReference(idExpendNew.getClass(), idExpendNew.getIdExpend());
                 check.setIdExpend(idExpendNew);
             }
-            Collection<Notifficationbycheck> attachedNotifficationbycheckCollectionNew = new ArrayList<Notifficationbycheck>();
-            for (Notifficationbycheck notifficationbycheckCollectionNewNotifficationbycheckToAttach : notifficationbycheckCollectionNew) {
-                notifficationbycheckCollectionNewNotifficationbycheckToAttach = em.getReference(notifficationbycheckCollectionNewNotifficationbycheckToAttach.getClass(), notifficationbycheckCollectionNewNotifficationbycheckToAttach.getId());
-                attachedNotifficationbycheckCollectionNew.add(notifficationbycheckCollectionNewNotifficationbycheckToAttach);
-            }
-            notifficationbycheckCollectionNew = attachedNotifficationbycheckCollectionNew;
-            check.setNotifficationbycheckCollection(notifficationbycheckCollectionNew);
             check = em.merge(check);
             if (idExpendOld != null && !idExpendOld.equals(idExpendNew)) {
                 idExpendOld.getCheckCollection().remove(check);
@@ -105,23 +75,6 @@ public class CheckDAO implements Serializable {
             if (idExpendNew != null && !idExpendNew.equals(idExpendOld)) {
                 idExpendNew.getCheckCollection().add(check);
                 idExpendNew = em.merge(idExpendNew);
-            }
-            for (Notifficationbycheck notifficationbycheckCollectionOldNotifficationbycheck : notifficationbycheckCollectionOld) {
-                if (!notifficationbycheckCollectionNew.contains(notifficationbycheckCollectionOldNotifficationbycheck)) {
-                    notifficationbycheckCollectionOldNotifficationbycheck.setIdCheck(null);
-                    notifficationbycheckCollectionOldNotifficationbycheck = em.merge(notifficationbycheckCollectionOldNotifficationbycheck);
-                }
-            }
-            for (Notifficationbycheck notifficationbycheckCollectionNewNotifficationbycheck : notifficationbycheckCollectionNew) {
-                if (!notifficationbycheckCollectionOld.contains(notifficationbycheckCollectionNewNotifficationbycheck)) {
-                    Check oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck = notifficationbycheckCollectionNewNotifficationbycheck.getIdCheck();
-                    notifficationbycheckCollectionNewNotifficationbycheck.setIdCheck(check);
-                    notifficationbycheckCollectionNewNotifficationbycheck = em.merge(notifficationbycheckCollectionNewNotifficationbycheck);
-                    if (oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck != null && !oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck.equals(check)) {
-                        oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck.getNotifficationbycheckCollection().remove(notifficationbycheckCollectionNewNotifficationbycheck);
-                        oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck = em.merge(oldIdCheckOfNotifficationbycheckCollectionNewNotifficationbycheck);
-                    }
-                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -156,11 +109,6 @@ public class CheckDAO implements Serializable {
             if (idExpend != null) {
                 idExpend.getCheckCollection().remove(check);
                 idExpend = em.merge(idExpend);
-            }
-            Collection<Notifficationbycheck> notifficationbycheckCollection = check.getNotifficationbycheckCollection();
-            for (Notifficationbycheck notifficationbycheckCollectionNotifficationbycheck : notifficationbycheckCollection) {
-                notifficationbycheckCollectionNotifficationbycheck.setIdCheck(null);
-                notifficationbycheckCollectionNotifficationbycheck = em.merge(notifficationbycheckCollectionNotifficationbycheck);
             }
             em.remove(check);
             em.getTransaction().commit();

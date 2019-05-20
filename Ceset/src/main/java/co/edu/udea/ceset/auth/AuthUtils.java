@@ -8,6 +8,7 @@ package co.edu.udea.ceset.auth;
 import co.edu.udea.ceset.dto.entities.User;
 import co.edu.udea.ceset.excepciones.AuthenticationException;
 import co.edu.udea.ceset.properties.PropiedadesCeset;
+import co.edu.udea.ceset.utilities.Utilities;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -62,9 +63,13 @@ public class AuthUtils {
  */
     public static Token createToken(String host, User user) throws JOSEException {
         String yeison;
+        user.setAcademicactivityCollection(null);
+        user.setPortafolioCollection(null);
+
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         //System.out.println(gson.toJson(user));
-        yeison = gson.toJson(user).toString();
+        //yeison = gson.toJson(user).toString();
+        yeison = Utilities.jasonizer(user);
         JWTClaimsSet claim = new JWTClaimsSet();
         claim.setSubject(Integer.toString(user.getIdUser()));
         claim.setIssuer(host);

@@ -18,15 +18,12 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class PersonDAO implements Serializable {
-    
-    private final String nombrePU = "ceset_PU";
 
     public PersonDAO(EntityManagerFactory emf) {
         this.emf = emf;
@@ -39,6 +36,7 @@ public class PersonDAO implements Serializable {
 
     public Person create(Person person) {
         List<Person> lper = null;
+
         if (person.getUserCollection() == null) {
             person.setUserCollection(new ArrayList<User>());
         }
@@ -63,7 +61,7 @@ public class PersonDAO implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } finally {
+        }  finally {
             lper = em.createNamedQuery("Person.findByDocument")
                     .setParameter("document", person.getDocument())
                     .getResultList(); // Retorna la persona recién creada

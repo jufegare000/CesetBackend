@@ -78,6 +78,7 @@ public class UsuariosServicio implements Serializable {
         usuarioAutenticado = UsuarioBL.getInstance().autenticar(usuario);
         Token token;
         String mensaje;
+
         /*usuarioAutenticado = new User();
         usuarioAutenticado.setIdUser(1);
         usuarioAutenticado.setNameUser("usuario.prueba");*/

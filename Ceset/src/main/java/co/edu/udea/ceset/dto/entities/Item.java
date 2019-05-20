@@ -5,8 +5,6 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
-import com.google.gson.annotations.Expose;
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -26,53 +24,40 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_item")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")
-    , @NamedQuery(name = "Item.findByIdItem", query = "SELECT i FROM Item i WHERE i.idItem = :idItem")
-    , @NamedQuery(name = "Item.findByDescription", query = "SELECT i FROM Item i WHERE i.description = :description")
-    , @NamedQuery(name = "Item.findByTotalValue", query = "SELECT i FROM Item i WHERE i.totalValue = :totalValue")
-    , @NamedQuery(name = "Item.findByStimatedValue", query = "SELECT i FROM Item i WHERE i.stimatedValue = :stimatedValue")
-    , @NamedQuery(name = "Item.findByRealValue", query = "SELECT i FROM Item i WHERE i.realValue = :realValue")
-    , @NamedQuery(name = "Item.findByType", query = "SELECT i FROM Item i WHERE i.type = :type")})
+    @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i"),
+    @NamedQuery(name = "Item.findByIdItem", query = "SELECT i FROM Item i WHERE i.idItem = :idItem"),
+    @NamedQuery(name = "Item.findByDescription", query = "SELECT i FROM Item i WHERE i.description = :description"),
+    @NamedQuery(name = "Item.findByTotalValue", query = "SELECT i FROM Item i WHERE i.totalValue = :totalValue"),
+    @NamedQuery(name = "Item.findByStimatedValue", query = "SELECT i FROM Item i WHERE i.stimatedValue = :stimatedValue"),
+    @NamedQuery(name = "Item.findByRealValue", query = "SELECT i FROM Item i WHERE i.realValue = :realValue"),
+    @NamedQuery(name = "Item.findByType", query = "SELECT i FROM Item i WHERE i.type = :type")})
 public class Item implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Expose
     @Column(name = "IdItem")
     private Integer idItem;
-
     @Size(max = 200)
-    @Expose
     @Column(name = "description")
     private String description;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "totalValue")
-    @Expose
     private Double totalValue;
     @Column(name = "stimatedValue")
-    @Expose
     private Double stimatedValue;
     @Column(name = "realValue")
-    @Expose
     private Double realValue;
     @Size(max = 2)
     @Column(name = "type")
     private String type;
-    @Expose
     @OneToMany(mappedBy = "idItem", fetch = FetchType.LAZY)
-    private Collection<Expenditurebyitem> expenditurebyitemCollection;
-    @OneToMany(mappedBy = "idItem", fetch = FetchType.LAZY)
-    private Collection<Estimatedbyitem> estimatedbyitemCollection;
-    @OneToMany(mappedBy = "idItem", fetch = FetchType.LAZY)
-    @Expose
     private Collection<Budgetbyitem> budgetbyitemCollection;
 
     public Item() {
@@ -131,24 +116,6 @@ public class Item implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Expenditurebyitem> getExpenditurebyitemCollection() {
-        return expenditurebyitemCollection;
-    }
-
-    public void setExpenditurebyitemCollection(Collection<Expenditurebyitem> expenditurebyitemCollection) {
-        this.expenditurebyitemCollection = expenditurebyitemCollection;
-    }
-
-    @XmlTransient
-    public Collection<Estimatedbyitem> getEstimatedbyitemCollection() {
-        return estimatedbyitemCollection;
-    }
-
-    public void setEstimatedbyitemCollection(Collection<Estimatedbyitem> estimatedbyitemCollection) {
-        this.estimatedbyitemCollection = estimatedbyitemCollection;
-    }
-
-    @XmlTransient
     public Collection<Budgetbyitem> getBudgetbyitemCollection() {
         return budgetbyitemCollection;
     }
@@ -165,8 +132,21 @@ public class Item implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Item)) {
+            return false;
+        }
+        Item other = (Item) object;
+        if ((this.idItem == null && other.idItem != null) || (this.idItem != null && !this.idItem.equals(other.idItem))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Item[ idItem=" + idItem + " ]";
+        return "co.edu.udea.ceset.dto.entities.Item[ idItem=" + idItem + " ]";
     }
     
 }

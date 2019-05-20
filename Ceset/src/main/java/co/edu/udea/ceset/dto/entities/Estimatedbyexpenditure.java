@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Estimatedbyexpenditure.findById", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.id = :id"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByDescription", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.description = :description"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByQuantity1", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.quantity1 = :quantity1"),
-    @NamedQuery(name = "Estimatedbyexpenditure.findByMeasureUnit", query = "SELECT e FROM   Estimatedbyexpenditure e WHERE e.measureUnit = :measureUnit"),
+    @NamedQuery(name = "Estimatedbyexpenditure.findByMeasureUnit", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.measureUnit = :measureUnit"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByQuantity2", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.quantity2 = :quantity2"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByStimatedValue", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.stimatedValue = :stimatedValue"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByTypeE", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.typeE = :typeE"),
@@ -45,28 +45,29 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Estimatedbyexpenditure.findByUnitValFP", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.unitValFP = :unitValFP"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByTotalValFP", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.totalValFP = :totalValFP"),
     @NamedQuery(name = "Estimatedbyexpenditure.findByObservation", query = "SELECT e FROM Estimatedbyexpenditure e WHERE e.observation = :observation"),
-        @NamedQuery(name = "Estimatedbyexpenditure.findLast", query = "SELECT e FROM Estimatedbyexpenditure e ORDER BY e.id DESC")})
+    @NamedQuery(name = "Estimatedbyexpenditure.findLast", query = "SELECT e FROM Estimatedbyexpenditure e ORDER BY e.id DESC")})
 public class Estimatedbyexpenditure implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    @Expose
     private Integer id;
     @Size(max = 200)
-    @Expose
     @Column(name = "description")
-    private String description;
     @Expose
+    private String description;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "quantity1")
+    @Expose
     private Double quantity1;
     @Size(max = 20)
-    @Expose
     @Column(name = "measureUnit")
-    private String measureUnit;
     @Expose
+    private String measureUnit;
     @Column(name = "quantity2")
+    @Expose
     private Double quantity2;
     @Column(name = "stimatedValue")
     @Expose
@@ -233,8 +234,21 @@ public class Estimatedbyexpenditure implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Estimatedbyexpenditure)) {
+            return false;
+        }
+        Estimatedbyexpenditure other = (Estimatedbyexpenditure) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.udea.edu.co.dto.entities.Estimatedbyexpenditure[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure[ id=" + id + " ]";
     }
     
 }

@@ -44,9 +44,9 @@ public class PortafolioServicio implements Serializable {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getAll() {
-        String acad = PortafolioBL.getInstance().obtenerTodods();
+        String port = PortafolioBL.getInstance().obtenerTodods();
 
-        return acad;
+        return port;
     }
 
 }

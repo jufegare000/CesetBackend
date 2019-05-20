@@ -6,7 +6,6 @@
 package co.edu.udea.ceset.dto.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,27 +17,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_check")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Check.findAll", query = "SELECT c FROM Check c")
-    , @NamedQuery(name = "Check.findByIdCheck", query = "SELECT c FROM Check c WHERE c.idCheck = :idCheck")
-    , @NamedQuery(name = "Check.findByIdRealValue", query = "SELECT c FROM Check c WHERE c.idRealValue = :idRealValue")
-    , @NamedQuery(name = "Check.findByDescription", query = "SELECT c FROM Check c WHERE c.description = :description")
-    , @NamedQuery(name = "Check.findByState", query = "SELECT c FROM Check c WHERE c.state = :state")})
+    @NamedQuery(name = "Check.findAll", query = "SELECT c FROM Check c"),
+    @NamedQuery(name = "Check.findByIdCheck", query = "SELECT c FROM Check c WHERE c.idCheck = :idCheck"),
+    @NamedQuery(name = "Check.findByIdRealValue", query = "SELECT c FROM Check c WHERE c.idRealValue = :idRealValue"),
+    @NamedQuery(name = "Check.findByDescription", query = "SELECT c FROM Check c WHERE c.description = :description"),
+    @NamedQuery(name = "Check.findByState", query = "SELECT c FROM Check c WHERE c.state = :state")})
 public class Check implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,8 +53,6 @@ public class Check implements Serializable {
     @JoinColumn(name = "IdExpend", referencedColumnName = "IdExpend")
     @ManyToOne(fetch = FetchType.LAZY)
     private Expenditure idExpend;
-    @OneToMany(mappedBy = "idCheck", fetch = FetchType.LAZY)
-    private Collection<Notifficationbycheck> notifficationbycheckCollection;
 
     public Check() {
     }
@@ -107,15 +101,6 @@ public class Check implements Serializable {
         this.idExpend = idExpend;
     }
 
-    @XmlTransient
-    public Collection<Notifficationbycheck> getNotifficationbycheckCollection() {
-        return notifficationbycheckCollection;
-    }
-
-    public void setNotifficationbycheckCollection(Collection<Notifficationbycheck> notifficationbycheckCollection) {
-        this.notifficationbycheckCollection = notifficationbycheckCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -124,8 +109,21 @@ public class Check implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Check)) {
+            return false;
+        }
+        Check other = (Check) object;
+        if ((this.idCheck == null && other.idCheck != null) || (this.idCheck != null && !this.idCheck.equals(other.idCheck))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Check[ idCheck=" + idCheck + " ]";
+        return "co.edu.udea.ceset.dto.entities.Check[ idCheck=" + idCheck + " ]";
     }
     
 }

@@ -9,12 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,28 +19,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_notifficationbyrole")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Notifficationbyrole.findAll", query = "SELECT n FROM Notifficationbyrole n")
-    , @NamedQuery(name = "Notifficationbyrole.findById", query = "SELECT n FROM Notifficationbyrole n WHERE n.id = :id")})
+    @NamedQuery(name = "Notifficationbyrole.findAll", query = "SELECT n FROM Notifficationbyrole n"),
+    @NamedQuery(name = "Notifficationbyrole.findById", query = "SELECT n FROM Notifficationbyrole n WHERE n.id = :id"),
+    @NamedQuery(name = "Notifficationbyrole.findByIdRole", query = "SELECT n FROM Notifficationbyrole n WHERE n.idRole = :idRole"),
+    @NamedQuery(name = "Notifficationbyrole.findByIdNotif", query = "SELECT n FROM Notifficationbyrole n WHERE n.idNotif = :idNotif")})
 public class Notifficationbyrole implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
-    @JoinColumn(name = "idRole", referencedColumnName = "idRole")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Rolec idRole;
-    @JoinColumn(name = "idNotif", referencedColumnName = "IdNotif")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Notiffication idNotif;
+    @Column(name = "idRole")
+    private Integer idRole;
+    @Column(name = "idNotif")
+    private Integer idNotif;
 
     public Notifficationbyrole() {
     }
@@ -60,19 +56,19 @@ public class Notifficationbyrole implements Serializable {
         this.id = id;
     }
 
-    public Rolec getIdRole() {
+    public Integer getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(Rolec idRole) {
+    public void setIdRole(Integer idRole) {
         this.idRole = idRole;
     }
 
-    public Notiffication getIdNotif() {
+    public Integer getIdNotif() {
         return idNotif;
     }
 
-    public void setIdNotif(Notiffication idNotif) {
+    public void setIdNotif(Integer idNotif) {
         this.idNotif = idNotif;
     }
 
@@ -84,8 +80,21 @@ public class Notifficationbyrole implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Notifficationbyrole)) {
+            return false;
+        }
+        Notifficationbyrole other = (Notifficationbyrole) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Notifficationbyrole[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Notifficationbyrole[ id=" + id + " ]";
     }
     
 }

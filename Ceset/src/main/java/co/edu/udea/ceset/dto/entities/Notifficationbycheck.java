@@ -9,12 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,28 +19,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_notifficationbycheck")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Notifficationbycheck.findAll", query = "SELECT n FROM Notifficationbycheck n")
-    , @NamedQuery(name = "Notifficationbycheck.findById", query = "SELECT n FROM Notifficationbycheck n WHERE n.id = :id")})
+    @NamedQuery(name = "Notifficationbycheck.findAll", query = "SELECT n FROM Notifficationbycheck n"),
+    @NamedQuery(name = "Notifficationbycheck.findById", query = "SELECT n FROM Notifficationbycheck n WHERE n.id = :id"),
+    @NamedQuery(name = "Notifficationbycheck.findByIdNotif", query = "SELECT n FROM Notifficationbycheck n WHERE n.idNotif = :idNotif"),
+    @NamedQuery(name = "Notifficationbycheck.findByIdCheck", query = "SELECT n FROM Notifficationbycheck n WHERE n.idCheck = :idCheck")})
 public class Notifficationbycheck implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
-    @JoinColumn(name = "idCheck", referencedColumnName = "IdCheck")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Check idCheck;
-    @JoinColumn(name = "idNotif", referencedColumnName = "IdNotif")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Notiffication idNotif;
+    @Column(name = "idNotif")
+    private Integer idNotif;
+    @Column(name = "idCheck")
+    private Integer idCheck;
 
     public Notifficationbycheck() {
     }
@@ -60,20 +56,20 @@ public class Notifficationbycheck implements Serializable {
         this.id = id;
     }
 
-    public Check getIdCheck() {
-        return idCheck;
-    }
-
-    public void setIdCheck(Check idCheck) {
-        this.idCheck = idCheck;
-    }
-
-    public Notiffication getIdNotif() {
+    public Integer getIdNotif() {
         return idNotif;
     }
 
-    public void setIdNotif(Notiffication idNotif) {
+    public void setIdNotif(Integer idNotif) {
         this.idNotif = idNotif;
+    }
+
+    public Integer getIdCheck() {
+        return idCheck;
+    }
+
+    public void setIdCheck(Integer idCheck) {
+        this.idCheck = idCheck;
     }
 
     @Override
@@ -84,8 +80,21 @@ public class Notifficationbycheck implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Notifficationbycheck)) {
+            return false;
+        }
+        Notifficationbycheck other = (Notifficationbycheck) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Notifficationbycheck[ id=" + id + " ]";
+        return "co.edu.udea.ceset.dto.entities.Notifficationbycheck[ id=" + id + " ]";
     }
     
 }

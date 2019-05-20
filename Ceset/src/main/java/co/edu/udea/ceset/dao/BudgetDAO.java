@@ -6,15 +6,14 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dto.entities.Budget;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import co.edu.udea.ceset.dto.entities.Academicactivity;
-import co.edu.udea.ceset.dto.entities.Budget;
-import co.edu.udea.ceset.dto.entities.Budgetbyitem;
+import co.edu.udea.ceset.dto.entities.Groupe;
+import co.edu.udea.ceset.dto.entities.Budgetbyexpenditure;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class BudgetDAO implements Serializable {
 
@@ -37,38 +36,36 @@ public class BudgetDAO implements Serializable {
     }
 
     public void create(Budget budget) {
-        if (budget.getBudgetbyitemCollection() == null) {
-            budget.setBudgetbyitemCollection(new ArrayList<Budgetbyitem>());
+        if (budget.getBudgetbyexpenditureCollection() == null) {
+            budget.setBudgetbyexpenditureCollection(new ArrayList<Budgetbyexpenditure>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-
-            Academicactivity idActivity = budget.getIdActivity();
-            if (idActivity != null) {
-                idActivity = em.getReference(idActivity.getClass(), idActivity.getIdAcad());
-                budget.setIdActivity(idActivity);
+            Groupe idGroup = budget.getIdGroup();
+            if (idGroup != null) {
+                idGroup = em.getReference(idGroup.getClass(), idGroup.getIdGroup());
+                budget.setIdGroup(idGroup);
             }
-            Collection<Budgetbyitem> attachedBudgetbyitemCollection = new ArrayList<Budgetbyitem>();
-            for (Budgetbyitem budgetbyitemCollectionBudgetbyitemToAttach : budget.getBudgetbyitemCollection()) {
-                budgetbyitemCollectionBudgetbyitemToAttach = em.getReference(budgetbyitemCollectionBudgetbyitemToAttach.getClass(), budgetbyitemCollectionBudgetbyitemToAttach.getId());
-                attachedBudgetbyitemCollection.add(budgetbyitemCollectionBudgetbyitemToAttach);
+            Collection<Budgetbyexpenditure> attachedBudgetbyexpenditureCollection = new ArrayList<Budgetbyexpenditure>();
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionBudgetbyexpenditureToAttach : budget.getBudgetbyexpenditureCollection()) {
+                budgetbyexpenditureCollectionBudgetbyexpenditureToAttach = em.getReference(budgetbyexpenditureCollectionBudgetbyexpenditureToAttach.getClass(), budgetbyexpenditureCollectionBudgetbyexpenditureToAttach.getId());
+                attachedBudgetbyexpenditureCollection.add(budgetbyexpenditureCollectionBudgetbyexpenditureToAttach);
             }
-            budget.setBudgetbyitemCollection(attachedBudgetbyitemCollection);
+            budget.setBudgetbyexpenditureCollection(attachedBudgetbyexpenditureCollection);
             em.persist(budget);
-
-            if (idActivity != null) {
-                idActivity.getBudgetCollection().add(budget);
-                idActivity = em.merge(idActivity);
+            if (idGroup != null) {
+                idGroup.getBudgetCollection().add(budget);
+                idGroup = em.merge(idGroup);
             }
-            for (Budgetbyitem budgetbyitemCollectionBudgetbyitem : budget.getBudgetbyitemCollection()) {
-                Budget oldIdBudgetOfBudgetbyitemCollectionBudgetbyitem = budgetbyitemCollectionBudgetbyitem.getIdBudget();
-                budgetbyitemCollectionBudgetbyitem.setIdBudget(budget);
-                budgetbyitemCollectionBudgetbyitem = em.merge(budgetbyitemCollectionBudgetbyitem);
-                if (oldIdBudgetOfBudgetbyitemCollectionBudgetbyitem != null) {
-                    oldIdBudgetOfBudgetbyitemCollectionBudgetbyitem.getBudgetbyitemCollection().remove(budgetbyitemCollectionBudgetbyitem);
-                    oldIdBudgetOfBudgetbyitemCollectionBudgetbyitem = em.merge(oldIdBudgetOfBudgetbyitemCollectionBudgetbyitem);
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionBudgetbyexpenditure : budget.getBudgetbyexpenditureCollection()) {
+                Budget oldIdBudgetOfBudgetbyexpenditureCollectionBudgetbyexpenditure = budgetbyexpenditureCollectionBudgetbyexpenditure.getIdBudget();
+                budgetbyexpenditureCollectionBudgetbyexpenditure.setIdBudget(budget);
+                budgetbyexpenditureCollectionBudgetbyexpenditure = em.merge(budgetbyexpenditureCollectionBudgetbyexpenditure);
+                if (oldIdBudgetOfBudgetbyexpenditureCollectionBudgetbyexpenditure != null) {
+                    oldIdBudgetOfBudgetbyexpenditureCollectionBudgetbyexpenditure.getBudgetbyexpenditureCollection().remove(budgetbyexpenditureCollectionBudgetbyexpenditure);
+                    oldIdBudgetOfBudgetbyexpenditureCollectionBudgetbyexpenditure = em.merge(oldIdBudgetOfBudgetbyexpenditureCollectionBudgetbyexpenditure);
                 }
             }
             em.getTransaction().commit();
@@ -85,47 +82,44 @@ public class BudgetDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Budget persistentBudget = em.find(Budget.class, budget.getIdBudget());
-
-            Academicactivity idActivityOld = persistentBudget.getIdActivity();
-            Academicactivity idActivityNew = budget.getIdActivity();
-            Collection<Budgetbyitem> budgetbyitemCollectionOld = persistentBudget.getBudgetbyitemCollection();
-            Collection<Budgetbyitem> budgetbyitemCollectionNew = budget.getBudgetbyitemCollection();
-
-            if (idActivityNew != null) {
-                idActivityNew = em.getReference(idActivityNew.getClass(), idActivityNew.getIdAcad());
-                budget.setIdActivity(idActivityNew);
+            Groupe idGroupOld = persistentBudget.getIdGroup();
+            Groupe idGroupNew = budget.getIdGroup();
+            Collection<Budgetbyexpenditure> budgetbyexpenditureCollectionOld = persistentBudget.getBudgetbyexpenditureCollection();
+            Collection<Budgetbyexpenditure> budgetbyexpenditureCollectionNew = budget.getBudgetbyexpenditureCollection();
+            if (idGroupNew != null) {
+                idGroupNew = em.getReference(idGroupNew.getClass(), idGroupNew.getIdGroup());
+                budget.setIdGroup(idGroupNew);
             }
-            Collection<Budgetbyitem> attachedBudgetbyitemCollectionNew = new ArrayList<Budgetbyitem>();
-            for (Budgetbyitem budgetbyitemCollectionNewBudgetbyitemToAttach : budgetbyitemCollectionNew) {
-                budgetbyitemCollectionNewBudgetbyitemToAttach = em.getReference(budgetbyitemCollectionNewBudgetbyitemToAttach.getClass(), budgetbyitemCollectionNewBudgetbyitemToAttach.getId());
-                attachedBudgetbyitemCollectionNew.add(budgetbyitemCollectionNewBudgetbyitemToAttach);
+            Collection<Budgetbyexpenditure> attachedBudgetbyexpenditureCollectionNew = new ArrayList<Budgetbyexpenditure>();
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionNewBudgetbyexpenditureToAttach : budgetbyexpenditureCollectionNew) {
+                budgetbyexpenditureCollectionNewBudgetbyexpenditureToAttach = em.getReference(budgetbyexpenditureCollectionNewBudgetbyexpenditureToAttach.getClass(), budgetbyexpenditureCollectionNewBudgetbyexpenditureToAttach.getId());
+                attachedBudgetbyexpenditureCollectionNew.add(budgetbyexpenditureCollectionNewBudgetbyexpenditureToAttach);
             }
-            budgetbyitemCollectionNew = attachedBudgetbyitemCollectionNew;
-            budget.setBudgetbyitemCollection(budgetbyitemCollectionNew);
+            budgetbyexpenditureCollectionNew = attachedBudgetbyexpenditureCollectionNew;
+            budget.setBudgetbyexpenditureCollection(budgetbyexpenditureCollectionNew);
             budget = em.merge(budget);
-        
-            if (idActivityOld != null && !idActivityOld.equals(idActivityNew)) {
-                idActivityOld.getBudgetCollection().remove(budget);
-                idActivityOld = em.merge(idActivityOld);
+            if (idGroupOld != null && !idGroupOld.equals(idGroupNew)) {
+                idGroupOld.getBudgetCollection().remove(budget);
+                idGroupOld = em.merge(idGroupOld);
             }
-            if (idActivityNew != null && !idActivityNew.equals(idActivityOld)) {
-                idActivityNew.getBudgetCollection().add(budget);
-                idActivityNew = em.merge(idActivityNew);
+            if (idGroupNew != null && !idGroupNew.equals(idGroupOld)) {
+                idGroupNew.getBudgetCollection().add(budget);
+                idGroupNew = em.merge(idGroupNew);
             }
-            for (Budgetbyitem budgetbyitemCollectionOldBudgetbyitem : budgetbyitemCollectionOld) {
-                if (!budgetbyitemCollectionNew.contains(budgetbyitemCollectionOldBudgetbyitem)) {
-                    budgetbyitemCollectionOldBudgetbyitem.setIdBudget(null);
-                    budgetbyitemCollectionOldBudgetbyitem = em.merge(budgetbyitemCollectionOldBudgetbyitem);
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionOldBudgetbyexpenditure : budgetbyexpenditureCollectionOld) {
+                if (!budgetbyexpenditureCollectionNew.contains(budgetbyexpenditureCollectionOldBudgetbyexpenditure)) {
+                    budgetbyexpenditureCollectionOldBudgetbyexpenditure.setIdBudget(null);
+                    budgetbyexpenditureCollectionOldBudgetbyexpenditure = em.merge(budgetbyexpenditureCollectionOldBudgetbyexpenditure);
                 }
             }
-            for (Budgetbyitem budgetbyitemCollectionNewBudgetbyitem : budgetbyitemCollectionNew) {
-                if (!budgetbyitemCollectionOld.contains(budgetbyitemCollectionNewBudgetbyitem)) {
-                    Budget oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem = budgetbyitemCollectionNewBudgetbyitem.getIdBudget();
-                    budgetbyitemCollectionNewBudgetbyitem.setIdBudget(budget);
-                    budgetbyitemCollectionNewBudgetbyitem = em.merge(budgetbyitemCollectionNewBudgetbyitem);
-                    if (oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem != null && !oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem.equals(budget)) {
-                        oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem.getBudgetbyitemCollection().remove(budgetbyitemCollectionNewBudgetbyitem);
-                        oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem = em.merge(oldIdBudgetOfBudgetbyitemCollectionNewBudgetbyitem);
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionNewBudgetbyexpenditure : budgetbyexpenditureCollectionNew) {
+                if (!budgetbyexpenditureCollectionOld.contains(budgetbyexpenditureCollectionNewBudgetbyexpenditure)) {
+                    Budget oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure = budgetbyexpenditureCollectionNewBudgetbyexpenditure.getIdBudget();
+                    budgetbyexpenditureCollectionNewBudgetbyexpenditure.setIdBudget(budget);
+                    budgetbyexpenditureCollectionNewBudgetbyexpenditure = em.merge(budgetbyexpenditureCollectionNewBudgetbyexpenditure);
+                    if (oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure != null && !oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure.equals(budget)) {
+                        oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure.getBudgetbyexpenditureCollection().remove(budgetbyexpenditureCollectionNewBudgetbyexpenditure);
+                        oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure = em.merge(oldIdBudgetOfBudgetbyexpenditureCollectionNewBudgetbyexpenditure);
                     }
                 }
             }
@@ -158,16 +152,15 @@ public class BudgetDAO implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The budget with id " + id + " no longer exists.", enfe);
             }
-
-            Academicactivity idActivity = budget.getIdActivity();
-            if (idActivity != null) {
-                idActivity.getBudgetCollection().remove(budget);
-                idActivity = em.merge(idActivity);
+            Groupe idGroup = budget.getIdGroup();
+            if (idGroup != null) {
+                idGroup.getBudgetCollection().remove(budget);
+                idGroup = em.merge(idGroup);
             }
-            Collection<Budgetbyitem> budgetbyitemCollection = budget.getBudgetbyitemCollection();
-            for (Budgetbyitem budgetbyitemCollectionBudgetbyitem : budgetbyitemCollection) {
-                budgetbyitemCollectionBudgetbyitem.setIdBudget(null);
-                budgetbyitemCollectionBudgetbyitem = em.merge(budgetbyitemCollectionBudgetbyitem);
+            Collection<Budgetbyexpenditure> budgetbyexpenditureCollection = budget.getBudgetbyexpenditureCollection();
+            for (Budgetbyexpenditure budgetbyexpenditureCollectionBudgetbyexpenditure : budgetbyexpenditureCollection) {
+                budgetbyexpenditureCollectionBudgetbyexpenditure.setIdBudget(null);
+                budgetbyexpenditureCollectionBudgetbyexpenditure = em.merge(budgetbyexpenditureCollectionBudgetbyexpenditure);
             }
             em.remove(budget);
             em.getTransaction().commit();

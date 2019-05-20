@@ -11,21 +11,17 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import co.edu.udea.ceset.dto.entities.Expenditurebyitem;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import co.edu.udea.ceset.dto.entities.Check;
 import co.edu.udea.ceset.dto.entities.Expenditure;
-
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class ExpenditureDAO implements Serializable {
 
@@ -39,9 +35,6 @@ public class ExpenditureDAO implements Serializable {
     }
 
     public void create(Expenditure expenditure) {
-        if (expenditure.getExpenditurebyitemCollection() == null) {
-            expenditure.setExpenditurebyitemCollection(new ArrayList<Expenditurebyitem>());
-        }
         if (expenditure.getCheckCollection() == null) {
             expenditure.setCheckCollection(new ArrayList<Check>());
         }
@@ -49,12 +42,6 @@ public class ExpenditureDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Expenditurebyitem> attachedExpenditurebyitemCollection = new ArrayList<Expenditurebyitem>();
-            for (Expenditurebyitem expenditurebyitemCollectionExpenditurebyitemToAttach : expenditure.getExpenditurebyitemCollection()) {
-                expenditurebyitemCollectionExpenditurebyitemToAttach = em.getReference(expenditurebyitemCollectionExpenditurebyitemToAttach.getClass(), expenditurebyitemCollectionExpenditurebyitemToAttach.getId());
-                attachedExpenditurebyitemCollection.add(expenditurebyitemCollectionExpenditurebyitemToAttach);
-            }
-            expenditure.setExpenditurebyitemCollection(attachedExpenditurebyitemCollection);
             Collection<Check> attachedCheckCollection = new ArrayList<Check>();
             for (Check checkCollectionCheckToAttach : expenditure.getCheckCollection()) {
                 checkCollectionCheckToAttach = em.getReference(checkCollectionCheckToAttach.getClass(), checkCollectionCheckToAttach.getIdCheck());
@@ -62,15 +49,6 @@ public class ExpenditureDAO implements Serializable {
             }
             expenditure.setCheckCollection(attachedCheckCollection);
             em.persist(expenditure);
-            for (Expenditurebyitem expenditurebyitemCollectionExpenditurebyitem : expenditure.getExpenditurebyitemCollection()) {
-                Expenditure oldIdExpendOfExpenditurebyitemCollectionExpenditurebyitem = expenditurebyitemCollectionExpenditurebyitem.getIdExpend();
-                expenditurebyitemCollectionExpenditurebyitem.setIdExpend(expenditure);
-                expenditurebyitemCollectionExpenditurebyitem = em.merge(expenditurebyitemCollectionExpenditurebyitem);
-                if (oldIdExpendOfExpenditurebyitemCollectionExpenditurebyitem != null) {
-                    oldIdExpendOfExpenditurebyitemCollectionExpenditurebyitem.getExpenditurebyitemCollection().remove(expenditurebyitemCollectionExpenditurebyitem);
-                    oldIdExpendOfExpenditurebyitemCollectionExpenditurebyitem = em.merge(oldIdExpendOfExpenditurebyitemCollectionExpenditurebyitem);
-                }
-            }
             for (Check checkCollectionCheck : expenditure.getCheckCollection()) {
                 Expenditure oldIdExpendOfCheckCollectionCheck = checkCollectionCheck.getIdExpend();
                 checkCollectionCheck.setIdExpend(expenditure);
@@ -94,17 +72,8 @@ public class ExpenditureDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Expenditure persistentExpenditure = em.find(Expenditure.class, expenditure.getIdExpend());
-            Collection<Expenditurebyitem> expenditurebyitemCollectionOld = persistentExpenditure.getExpenditurebyitemCollection();
-            Collection<Expenditurebyitem> expenditurebyitemCollectionNew = expenditure.getExpenditurebyitemCollection();
             Collection<Check> checkCollectionOld = persistentExpenditure.getCheckCollection();
             Collection<Check> checkCollectionNew = expenditure.getCheckCollection();
-            Collection<Expenditurebyitem> attachedExpenditurebyitemCollectionNew = new ArrayList<Expenditurebyitem>();
-            for (Expenditurebyitem expenditurebyitemCollectionNewExpenditurebyitemToAttach : expenditurebyitemCollectionNew) {
-                expenditurebyitemCollectionNewExpenditurebyitemToAttach = em.getReference(expenditurebyitemCollectionNewExpenditurebyitemToAttach.getClass(), expenditurebyitemCollectionNewExpenditurebyitemToAttach.getId());
-                attachedExpenditurebyitemCollectionNew.add(expenditurebyitemCollectionNewExpenditurebyitemToAttach);
-            }
-            expenditurebyitemCollectionNew = attachedExpenditurebyitemCollectionNew;
-            expenditure.setExpenditurebyitemCollection(expenditurebyitemCollectionNew);
             Collection<Check> attachedCheckCollectionNew = new ArrayList<Check>();
             for (Check checkCollectionNewCheckToAttach : checkCollectionNew) {
                 checkCollectionNewCheckToAttach = em.getReference(checkCollectionNewCheckToAttach.getClass(), checkCollectionNewCheckToAttach.getIdCheck());
@@ -113,23 +82,6 @@ public class ExpenditureDAO implements Serializable {
             checkCollectionNew = attachedCheckCollectionNew;
             expenditure.setCheckCollection(checkCollectionNew);
             expenditure = em.merge(expenditure);
-            for (Expenditurebyitem expenditurebyitemCollectionOldExpenditurebyitem : expenditurebyitemCollectionOld) {
-                if (!expenditurebyitemCollectionNew.contains(expenditurebyitemCollectionOldExpenditurebyitem)) {
-                    expenditurebyitemCollectionOldExpenditurebyitem.setIdExpend(null);
-                    expenditurebyitemCollectionOldExpenditurebyitem = em.merge(expenditurebyitemCollectionOldExpenditurebyitem);
-                }
-            }
-            for (Expenditurebyitem expenditurebyitemCollectionNewExpenditurebyitem : expenditurebyitemCollectionNew) {
-                if (!expenditurebyitemCollectionOld.contains(expenditurebyitemCollectionNewExpenditurebyitem)) {
-                    Expenditure oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem = expenditurebyitemCollectionNewExpenditurebyitem.getIdExpend();
-                    expenditurebyitemCollectionNewExpenditurebyitem.setIdExpend(expenditure);
-                    expenditurebyitemCollectionNewExpenditurebyitem = em.merge(expenditurebyitemCollectionNewExpenditurebyitem);
-                    if (oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem != null && !oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem.equals(expenditure)) {
-                        oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem.getExpenditurebyitemCollection().remove(expenditurebyitemCollectionNewExpenditurebyitem);
-                        oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem = em.merge(oldIdExpendOfExpenditurebyitemCollectionNewExpenditurebyitem);
-                    }
-                }
-            }
             for (Check checkCollectionOldCheck : checkCollectionOld) {
                 if (!checkCollectionNew.contains(checkCollectionOldCheck)) {
                     checkCollectionOldCheck.setIdExpend(null);
@@ -175,11 +127,6 @@ public class ExpenditureDAO implements Serializable {
                 expenditure.getIdExpend();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The expenditure with id " + id + " no longer exists.", enfe);
-            }
-            Collection<Expenditurebyitem> expenditurebyitemCollection = expenditure.getExpenditurebyitemCollection();
-            for (Expenditurebyitem expenditurebyitemCollectionExpenditurebyitem : expenditurebyitemCollection) {
-                expenditurebyitemCollectionExpenditurebyitem.setIdExpend(null);
-                expenditurebyitemCollectionExpenditurebyitem = em.merge(expenditurebyitemCollectionExpenditurebyitem);
             }
             Collection<Check> checkCollection = expenditure.getCheckCollection();
             for (Check checkCollectionCheck : checkCollection) {

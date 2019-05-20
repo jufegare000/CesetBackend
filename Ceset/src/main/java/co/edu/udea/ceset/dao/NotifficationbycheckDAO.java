@@ -6,21 +6,19 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dto.entities.Notifficationbycheck;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Check;
-import co.edu.udea.ceset.dto.entities.Notiffication;
-import co.edu.udea.ceset.dto.entities.Notifficationbycheck;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class NotifficationbycheckDAO implements Serializable {
 
@@ -38,25 +36,7 @@ public class NotifficationbycheckDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Check idCheck = notifficationbycheck.getIdCheck();
-            if (idCheck != null) {
-                idCheck = em.getReference(idCheck.getClass(), idCheck.getIdCheck());
-                notifficationbycheck.setIdCheck(idCheck);
-            }
-            Notiffication idNotif = notifficationbycheck.getIdNotif();
-            if (idNotif != null) {
-                idNotif = em.getReference(idNotif.getClass(), idNotif.getIdNotif());
-                notifficationbycheck.setIdNotif(idNotif);
-            }
             em.persist(notifficationbycheck);
-            if (idCheck != null) {
-                idCheck.getNotifficationbycheckCollection().add(notifficationbycheck);
-                idCheck = em.merge(idCheck);
-            }
-            if (idNotif != null) {
-                idNotif.getNotifficationbycheckCollection().add(notifficationbycheck);
-                idNotif = em.merge(idNotif);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -70,36 +50,7 @@ public class NotifficationbycheckDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Notifficationbycheck persistentNotifficationbycheck = em.find(Notifficationbycheck.class, notifficationbycheck.getId());
-            Check idCheckOld = persistentNotifficationbycheck.getIdCheck();
-            Check idCheckNew = notifficationbycheck.getIdCheck();
-            Notiffication idNotifOld = persistentNotifficationbycheck.getIdNotif();
-            Notiffication idNotifNew = notifficationbycheck.getIdNotif();
-            if (idCheckNew != null) {
-                idCheckNew = em.getReference(idCheckNew.getClass(), idCheckNew.getIdCheck());
-                notifficationbycheck.setIdCheck(idCheckNew);
-            }
-            if (idNotifNew != null) {
-                idNotifNew = em.getReference(idNotifNew.getClass(), idNotifNew.getIdNotif());
-                notifficationbycheck.setIdNotif(idNotifNew);
-            }
             notifficationbycheck = em.merge(notifficationbycheck);
-            if (idCheckOld != null && !idCheckOld.equals(idCheckNew)) {
-                idCheckOld.getNotifficationbycheckCollection().remove(notifficationbycheck);
-                idCheckOld = em.merge(idCheckOld);
-            }
-            if (idCheckNew != null && !idCheckNew.equals(idCheckOld)) {
-                idCheckNew.getNotifficationbycheckCollection().add(notifficationbycheck);
-                idCheckNew = em.merge(idCheckNew);
-            }
-            if (idNotifOld != null && !idNotifOld.equals(idNotifNew)) {
-                idNotifOld.getNotifficationbycheckCollection().remove(notifficationbycheck);
-                idNotifOld = em.merge(idNotifOld);
-            }
-            if (idNotifNew != null && !idNotifNew.equals(idNotifOld)) {
-                idNotifNew.getNotifficationbycheckCollection().add(notifficationbycheck);
-                idNotifNew = em.merge(idNotifNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -128,16 +79,6 @@ public class NotifficationbycheckDAO implements Serializable {
                 notifficationbycheck.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The notifficationbycheck with id " + id + " no longer exists.", enfe);
-            }
-            Check idCheck = notifficationbycheck.getIdCheck();
-            if (idCheck != null) {
-                idCheck.getNotifficationbycheckCollection().remove(notifficationbycheck);
-                idCheck = em.merge(idCheck);
-            }
-            Notiffication idNotif = notifficationbycheck.getIdNotif();
-            if (idNotif != null) {
-                idNotif.getNotifficationbycheckCollection().remove(notifficationbycheck);
-                idNotif = em.merge(idNotif);
             }
             em.remove(notifficationbycheck);
             em.getTransaction().commit();

@@ -3,7 +3,6 @@
   <persistence-unit name="ceset_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>co.edu.udea.ceset.dto.entities.Notiffication</class>
-    <class>co.edu.udea.ceset.dto.entities.Rolebypermission</class>
     <class>co.edu.udea.ceset.dto.entities.Estimatedbyitem</class>
     <class>co.edu.udea.ceset.dto.entities.User</class>
     <class>co.edu.udea.ceset.dto.entities.Expenditurebygroup</class>
@@ -14,7 +13,6 @@
     <class>co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure</class>
     <class>co.edu.udea.ceset.dto.entities.Notifficationbyrole</class>
     <class>co.edu.udea.ceset.dto.entities.Item</class>
-    <class>co.edu.udea.ceset.dto.entities.Check</class>
     <class>co.edu.udea.ceset.dto.entities.Academicactivity</class>
     <class>co.edu.udea.ceset.dto.entities.Expenditurebyitem</class>
     <class>co.edu.udea.ceset.dto.entities.Permission</class>
@@ -27,6 +25,9 @@
     <class>co.edu.udea.ceset.dto.entities.Budgetbyexpenditure</class>
     <class>co.edu.udea.ceset.dto.entities.Themes</class>
     <class>co.edu.udea.ceset.dto.entities.Portafolio</class>
+    <class>co.edu.udea.ceset.dto.entities.Rolebypermission</class>
+    <class>co.edu.udea.ceset.dto.entities.Rolec</class>
+    <class>co.edu.udea.ceset.dto.entities.Check</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_ceset?zeroDateTimeBehavior=convertToNull"/>

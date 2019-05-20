@@ -5,7 +5,6 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
-import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -25,43 +24,37 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_person")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
-    , @NamedQuery(name = "Person.findByIdPerson", query = "SELECT p FROM Person p WHERE p.idPerson = :idPerson")
-    , @NamedQuery(name = "Person.findByCompleteName", query = "SELECT p FROM Person p WHERE p.completeName = :completeName")
-    , @NamedQuery(name = "Person.findByDocumentType", query = "SELECT p FROM Person p WHERE p.documentType = :documentType")
-    , @NamedQuery(name = "Person.findByDocument", query = "SELECT p FROM Person p WHERE p.document = :document")
-    , @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")})
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
+    @NamedQuery(name = "Person.findByIdPerson", query = "SELECT p FROM Person p WHERE p.idPerson = :idPerson"),
+    @NamedQuery(name = "Person.findByCompleteName", query = "SELECT p FROM Person p WHERE p.completeName = :completeName"),
+    @NamedQuery(name = "Person.findByDocumentType", query = "SELECT p FROM Person p WHERE p.documentType = :documentType"),
+    @NamedQuery(name = "Person.findByDocument", query = "SELECT p FROM Person p WHERE p.document = :document"),
+    @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")})
 public class Person implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdPerson")
-    @Expose
     private Integer idPerson;
     @Size(max = 500)
     @Column(name = "completeName")
-    @Expose
     private String completeName;
     @Size(max = 50)
     @Column(name = "documentType")
-    @Expose
     private String documentType;
     @Size(max = 20)
     @Column(name = "document")
-    @Expose
     private String document;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 100)
     @Column(name = "email")
-    @Expose
     private String email;
     @OneToMany(mappedBy = "idPerson", fetch = FetchType.LAZY)
     private Collection<User> userCollection;
@@ -129,11 +122,22 @@ public class Person implements Serializable {
         return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Person)) {
+            return false;
+        }
+        Person other = (Person) object;
+        if ((this.idPerson == null && other.idPerson != null) || (this.idPerson != null && !this.idPerson.equals(other.idPerson))) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Person[ idPerson=" + idPerson + " ]";
+        return "co.edu.udea.ceset.dto.entities.Person[ idPerson=" + idPerson + " ]";
     }
     
 }

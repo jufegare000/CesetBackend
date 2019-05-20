@@ -6,8 +6,8 @@
 package co.edu.udea.ceset.dto.entities;
 
 import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -29,55 +29,46 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_role")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rolec.findAll", query = "SELECT r FROM Rolec r")
-    , @NamedQuery(name = "Rolec.findByIdRole", query = "SELECT r FROM Rolec r WHERE r.idRole = :idRole")
-    , @NamedQuery(name = "Rolec.findByDescription", query = "SELECT r FROM Rolec r WHERE r.description = :description")
-    , @NamedQuery(name = "Rolec.findByCreatedAt", query = "SELECT r FROM Rolec r WHERE r.createdAt = :createdAt")
-    , @NamedQuery(name = "Rolec.findByUpdatedAt", query = "SELECT r FROM Rolec r WHERE r.updatedAt = :updatedAt")
-    , @NamedQuery(name = "Rolec.findByStates", query = "SELECT r FROM Rolec r WHERE r.states = :states")})
+    @NamedQuery(name = "Rolec.findAll", query = "SELECT r FROM Rolec r"),
+    @NamedQuery(name = "Rolec.findByIdRole", query = "SELECT r FROM Rolec r WHERE r.idRole = :idRole"),
+    @NamedQuery(name = "Rolec.findByDescription", query = "SELECT r FROM Rolec r WHERE r.description = :description"),
+    @NamedQuery(name = "Rolec.findByCreatedAt", query = "SELECT r FROM Rolec r WHERE r.createdAt = :createdAt"),
+    @NamedQuery(name = "Rolec.findByUpdatedAt", query = "SELECT r FROM Rolec r WHERE r.updatedAt = :updatedAt"),
+    @NamedQuery(name = "Rolec.findByStates", query = "SELECT r FROM Rolec r WHERE r.states = :states")})
 public class Rolec implements Serializable {
-
-    @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
-    private Collection<Notifficationbyrole> notifficationbyroleCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idRole")
-    @Expose
     private Integer idRole;
     @Size(max = 50)
     @Column(name = "description")
     @Expose
     private String description;
-    @Size(max = 12)
-    @Column(name = "abreviation")
-    @Expose
-    private String abreviation;
     @Column(name = "CreatedAt")
     @Temporal(TemporalType.DATE)
     @Expose
     private Date createdAt;
     @Column(name = "UpdatedAt")
     @Temporal(TemporalType.DATE)
+    @Expose
     private Date updatedAt;
     @Size(max = 20)
     @Column(name = "States")
     @Expose
     private String states;
     @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Rolebypermission> rolebypermissionCollection;
     @OneToMany(mappedBy = "idRole", fetch = FetchType.LAZY)
     private Collection<Rolebyuser> rolebyuserCollection;
-
-    
 
     public Rolec() {
     }
@@ -126,16 +117,6 @@ public class Rolec implements Serializable {
         this.states = states;
     }
 
-    public String getAbreviation() {
-        return abreviation;
-    }
-
-    public void setAbreviation(String abreviation) {
-        this.abreviation = abreviation;
-    }
-    
-    
-
     @XmlTransient
     public Collection<Rolebypermission> getRolebypermissionCollection() {
         return rolebypermissionCollection;
@@ -162,20 +143,21 @@ public class Rolec implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Rolec)) {
+            return false;
+        }
+        Rolec other = (Rolec) object;
+        if ((this.idRole == null && other.idRole != null) || (this.idRole != null && !this.idRole.equals(other.idRole))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "{id:"+ String.valueOf(idRole)+",descripcion:"+description+"}";
+        return "co.edu.udea.ceset.dto.entities.Role[ idRole=" + idRole + " ]";
     }
-
-/*    public String sqlDateFormat(Date date) {
-        return this.dateFormat.format(date);
-    }*/
-
-    @XmlTransient
-    public Collection<Notifficationbyrole> getNotifficationbyroleCollection() {
-        return notifficationbyroleCollection;
-    }
-
-    public void setNotifficationbyroleCollection(Collection<Notifficationbyrole> notifficationbyroleCollection) {
-        this.notifficationbyroleCollection = notifficationbyroleCollection;
-    }
+    
 }

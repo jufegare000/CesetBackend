@@ -5,10 +5,6 @@
  */
 package co.edu.udea.ceset.dao;
 
-import co.edu.udea.ceset.dto.entities.Discount;
-import co.edu.udea.ceset.dto.entities.Estimated;
-import co.edu.udea.ceset.dto.entities.User;
-import co.edu.udea.ceset.dto.entities.Budget;
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
 import co.edu.udea.ceset.dto.entities.Academicactivity;
 import java.io.Serializable;
@@ -16,16 +12,19 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import co.edu.udea.ceset.dto.entities.Portafolio;
+import co.edu.udea.ceset.dto.entities.User;
+import co.edu.udea.ceset.dto.entities.Estimated;
 import java.util.ArrayList;
 import java.util.Collection;
+import co.edu.udea.ceset.dto.entities.Groupe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class AcademicactivityDAO implements Serializable {
 
@@ -37,22 +36,17 @@ public class AcademicactivityDAO implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-
 
     public Academicactivity create(Academicactivity academicactivity) {
         List<Academicactivity> lAcad = null;
         List<User> luser= null;
         User usr = null; 
         String nameUser;
-        if (academicactivity.getBudgetCollection() == null) {
-            academicactivity.setBudgetCollection(new ArrayList<Budget>());
-        }
         if (academicactivity.getEstimatedCollection() == null) {
             academicactivity.setEstimatedCollection(new ArrayList<Estimated>());
         }
-        if (academicactivity.getDiscountCollection() == null) {
-            academicactivity.setDiscountCollection(new ArrayList<Discount>());
+        if (academicactivity.getGroupeCollection() == null) {
+            academicactivity.setGroupeCollection(new ArrayList<Groupe>());
         }
         EntityManager em = null;
         try {
@@ -66,42 +60,38 @@ public class AcademicactivityDAO implements Serializable {
                 usr = luser.get(0);
                 academicactivity.setIdUser(usr);
             }
-            Collection<Budget> attachedBudgetCollection = new ArrayList<Budget>();
-            for (Budget budgetCollectionBudgetToAttach : academicactivity.getBudgetCollection()) {
-                budgetCollectionBudgetToAttach = em.getReference(budgetCollectionBudgetToAttach.getClass(), budgetCollectionBudgetToAttach.getIdBudget());
-                attachedBudgetCollection.add(budgetCollectionBudgetToAttach);
+            em = getEntityManager();
+            em.getTransaction().begin();
+            Portafolio idPort = academicactivity.getIdPort();
+            if (idPort != null) {
+                idPort = em.getReference(idPort.getClass(), idPort.getId());
+                academicactivity.setIdPort(idPort);
             }
-            academicactivity.setBudgetCollection(attachedBudgetCollection);
+            User idUser = academicactivity.getIdUser();
+            if (idUser != null) {
+                idUser = em.getReference(idUser.getClass(), idUser.getIdUser());
+                academicactivity.setIdUser(idUser);
+            }
             Collection<Estimated> attachedEstimatedCollection = new ArrayList<Estimated>();
             for (Estimated estimatedCollectionEstimatedToAttach : academicactivity.getEstimatedCollection()) {
-                // Se debe crear el estimado antes de adjuntarselo a la actividad académica
-                
-                estimatedCollectionEstimatedToAttach = em.getReference(
-                        estimatedCollectionEstimatedToAttach.getClass(),
-                        estimatedCollectionEstimatedToAttach.getIdEstimated());
+                estimatedCollectionEstimatedToAttach = em.getReference(estimatedCollectionEstimatedToAttach.getClass(), estimatedCollectionEstimatedToAttach.getIdEstimated());
                 attachedEstimatedCollection.add(estimatedCollectionEstimatedToAttach);
             }
             academicactivity.setEstimatedCollection(attachedEstimatedCollection);
-
-            Collection<Discount> attachedDiscountCollection = new ArrayList<Discount>();
-            for (Discount discountCollectionDiscountToAttach : academicactivity.getDiscountCollection()) {
-                discountCollectionDiscountToAttach = em.getReference(discountCollectionDiscountToAttach.getClass(), discountCollectionDiscountToAttach.getIdDiscount());
-                attachedDiscountCollection.add(discountCollectionDiscountToAttach);
+            Collection<Groupe> attachedGroupeCollection = new ArrayList<Groupe>();
+            for (Groupe groupeCollectionGroupeToAttach : academicactivity.getGroupeCollection()) {
+                groupeCollectionGroupeToAttach = em.getReference(groupeCollectionGroupeToAttach.getClass(), groupeCollectionGroupeToAttach.getIdGroup());
+                attachedGroupeCollection.add(groupeCollectionGroupeToAttach);
             }
-            academicactivity.setDiscountCollection(attachedDiscountCollection);
+            academicactivity.setGroupeCollection(attachedGroupeCollection);
             em.persist(academicactivity);
-            if (nameUser != null) {
-                usr.getAcademicactivityCollection().add(academicactivity);
-                usr = em.merge(usr);
+            if (idPort != null) {
+                idPort.getAcademicactivityCollection().add(academicactivity);
+                idPort = em.merge(idPort);
             }
-            for (Budget budgetCollectionBudget : academicactivity.getBudgetCollection()) {
-                Academicactivity oldIdActivityOfBudgetCollectionBudget = budgetCollectionBudget.getIdActivity();
-                budgetCollectionBudget.setIdActivity(academicactivity);
-                budgetCollectionBudget = em.merge(budgetCollectionBudget);
-                if (oldIdActivityOfBudgetCollectionBudget != null) {
-                    oldIdActivityOfBudgetCollectionBudget.getBudgetCollection().remove(budgetCollectionBudget);
-                    oldIdActivityOfBudgetCollectionBudget = em.merge(oldIdActivityOfBudgetCollectionBudget);
-                }
+            if (idUser != null) {
+                idUser.getAcademicactivityCollection().add(academicactivity);
+                idUser = em.merge(idUser);
             }
             for (Estimated estimatedCollectionEstimated : academicactivity.getEstimatedCollection()) {
                 Academicactivity oldIdAcadOfEstimatedCollectionEstimated = estimatedCollectionEstimated.getIdAcad();
@@ -112,18 +102,17 @@ public class AcademicactivityDAO implements Serializable {
                     oldIdAcadOfEstimatedCollectionEstimated = em.merge(oldIdAcadOfEstimatedCollectionEstimated);
                 }
             }
-
-            for (Discount discountCollectionDiscount : academicactivity.getDiscountCollection()) {
-                Academicactivity oldIdAcadOfDiscountCollectionDiscount = discountCollectionDiscount.getIdAcad();
-                discountCollectionDiscount.setIdAcad(academicactivity);
-                discountCollectionDiscount = em.merge(discountCollectionDiscount);
-                if (oldIdAcadOfDiscountCollectionDiscount != null) {
-                    oldIdAcadOfDiscountCollectionDiscount.getDiscountCollection().remove(discountCollectionDiscount);
-                    oldIdAcadOfDiscountCollectionDiscount = em.merge(oldIdAcadOfDiscountCollectionDiscount);
+            for (Groupe groupeCollectionGroupe : academicactivity.getGroupeCollection()) {
+                Academicactivity oldIdAcadOfGroupeCollectionGroupe = groupeCollectionGroupe.getIdAcad();
+                groupeCollectionGroupe.setIdAcad(academicactivity);
+                groupeCollectionGroupe = em.merge(groupeCollectionGroupe);
+                if (oldIdAcadOfGroupeCollectionGroupe != null) {
+                    oldIdAcadOfGroupeCollectionGroupe.getGroupeCollection().remove(groupeCollectionGroupe);
+                    oldIdAcadOfGroupeCollectionGroupe = em.merge(oldIdAcadOfGroupeCollectionGroupe);
                 }
             }
             em.getTransaction().commit();
-        } finally {
+        }  finally {
             lAcad = em.createNamedQuery("Academicactivity.findLast")
                     .setMaxResults(1)
                     .getResultList(); // retorna actividad recién creada
@@ -140,25 +129,22 @@ public class AcademicactivityDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Academicactivity persistentAcademicactivity = em.find(Academicactivity.class, academicactivity.getIdAcad());
+            Portafolio idPortOld = persistentAcademicactivity.getIdPort();
+            Portafolio idPortNew = academicactivity.getIdPort();
             User idUserOld = persistentAcademicactivity.getIdUser();
             User idUserNew = academicactivity.getIdUser();
-            Collection<Budget> budgetCollectionOld = persistentAcademicactivity.getBudgetCollection();
-            Collection<Budget> budgetCollectionNew = academicactivity.getBudgetCollection();
             Collection<Estimated> estimatedCollectionOld = persistentAcademicactivity.getEstimatedCollection();
-            Collection<Estimated> estimatedCollectionNew = academicactivity.getEstimatedCollection();;
-            Collection<Discount> discountCollectionOld = persistentAcademicactivity.getDiscountCollection();
-            Collection<Discount> discountCollectionNew = academicactivity.getDiscountCollection();
+            Collection<Estimated> estimatedCollectionNew = academicactivity.getEstimatedCollection();
+            Collection<Groupe> groupeCollectionOld = persistentAcademicactivity.getGroupeCollection();
+            Collection<Groupe> groupeCollectionNew = academicactivity.getGroupeCollection();
+            if (idPortNew != null) {
+                idPortNew = em.getReference(idPortNew.getClass(), idPortNew.getId());
+                academicactivity.setIdPort(idPortNew);
+            }
             if (idUserNew != null) {
                 idUserNew = em.getReference(idUserNew.getClass(), idUserNew.getIdUser());
                 academicactivity.setIdUser(idUserNew);
             }
-            Collection<Budget> attachedBudgetCollectionNew = new ArrayList<Budget>();
-            for (Budget budgetCollectionNewBudgetToAttach : budgetCollectionNew) {
-                budgetCollectionNewBudgetToAttach = em.getReference(budgetCollectionNewBudgetToAttach.getClass(), budgetCollectionNewBudgetToAttach.getIdBudget());
-                attachedBudgetCollectionNew.add(budgetCollectionNewBudgetToAttach);
-            }
-            budgetCollectionNew = attachedBudgetCollectionNew;
-            academicactivity.setBudgetCollection(budgetCollectionNew);
             Collection<Estimated> attachedEstimatedCollectionNew = new ArrayList<Estimated>();
             for (Estimated estimatedCollectionNewEstimatedToAttach : estimatedCollectionNew) {
                 estimatedCollectionNewEstimatedToAttach = em.getReference(estimatedCollectionNewEstimatedToAttach.getClass(), estimatedCollectionNewEstimatedToAttach.getIdEstimated());
@@ -166,14 +152,22 @@ public class AcademicactivityDAO implements Serializable {
             }
             estimatedCollectionNew = attachedEstimatedCollectionNew;
             academicactivity.setEstimatedCollection(estimatedCollectionNew);
-            Collection<Discount> attachedDiscountCollectionNew = new ArrayList<Discount>();
-            for (Discount discountCollectionNewDiscountToAttach : discountCollectionNew) {
-                discountCollectionNewDiscountToAttach = em.getReference(discountCollectionNewDiscountToAttach.getClass(), discountCollectionNewDiscountToAttach.getIdDiscount());
-                attachedDiscountCollectionNew.add(discountCollectionNewDiscountToAttach);
+            Collection<Groupe> attachedGroupeCollectionNew = new ArrayList<Groupe>();
+            for (Groupe groupeCollectionNewGroupeToAttach : groupeCollectionNew) {
+                groupeCollectionNewGroupeToAttach = em.getReference(groupeCollectionNewGroupeToAttach.getClass(), groupeCollectionNewGroupeToAttach.getIdGroup());
+                attachedGroupeCollectionNew.add(groupeCollectionNewGroupeToAttach);
             }
-            discountCollectionNew = attachedDiscountCollectionNew;
-            academicactivity.setDiscountCollection(discountCollectionNew);
+            groupeCollectionNew = attachedGroupeCollectionNew;
+            academicactivity.setGroupeCollection(groupeCollectionNew);
             academicactivity = em.merge(academicactivity);
+            if (idPortOld != null && !idPortOld.equals(idPortNew)) {
+                idPortOld.getAcademicactivityCollection().remove(academicactivity);
+                idPortOld = em.merge(idPortOld);
+            }
+            if (idPortNew != null && !idPortNew.equals(idPortOld)) {
+                idPortNew.getAcademicactivityCollection().add(academicactivity);
+                idPortNew = em.merge(idPortNew);
+            }
             if (idUserOld != null && !idUserOld.equals(idUserNew)) {
                 idUserOld.getAcademicactivityCollection().remove(academicactivity);
                 idUserOld = em.merge(idUserOld);
@@ -181,23 +175,6 @@ public class AcademicactivityDAO implements Serializable {
             if (idUserNew != null && !idUserNew.equals(idUserOld)) {
                 idUserNew.getAcademicactivityCollection().add(academicactivity);
                 idUserNew = em.merge(idUserNew);
-            }
-            for (Budget budgetCollectionOldBudget : budgetCollectionOld) {
-                if (!budgetCollectionNew.contains(budgetCollectionOldBudget)) {
-                    budgetCollectionOldBudget.setIdActivity(null);
-                    budgetCollectionOldBudget = em.merge(budgetCollectionOldBudget);
-                }
-            }
-            for (Budget budgetCollectionNewBudget : budgetCollectionNew) {
-                if (!budgetCollectionOld.contains(budgetCollectionNewBudget)) {
-                    Academicactivity oldIdActivityOfBudgetCollectionNewBudget = budgetCollectionNewBudget.getIdActivity();
-                    budgetCollectionNewBudget.setIdActivity(academicactivity);
-                    budgetCollectionNewBudget = em.merge(budgetCollectionNewBudget);
-                    if (oldIdActivityOfBudgetCollectionNewBudget != null && !oldIdActivityOfBudgetCollectionNewBudget.equals(academicactivity)) {
-                        oldIdActivityOfBudgetCollectionNewBudget.getBudgetCollection().remove(budgetCollectionNewBudget);
-                        oldIdActivityOfBudgetCollectionNewBudget = em.merge(oldIdActivityOfBudgetCollectionNewBudget);
-                    }
-                }
             }
             for (Estimated estimatedCollectionOldEstimated : estimatedCollectionOld) {
                 if (!estimatedCollectionNew.contains(estimatedCollectionOldEstimated)) {
@@ -216,22 +193,20 @@ public class AcademicactivityDAO implements Serializable {
                     }
                 }
             }
-
-
-            for (Discount discountCollectionOldDiscount : discountCollectionOld) {
-                if (!discountCollectionNew.contains(discountCollectionOldDiscount)) {
-                    discountCollectionOldDiscount.setIdAcad(null);
-                    discountCollectionOldDiscount = em.merge(discountCollectionOldDiscount);
+            for (Groupe groupeCollectionOldGroupe : groupeCollectionOld) {
+                if (!groupeCollectionNew.contains(groupeCollectionOldGroupe)) {
+                    groupeCollectionOldGroupe.setIdAcad(null);
+                    groupeCollectionOldGroupe = em.merge(groupeCollectionOldGroupe);
                 }
             }
-            for (Discount discountCollectionNewDiscount : discountCollectionNew) {
-                if (!discountCollectionOld.contains(discountCollectionNewDiscount)) {
-                    Academicactivity oldIdAcadOfDiscountCollectionNewDiscount = discountCollectionNewDiscount.getIdAcad();
-                    discountCollectionNewDiscount.setIdAcad(academicactivity);
-                    discountCollectionNewDiscount = em.merge(discountCollectionNewDiscount);
-                    if (oldIdAcadOfDiscountCollectionNewDiscount != null && !oldIdAcadOfDiscountCollectionNewDiscount.equals(academicactivity)) {
-                        oldIdAcadOfDiscountCollectionNewDiscount.getDiscountCollection().remove(discountCollectionNewDiscount);
-                        oldIdAcadOfDiscountCollectionNewDiscount = em.merge(oldIdAcadOfDiscountCollectionNewDiscount);
+            for (Groupe groupeCollectionNewGroupe : groupeCollectionNew) {
+                if (!groupeCollectionOld.contains(groupeCollectionNewGroupe)) {
+                    Academicactivity oldIdAcadOfGroupeCollectionNewGroupe = groupeCollectionNewGroupe.getIdAcad();
+                    groupeCollectionNewGroupe.setIdAcad(academicactivity);
+                    groupeCollectionNewGroupe = em.merge(groupeCollectionNewGroupe);
+                    if (oldIdAcadOfGroupeCollectionNewGroupe != null && !oldIdAcadOfGroupeCollectionNewGroupe.equals(academicactivity)) {
+                        oldIdAcadOfGroupeCollectionNewGroupe.getGroupeCollection().remove(groupeCollectionNewGroupe);
+                        oldIdAcadOfGroupeCollectionNewGroupe = em.merge(oldIdAcadOfGroupeCollectionNewGroupe);
                     }
                 }
             }
@@ -264,26 +239,25 @@ public class AcademicactivityDAO implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The academicactivity with id " + id + " no longer exists.", enfe);
             }
+            Portafolio idPort = academicactivity.getIdPort();
+            if (idPort != null) {
+                idPort.getAcademicactivityCollection().remove(academicactivity);
+                idPort = em.merge(idPort);
+            }
             User idUser = academicactivity.getIdUser();
             if (idUser != null) {
                 idUser.getAcademicactivityCollection().remove(academicactivity);
                 idUser = em.merge(idUser);
-            }
-            Collection<Budget> budgetCollection = academicactivity.getBudgetCollection();
-            for (Budget budgetCollectionBudget : budgetCollection) {
-                budgetCollectionBudget.setIdActivity(null);
-                budgetCollectionBudget = em.merge(budgetCollectionBudget);
             }
             Collection<Estimated> estimatedCollection = academicactivity.getEstimatedCollection();
             for (Estimated estimatedCollectionEstimated : estimatedCollection) {
                 estimatedCollectionEstimated.setIdAcad(null);
                 estimatedCollectionEstimated = em.merge(estimatedCollectionEstimated);
             }
-
-            Collection<Discount> discountCollection = academicactivity.getDiscountCollection();
-            for (Discount discountCollectionDiscount : discountCollection) {
-                discountCollectionDiscount.setIdAcad(null);
-                discountCollectionDiscount = em.merge(discountCollectionDiscount);
+            Collection<Groupe> groupeCollection = academicactivity.getGroupeCollection();
+            for (Groupe groupeCollectionGroupe : groupeCollection) {
+                groupeCollectionGroupe.setIdAcad(null);
+                groupeCollectionGroupe = em.merge(groupeCollectionGroupe);
             }
             em.remove(academicactivity);
             em.getTransaction().commit();
@@ -294,22 +268,18 @@ public class AcademicactivityDAO implements Serializable {
         }
     }
 
-    public Collection<Academicactivity> findAcademicactivityEntities() {
+    public List<Academicactivity> findAcademicactivityEntities() {
         return findAcademicactivityEntities(true, -1, -1);
     }
 
-    public Collection<Academicactivity> findAcademicactivityEntities(int maxResults, int firstResult) {
+    public List<Academicactivity> findAcademicactivityEntities(int maxResults, int firstResult) {
         return findAcademicactivityEntities(false, maxResults, firstResult);
     }
 
-    private Collection<Academicactivity> findAcademicactivityEntities(boolean all, int maxResults, int firstResult) {
-        Root<Academicactivity> acad;
+    private List<Academicactivity> findAcademicactivityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            //acad = cq.from(Academicactivity.class); // Se trae al root
-            //Join<Academicactivity, Estimated> estimated = acad.join(Academicactivity_.estimatedCollection);
-            
             cq.select(cq.from(Academicactivity.class));
             Query q = em.createQuery(cq);
             if (!all) {
@@ -343,6 +313,5 @@ public class AcademicactivityDAO implements Serializable {
             em.close();
         }
     }
-
     
 }

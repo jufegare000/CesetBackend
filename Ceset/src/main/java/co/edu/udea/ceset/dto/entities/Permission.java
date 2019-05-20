@@ -5,7 +5,6 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
-import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -25,32 +24,28 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_permission")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Permission.findAll", query = "SELECT p FROM Permission p")
-    , @NamedQuery(name = "Permission.findByIdPermission", query = "SELECT p FROM Permission p WHERE p.idPermission = :idPermission")
-    , @NamedQuery(name = "Permission.findByShortDescription", query = "SELECT p FROM Permission p WHERE p.shortDescription = :shortDescription")
-    , @NamedQuery(name = "Permission.findByDescripcion", query = "SELECT p FROM Permission p WHERE p.descripcion = :descripcion")})
+    @NamedQuery(name = "Permission.findAll", query = "SELECT p FROM Permission p"),
+    @NamedQuery(name = "Permission.findByIdPermission", query = "SELECT p FROM Permission p WHERE p.idPermission = :idPermission"),
+    @NamedQuery(name = "Permission.findByShortDescription", query = "SELECT p FROM Permission p WHERE p.shortDescription = :shortDescription"),
+    @NamedQuery(name = "Permission.findByDescripcion", query = "SELECT p FROM Permission p WHERE p.descripcion = :descripcion")})
 public class Permission implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPermission")
-    @Expose
     private Integer idPermission;
     @Size(max = 10)
     @Column(name = "shortDescription")
-    @Expose
     private String shortDescription;
     @Size(max = 100)
     @Column(name = "descripcion")
-    @Expose
     private String descripcion;
     @OneToMany(mappedBy = "idPermission", fetch = FetchType.LAZY)
     private Collection<Rolebypermission> rolebypermissionCollection;
@@ -102,11 +97,22 @@ public class Permission implements Serializable {
         return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Permission)) {
+            return false;
+        }
+        Permission other = (Permission) object;
+        if ((this.idPermission == null && other.idPermission != null) || (this.idPermission != null && !this.idPermission.equals(other.idPermission))) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Permission[ idPermission=" + idPermission + " ]";
+        return "co.edu.udea.ceset.dto.entities.Permission[ idPermission=" + idPermission + " ]";
     }
     
 }

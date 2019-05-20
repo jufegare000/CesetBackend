@@ -5,6 +5,8 @@
  */
 package co.edu.udea.ceset.dto.entities;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -25,42 +27,44 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 @Entity
 @Table(name = "tbl_budget")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Budget.findAll", query = "SELECT b FROM Budget b")
-    , @NamedQuery(name = "Budget.findByIdBudget", query = "SELECT b FROM Budget b WHERE b.idBudget = :idBudget")
-    , @NamedQuery(name = "Budget.findByTotalRealBudget", query = "SELECT b FROM Budget b WHERE b.totalRealBudget = :totalRealBudget")
-    , @NamedQuery(name = "Budget.findByMprovisedBudget", query = "SELECT b FROM Budget b WHERE b.mprovisedBudget = :mprovisedBudget")
-    , @NamedQuery(name = "Budget.findByContributionsUdeA", query = "SELECT b FROM Budget b WHERE b.contributionsUdeA = :contributionsUdeA")
-    , @NamedQuery(name = "Budget.findByContributionsFaculty", query = "SELECT b FROM Budget b WHERE b.contributionsFaculty = :contributionsFaculty")})
+    @NamedQuery(name = "Budget.findAll", query = "SELECT b FROM Budget b"),
+    @NamedQuery(name = "Budget.findByIdBudget", query = "SELECT b FROM Budget b WHERE b.idBudget = :idBudget"),
+    @NamedQuery(name = "Budget.findByTotalRealBudget", query = "SELECT b FROM Budget b WHERE b.totalRealBudget = :totalRealBudget"),
+    @NamedQuery(name = "Budget.findByMprovisedBudget", query = "SELECT b FROM Budget b WHERE b.mprovisedBudget = :mprovisedBudget"),
+    @NamedQuery(name = "Budget.findByContributionsUdeA", query = "SELECT b FROM Budget b WHERE b.contributionsUdeA = :contributionsUdeA"),
+    @NamedQuery(name = "Budget.findByContributionsFaculty", query = "SELECT b FROM Budget b WHERE b.contributionsFaculty = :contributionsFaculty")})
 public class Budget implements Serializable {
-    @OneToMany(mappedBy = "idBudget", fetch = FetchType.LAZY)
-    private Collection<Budgetbyexpenditure> budgetbyexpenditureCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IdBudget")
+    @Expose
     private Integer idBudget;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "totalRealBudget")
+    @Expose
     private Double totalRealBudget;
     @Column(name = "mprovisedBudget")
+    @Expose
     private Double mprovisedBudget;
     @Column(name = "contributionsUdeA")
+    @Expose
     private Double contributionsUdeA;
     @Column(name = "contributionsFaculty")
+    @Expose
     private Double contributionsFaculty;
-    @JoinColumn(name = "idActivity", referencedColumnName = "IdAcad")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Academicactivity idActivity;
     @OneToMany(mappedBy = "idBudget", fetch = FetchType.LAZY)
-    private Collection<Budgetbyitem> budgetbyitemCollection;
+    private Collection<Budgetbyexpenditure> budgetbyexpenditureCollection;
+    @JoinColumn(name = "idGroup", referencedColumnName = "idGroup")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Groupe idGroup;
 
     public Budget() {
     }
@@ -109,22 +113,21 @@ public class Budget implements Serializable {
         this.contributionsFaculty = contributionsFaculty;
     }
 
-
-    public Academicactivity getIdActivity() {
-        return idActivity;
-    }
-
-    public void setIdActivity(Academicactivity idActivity) {
-        this.idActivity = idActivity;
-    }
-
     @XmlTransient
-    public Collection<Budgetbyitem> getBudgetbyitemCollection() {
-        return budgetbyitemCollection;
+    public Collection<Budgetbyexpenditure> getBudgetbyexpenditureCollection() {
+        return budgetbyexpenditureCollection;
     }
 
-    public void setBudgetbyitemCollection(Collection<Budgetbyitem> budgetbyitemCollection) {
-        this.budgetbyitemCollection = budgetbyitemCollection;
+    public void setBudgetbyexpenditureCollection(Collection<Budgetbyexpenditure> budgetbyexpenditureCollection) {
+        this.budgetbyexpenditureCollection = budgetbyexpenditureCollection;
+    }
+
+    public Groupe getIdGroup() {
+        return idGroup;
+    }
+
+    public void setIdGroup(Groupe idGroup) {
+        this.idGroup = idGroup;
     }
 
     @Override
@@ -135,17 +138,21 @@ public class Budget implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Budget)) {
+            return false;
+        }
+        Budget other = (Budget) object;
+        if ((this.idBudget == null && other.idBudget != null) || (this.idBudget != null && !this.idBudget.equals(other.idBudget))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "co.edu.udea.ceset.dto.Budget[ idBudget=" + idBudget + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Budgetbyexpenditure> getBudgetbyexpenditureCollection() {
-        return budgetbyexpenditureCollection;
-    }
-
-    public void setBudgetbyexpenditureCollection(Collection<Budgetbyexpenditure> budgetbyexpenditureCollection) {
-        this.budgetbyexpenditureCollection = budgetbyexpenditureCollection;
+        return "co.edu.udea.ceset.dto.entities.Budget[ idBudget=" + idBudget + " ]";
     }
     
 }

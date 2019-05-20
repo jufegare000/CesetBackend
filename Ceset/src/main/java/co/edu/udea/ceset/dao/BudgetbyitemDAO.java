@@ -6,13 +6,12 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
+import co.edu.udea.ceset.dto.entities.Budgetbyitem;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Budget;
-import co.edu.udea.ceset.dto.entities.Budgetbyitem;
 import co.edu.udea.ceset.dto.entities.Item;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,7 +19,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jufeg
+ * @author Juan
  */
 public class BudgetbyitemDAO implements Serializable {
 
@@ -38,21 +37,12 @@ public class BudgetbyitemDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Budget idBudget = budgetbyitem.getIdBudget();
-            if (idBudget != null) {
-                idBudget = em.getReference(idBudget.getClass(), idBudget.getIdBudget());
-                budgetbyitem.setIdBudget(idBudget);
-            }
             Item idItem = budgetbyitem.getIdItem();
             if (idItem != null) {
                 idItem = em.getReference(idItem.getClass(), idItem.getIdItem());
                 budgetbyitem.setIdItem(idItem);
             }
             em.persist(budgetbyitem);
-            if (idBudget != null) {
-                idBudget.getBudgetbyitemCollection().add(budgetbyitem);
-                idBudget = em.merge(idBudget);
-            }
             if (idItem != null) {
                 idItem.getBudgetbyitemCollection().add(budgetbyitem);
                 idItem = em.merge(idItem);
@@ -71,27 +61,13 @@ public class BudgetbyitemDAO implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Budgetbyitem persistentBudgetbyitem = em.find(Budgetbyitem.class, budgetbyitem.getId());
-            Budget idBudgetOld = persistentBudgetbyitem.getIdBudget();
-            Budget idBudgetNew = budgetbyitem.getIdBudget();
             Item idItemOld = persistentBudgetbyitem.getIdItem();
             Item idItemNew = budgetbyitem.getIdItem();
-            if (idBudgetNew != null) {
-                idBudgetNew = em.getReference(idBudgetNew.getClass(), idBudgetNew.getIdBudget());
-                budgetbyitem.setIdBudget(idBudgetNew);
-            }
             if (idItemNew != null) {
                 idItemNew = em.getReference(idItemNew.getClass(), idItemNew.getIdItem());
                 budgetbyitem.setIdItem(idItemNew);
             }
             budgetbyitem = em.merge(budgetbyitem);
-            if (idBudgetOld != null && !idBudgetOld.equals(idBudgetNew)) {
-                idBudgetOld.getBudgetbyitemCollection().remove(budgetbyitem);
-                idBudgetOld = em.merge(idBudgetOld);
-            }
-            if (idBudgetNew != null && !idBudgetNew.equals(idBudgetOld)) {
-                idBudgetNew.getBudgetbyitemCollection().add(budgetbyitem);
-                idBudgetNew = em.merge(idBudgetNew);
-            }
             if (idItemOld != null && !idItemOld.equals(idItemNew)) {
                 idItemOld.getBudgetbyitemCollection().remove(budgetbyitem);
                 idItemOld = em.merge(idItemOld);
@@ -128,11 +104,6 @@ public class BudgetbyitemDAO implements Serializable {
                 budgetbyitem.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The budgetbyitem with id " + id + " no longer exists.", enfe);
-            }
-            Budget idBudget = budgetbyitem.getIdBudget();
-            if (idBudget != null) {
-                idBudget.getBudgetbyitemCollection().remove(budgetbyitem);
-                idBudget = em.merge(idBudget);
             }
             Item idItem = budgetbyitem.getIdItem();
             if (idItem != null) {
