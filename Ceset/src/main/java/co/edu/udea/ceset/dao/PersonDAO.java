@@ -36,7 +36,6 @@ public class PersonDAO implements Serializable {
 
     public Person create(Person person) {
         List<Person> lper = null;
-
         if (person.getUserCollection() == null) {
             person.setUserCollection(new ArrayList<User>());
         }
@@ -61,12 +60,12 @@ public class PersonDAO implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        }  finally {
+        } finally {
             lper = em.createNamedQuery("Person.findByDocument")
                     .setParameter("document", person.getDocument())
                     .getResultList(); // Retorna la persona recién creada
-                                      // Para asigmarlo al usuario a crear
-  //          
+            // Para asigmarlo al usuario a crear
+            //          
             if (em != null) {
                 em.close();
             }

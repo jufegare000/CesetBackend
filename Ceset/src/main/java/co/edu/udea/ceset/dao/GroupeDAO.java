@@ -8,8 +8,7 @@ package co.edu.udea.ceset.dao;
 import co.edu.udea.ceset.dao.exceptions.IllegalOrphanException;
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
 import java.io.Serializable;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import co.edu.udea.ceset.dto.entities.Academicactivity;
@@ -19,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import co.edu.udea.ceset.dto.entities.Themes;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -37,22 +34,30 @@ public class GroupeDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Groupe groupe) {
+    public Groupe create(Groupe groupe) {
+        List<Groupe> lGroup = null;
+        EntityTransaction tx;
+        /*
         if (groupe.getBudgetCollection() == null) {
             groupe.setBudgetCollection(new ArrayList<Budget>());
         }
         if (groupe.getThemesCollection() == null) {
             groupe.setThemesCollection(new ArrayList<Themes>());
         }
+        */
         EntityManager em = null;
         try {
             em = getEntityManager();
-            em.getTransaction().begin();
+            tx = em.getTransaction();
+            tx.begin();
+
+            /*
             Academicactivity idAcad = groupe.getIdAcad();
             if (idAcad != null) {
                 idAcad = em.getReference(idAcad.getClass(), idAcad.getIdAcad());
                 groupe.setIdAcad(idAcad);
-            }
+            }*/
+            /*
             Collection<Budget> attachedBudgetCollection = new ArrayList<Budget>();
             for (Budget budgetCollectionBudgetToAttach : groupe.getBudgetCollection()) {
                 budgetCollectionBudgetToAttach = em.getReference(budgetCollectionBudgetToAttach.getClass(), budgetCollectionBudgetToAttach.getIdBudget());
@@ -65,11 +70,14 @@ public class GroupeDAO implements Serializable {
                 attachedThemesCollection.add(themesCollectionThemesToAttach);
             }
             groupe.setThemesCollection(attachedThemesCollection);
+            */
             em.persist(groupe);
+            /*
             if (idAcad != null) {
                 idAcad.getGroupeCollection().add(groupe);
                 idAcad = em.merge(idAcad);
-            }
+            }*/
+            /*
             for (Budget budgetCollectionBudget : groupe.getBudgetCollection()) {
                 Groupe oldIdGroupOfBudgetCollectionBudget = budgetCollectionBudget.getIdGroup();
                 budgetCollectionBudget.setIdGroup(groupe);
@@ -87,13 +95,17 @@ public class GroupeDAO implements Serializable {
                     oldIdGroupOfThemesCollectionThemes.getThemesCollection().remove(themesCollectionThemes);
                     oldIdGroupOfThemesCollectionThemes = em.merge(oldIdGroupOfThemesCollectionThemes);
                 }
-            }
-            em.getTransaction().commit();
+            }*/
+            tx.commit();
         } finally {
+            lGroup = em.createNamedQuery("Groupe.findLast")
+                    .setMaxResults(1)
+                    .getResultList(); // retorna actividad recién creada
             if (em != null) {
                 em.close();
             }
         }
+        return lGroup.get(0);
     }
 
     public void edit(Groupe groupe) throws IllegalOrphanException, NonexistentEntityException, Exception {

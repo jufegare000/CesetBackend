@@ -35,7 +35,8 @@ public class EstimatedDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Estimated estimated) {
+    public Integer create(Estimated estimated) {
+        List<Estimated> lEstmd = null;
         if (estimated.getEstimatedbyexpenditureCollection() == null) {
             estimated.setEstimatedbyexpenditureCollection(new ArrayList<Estimatedbyexpenditure>());
         }
@@ -70,10 +71,14 @@ public class EstimatedDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            lEstmd = em.createNamedQuery("Estimated.findLast")
+                    .setMaxResults(1)
+                    .getResultList(); // retorna actividad recién creada
             if (em != null) {
                 em.close();
             }
         }
+        return lEstmd.get(0).getIdEstimated();
     }
 
     public void edit(Estimated estimated) throws NonexistentEntityException, Exception {
@@ -216,5 +221,5 @@ public class EstimatedDAO implements Serializable {
             em.close();
         }
     }
-    
+
 }

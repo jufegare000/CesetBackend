@@ -20,44 +20,43 @@ import java.util.Collection;
 public class AcademicActivityDTO {
 
     private Integer idAcad;
-
     private String nameActivity;
-
     private String activityType;
-
     private String dependency;
-
+    private String codReune;
+    private String sigepCode;
+    private String actaCode;
+    private String observaciones;
+    private Date initDateact;
+    private Date endDateact;
     private String investigationGroup;
-
     private String coordinatorName;
-
     private String contactTelephone;
-
     private String contactEmail;
-
     private Integer durationMonths;
-
     private String contractType;
-
     private String contractEntity;
-
     private Date contractInit;
-
     private Date contractEnd;
-
     private Date creationDate;
-
     private String state;
+    private PortafolioDTO idPort;
+    private UserDTO idUser;
+    private Collection<GroupeDTO> groupeCollection;
+    private Collection<DiscountDTO> discountCollection;
+    private Collection<EstimadoDTO> estimatedCollection;
 
-    private User idUser;
 
-    private Collection<Budget> budgetCollection;
+    public Collection<DiscountDTO> getDiscountCollection() {
+        return discountCollection;
+    }
 
-    private Collection<EstimatedDTO> estimatedCollection;
-
-    private Collection<Discount> discountCollection;
+    public void setDiscountCollection(Collection<DiscountDTO> discountCollection) {
+        this.discountCollection = discountCollection;
+    }
 
     public AcademicActivityDTO() {
+
     }
 
     public Integer getIdAcad() {
@@ -90,6 +89,54 @@ public class AcademicActivityDTO {
 
     public void setDependency(String dependency) {
         this.dependency = dependency;
+    }
+
+    public String getCodReune() {
+        return codReune;
+    }
+
+    public void setCodReune(String codReune) {
+        this.codReune = codReune;
+    }
+
+    public String getSigepCode() {
+        return sigepCode;
+    }
+
+    public void setSigepCode(String sigepCode) {
+        this.sigepCode = sigepCode;
+    }
+
+    public String getActaCode() {
+        return actaCode;
+    }
+
+    public void setActaCode(String actaCode) {
+        this.actaCode = actaCode;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public Date getInitDateact() {
+        return initDateact;
+    }
+
+    public void setInitDateact(Date initDateact) {
+        this.initDateact = initDateact;
+    }
+
+    public Date getEndDateact() {
+        return endDateact;
+    }
+
+    public void setEndDateact(Date endDateact) {
+        this.endDateact = endDateact;
     }
 
     public String getInvestigationGroup() {
@@ -180,36 +227,35 @@ public class AcademicActivityDTO {
         this.state = state;
     }
 
-    public User getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
-    }
-
-    public Collection<Budget> getBudgetCollection() {
-        return budgetCollection;
-    }
-
-    public void setBudgetCollection(Collection<Budget> budgetCollection) {
-        this.budgetCollection = budgetCollection;
-    }
-
-    public Collection<EstimatedDTO> getEstimatedCollection() {
+    public Collection<EstimadoDTO> getEstimatedCollection() {
         return estimatedCollection;
     }
 
-    public void setEstimatedCollection(Collection<EstimatedDTO> estimatedCollection) {
+    public void setEstimatedCollection(Collection<EstimadoDTO> estimatedCollection) {
         this.estimatedCollection = estimatedCollection;
     }
 
-    public Collection<Discount> getDiscountCollection() {
-        return discountCollection;
+    public PortafolioDTO getIdPort() {
+        return idPort;
     }
 
-    public void setDiscountCollection(Collection<Discount> discountCollection) {
-        this.discountCollection = discountCollection;
+    public void setIdPort(PortafolioDTO idPort) {
+        this.idPort = idPort;
     }
 
+    public UserDTO getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(UserDTO idUser) {
+        this.idUser = idUser;
+    }
+
+    public Collection<GroupeDTO> getGroupeCollection() {
+        return groupeCollection;
+    }
+
+    public void setGroupeCollection(Collection<GroupeDTO> groupeCollection) {
+        this.groupeCollection = groupeCollection;
+    }
 }

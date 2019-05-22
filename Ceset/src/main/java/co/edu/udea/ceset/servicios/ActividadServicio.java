@@ -3,11 +3,14 @@ package co.edu.udea.ceset.servicios;
 import co.edu.udea.ceset.bl.AcademicActivityBL;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
 
+import co.edu.udea.ceset.dto.EstimadoDTO;
+import co.edu.udea.ceset.dto.EstimatedDTO;
 import co.edu.udea.ceset.dto.entities.Academicactivity;
 
 import com.nimbusds.jose.JOSEException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,9 +20,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import co.edu.udea.ceset.dto.EstimatedByExpenditureDTO;
 
 /**
- * Root resource (exposed at "usuarios" path)
  */
 @Path("/actividades")
 public class ActividadServicio implements Serializable {

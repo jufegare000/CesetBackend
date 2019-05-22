@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Estimatedbyexpenditure.findLast", query = "SELECT e FROM Estimatedbyexpenditure e ORDER BY e.id DESC")})
 public class Estimatedbyexpenditure implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")

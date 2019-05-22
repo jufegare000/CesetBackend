@@ -45,7 +45,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Groupe.findByFinDate", query = "SELECT g FROM Groupe g WHERE g.finDate = :finDate"),
     @NamedQuery(name = "Groupe.findByStates", query = "SELECT g FROM Groupe g WHERE g.states = :states"),
     @NamedQuery(name = "Groupe.findByClassroom", query = "SELECT g FROM Groupe g WHERE g.classroom = :classroom"),
-    @NamedQuery(name = "Groupe.findBySchedule", query = "SELECT g FROM Groupe g WHERE g.schedule = :schedule")})
+    @NamedQuery(name = "Groupe.findBySchedule", query = "SELECT g FROM Groupe g WHERE g.schedule = :schedule"),
+        @NamedQuery(name = "Groupe.findLast", query = "SELECT g FROM Groupe g ORDER BY g.idGroup DESC")})
 public class Groupe implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

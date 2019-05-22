@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Budget.findByTotalRealBudget", query = "SELECT b FROM Budget b WHERE b.totalRealBudget = :totalRealBudget"),
     @NamedQuery(name = "Budget.findByMprovisedBudget", query = "SELECT b FROM Budget b WHERE b.mprovisedBudget = :mprovisedBudget"),
     @NamedQuery(name = "Budget.findByContributionsUdeA", query = "SELECT b FROM Budget b WHERE b.contributionsUdeA = :contributionsUdeA"),
-    @NamedQuery(name = "Budget.findByContributionsFaculty", query = "SELECT b FROM Budget b WHERE b.contributionsFaculty = :contributionsFaculty")})
+    @NamedQuery(name = "Budget.findByContributionsFaculty", query = "SELECT b FROM Budget b WHERE b.contributionsFaculty = :contributionsFaculty"),
+        @NamedQuery(name = "Budget.findLast", query = "SELECT b FROM Budget b ORDER BY b.idBudget DESC")})
 public class Budget implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,12 +62,17 @@ public class Budget implements Serializable {
     @Expose
     private Double contributionsFaculty;
     @OneToMany(mappedBy = "idBudget", fetch = FetchType.LAZY)
+    @Expose
     private Collection<Budgetbyexpenditure> budgetbyexpenditureCollection;
     @JoinColumn(name = "idGroup", referencedColumnName = "idGroup")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Groupe idGroup;
 
     public Budget() {
+    }
+
+    public Budget(int idBdg) {
+        this.setIdBudget(idBdg);
     }
 
     public Budget(Integer idBudget) {

@@ -1,18 +1,19 @@
 package co.edu.udea.ceset.bl;
 
-import co.edu.udea.ceset.dao.AcademicactivityDAO;
+import co.edu.udea.ceset.dao.*;
 import co.edu.udea.ceset.dto.AcademicActivityDTO;
-import co.edu.udea.ceset.dto.entities.Academicactivity;
-import co.edu.udea.ceset.dto.entities.Estimated;
+import co.edu.udea.ceset.dto.BudgetDTO;
+import co.edu.udea.ceset.dto.EstimatedByExpenditureDTO;
+import co.edu.udea.ceset.dto.entities.*;
 import co.edu.udea.ceset.utilities.Utilities;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure;
 import org.modelmapper.ModelMapper;
 
 /**
@@ -60,7 +61,8 @@ public class AcademicActivityBL implements Serializable {
         return parsed;
     }
 
-    public void organizaActividad(Academicactivity acad) {
+    public void organizaActividad
+            (Academicactivity acad) {
         acad.getIdUser().setPassword("");
         acad.getIdUser().setIdPerson(null);
         acad.getIdUser().setRolebyuserCollection(null);
@@ -78,34 +80,185 @@ public class AcademicActivityBL implements Serializable {
         return DAO;
     }
 
+    private EstimatedDAO obtenerEstmdDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        EstimatedDAO DAO = new EstimatedDAO(emf);
+        return DAO;
+    }
+
+    private EstimatedbyexpenditureDAO obtenerEstmdByExpndDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        EstimatedbyexpenditureDAO DAO = new EstimatedbyexpenditureDAO(emf);
+        return DAO;
+    }
+
+    private DiscountDAO obtenerDiscDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        DiscountDAO DAO = new DiscountDAO(emf);
+        return DAO;
+    }
+
+    private GroupeDAO obtenerGroupDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        GroupeDAO DAO = new GroupeDAO(emf);
+        return DAO;
+    }
+
+    private BudgetDAO obtenerBudgetDAO(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        BudgetDAO DAO = new BudgetDAO(emf);
+        return DAO;
+    }
+
+    private BudgetbyexpenditureDAO obtenerBudgetByExpendDAO(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        BudgetbyexpenditureDAO DAO = new BudgetbyexpenditureDAO(emf);
+        return DAO;
+    }
+
+    private ThemesDAO obtenerTemasDAO(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombrePU);
+        ThemesDAO DAO = new ThemesDAO(emf);
+        return DAO;
+    }
+
     public String crear(AcademicActivityDTO academicactivity) {
-        ModelMapper modelMapper = new ModelMapper();
-        Academicactivity acad = modelMapper.map(academicactivity, Academicactivity.class);
-
-        // Academicactivity acad = new Academicactivity();
-        //List<Estimated> miEstimadoL = (List<Estimated>) acad.getEstimatedCollection();
-        //Estimated miEstimado = miEstimadoL.get(0);
-        //Collection<Estimatedbyexpenditure> expends = miEstimado.getEstimatedbyexpenditureCollection();
-        List<Estimatedbyexpenditure> expendsCres = new LinkedList<>();
-        Estimatedbyexpenditure nu = null;
-        /*for (Estimatedbyexpenditure expend : expends) {
-            nu = EstemExpendBL.getInstance().crear(expend);
-            expendsCres.add(nu);
-        }*/
-        //miEstimado.setEstimatedbyexpenditureCollection(null);
-        //miEstimado.setEstimatedbyexpenditureCollection(expendsCres);
-//        Estimated miEstimadoN = EstimatedBL.getInstance().crear(miEstimado);
-
-        Academicactivity creado;
+        Academicactivity acadCreado;
+        int idAcadNueva;
         String retorno;
-        // teniendo creado el nuevo estimado se debe setear a la actividad a crear
-       // miEstimadoL.set(0, miEstimadoN);
-        //acad.setEstimatedCollection(miEstimadoL);
-        creado = obtenerAcadDAO().create(acad);
+        Estimated estimado;
+        Discount descuento;
+        Groupe grupo;
+        ModelMapper modelMapper = new ModelMapper();
+        // La actividad se crea en cascada, primero se crean los datos de cabecera,
+        // Se captura el id del objeto recién creado y se setea a los hijos su valor
+        Academicactivity acad = modelMapper.map(academicactivity, Academicactivity.class);
+        Academicactivity paracrear = new Academicactivity();
+        this.setearValores(paracrear, acad);
+        acadCreado = obtenerAcadDAO().create(paracrear);
+        idAcadNueva = acadCreado.getIdAcad();
+        estimado = (Estimated)acad.getEstimatedCollection().toArray()[0];
+        this.crearEstimado(estimado, idAcadNueva);
+        descuento = (Discount)acad.getDiscountCollection().toArray()[0];
+        this.crearDescuento(descuento, idAcadNueva);
+        this.crearGrupos(acad.getGroupeCollection(), idAcadNueva);
+
+
+
         this.organizaActividad(acad);
-        retorno = Utilities.jasonizer(creado);
+        retorno = Utilities.jasonizer(acadCreado);
 
         return retorno;
+    }
+
+    public void crearEstimado(Estimated stmd, int idAcad){
+        Estimated paraCrear  = this.setearEstimated(stmd, idAcad);
+        int nuevoId = this.obtenerEstmdDAO().create(paraCrear);
+        Collection<Estimatedbyexpenditure> lista = stmd.getEstimatedbyexpenditureCollection();
+        for(Estimatedbyexpenditure actual: lista){
+           actual.setIdEstimated(new Estimated(nuevoId));
+           obtenerEstmdByExpndDAO().create(actual);
+        }
+    }
+
+    public void crearDescuento(Discount disc, int idAcad){
+        Discount nuevo = this.setearDiscount(disc, idAcad);
+        this.obtenerDiscDAO().create(nuevo);
+    }
+
+    public void crearGrupos(Collection<Groupe> grupos, int idAcad){
+        Groupe currentGroupe, grupoAcrear;
+        Budget bdgCurrent, nuevoBdgt, bdgCreado;
+        Collection<Budgetbyexpenditure> listaDeGastos;
+        Collection<Themes> temas;
+        for(Groupe actual: grupos){
+            grupoAcrear = this.setearGrupos(actual);
+            grupoAcrear.setIdAcad(new Academicactivity(idAcad));
+            currentGroupe = this.obtenerGroupDAO().create(grupoAcrear);
+
+            bdgCurrent = (Budget)actual.getBudgetCollection().toArray()[0];
+
+            nuevoBdgt = this.setearBudget(bdgCurrent);
+            nuevoBdgt.setIdGroup(new Groupe(currentGroupe.getIdGroup()));
+            bdgCreado = this.obtenerBudgetDAO().create(nuevoBdgt);
+
+            listaDeGastos = bdgCurrent.getBudgetbyexpenditureCollection();
+            for (Budgetbyexpenditure currentBudgetByExp: listaDeGastos){
+                currentBudgetByExp.setIdBudget(new Budget(bdgCreado.getIdBudget()));
+                this.obtenerBudgetByExpendDAO().create(currentBudgetByExp);
+            }
+
+            temas = actual.getThemesCollection();
+            for(Themes themeForADream: temas){
+                themeForADream.setIdGroup(new Groupe(currentGroupe.getIdGroup()));
+                this.obtenerTemasDAO().create(themeForADream);
+            }
+        }
+    }
+
+    public void setearValores(Academicactivity acad, Academicactivity vieja){
+        acad.setIdPort(vieja.getIdPort());
+        acad.setIdUser(vieja.getIdUser());
+        acad.setActaCode(vieja.getActaCode());
+        acad.setActivityType(vieja.getActivityType());
+        acad.setCodReune(vieja.getCodReune());
+        acad.setContactEmail(vieja.getContactEmail());
+        acad.setNameActivity(vieja.getNameActivity());
+        acad.setContactTelephone(vieja.getContactTelephone());
+        acad.setState(vieja.getState());
+        acad.setSigepCode(vieja.getSigepCode());
+        acad.setObservaciones(vieja.getObservaciones());
+        acad.setInvestigationGroup(vieja.getInvestigationGroup());
+        acad.setInitDateact(vieja.getInitDateact());
+        acad.setEndDateact(vieja.getEndDateact());
+        acad.setDurationMonths(vieja.getDurationMonths());
+        acad.setDependency(vieja.getDependency());
+        acad.setCreationDate(vieja.getCreationDate());
+        acad.setCoordinatorName(vieja.getCoordinatorName());
+        acad.setContractType(vieja.getContractType());
+        acad.setContractInit(vieja.getContractInit());
+        acad.setContractEntity(vieja.getContractEntity());
+        acad.setContractEnd(vieja.getContractEnd());
+    }
+
+    public Estimated setearEstimated(Estimated estm, int idAcad){
+        Estimated std = new Estimated();
+        std.setIdAcad(new Academicactivity(idAcad));
+        std.setContributionsFaculty(estm.getContributionsFaculty());
+        std.setTotalBudget(estm.getTotalBudget());
+        std.setImprovised((estm.getImprovised()));
+        std.setContributionsUdeA(estm.getContributionsUdeA());
+        return std;
+    }
+
+    public Discount setearDiscount(Discount disc, int idAcad){
+        Discount nuevo = new Discount();
+        nuevo.setIdAcad(new Academicactivity(idAcad));
+        nuevo.setDescription(disc.getDescription());
+        nuevo.setQuantity(disc.getQuantity());
+        nuevo.setTotal(disc.getTotal());
+        nuevo.setValuedis(disc.getValuedis());
+        return nuevo;
+    }
+
+    public Groupe setearGrupos(Groupe actual){
+        Groupe nuevo = new Groupe();
+        nuevo.setStates(actual.getStates());
+        nuevo.setSchedule(actual.getSchedule());
+        nuevo.setNumbers(actual.getNumbers());
+        nuevo.setInitDate(actual.getInitDate());
+        nuevo.setFinDate(actual.getFinDate());
+        nuevo.setClassroom(actual.getClassroom());
+        return nuevo;
+    }
+
+    public Budget setearBudget(Budget bdg){
+        Budget nuevo = new Budget();
+        nuevo.setContributionsFaculty(bdg.getContributionsFaculty());
+        nuevo.setContributionsUdeA(bdg.getContributionsUdeA());
+        nuevo.setMprovisedBudget(bdg.getMprovisedBudget());
+        nuevo.setTotalRealBudget(bdg.getTotalRealBudget());
+        return  nuevo;
     }
 
     public Academicactivity getById(int n) {

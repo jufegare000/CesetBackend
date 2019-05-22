@@ -37,7 +37,8 @@ public class PortafolioDAO implements Serializable {
     }
 
     public Portafolio create(Portafolio portafolio) {
-         List<Portafolio> nuevo;
+        List<Portafolio> nuevo;
+
         if (portafolio.getAcademicactivityCollection() == null) {
             portafolio.setAcademicactivityCollection(new ArrayList<Academicactivity>());
         }
@@ -232,5 +233,5 @@ public class PortafolioDAO implements Serializable {
             em.close();
         }
     }
-    
+
 }

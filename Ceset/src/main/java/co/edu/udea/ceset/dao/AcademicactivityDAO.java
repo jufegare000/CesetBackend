@@ -6,18 +6,15 @@
 package co.edu.udea.ceset.dao;
 
 import co.edu.udea.ceset.dao.exceptions.NonexistentEntityException;
-import co.edu.udea.ceset.dto.entities.Academicactivity;
+import co.edu.udea.ceset.dto.entities.*;
+
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import co.edu.udea.ceset.dto.entities.Portafolio;
-import co.edu.udea.ceset.dto.entities.User;
-import co.edu.udea.ceset.dto.entities.Estimated;
 import java.util.ArrayList;
 import java.util.Collection;
-import co.edu.udea.ceset.dto.entities.Groupe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,27 +36,18 @@ public class AcademicactivityDAO implements Serializable {
 
     public Academicactivity create(Academicactivity academicactivity) {
         List<Academicactivity> lAcad = null;
-        List<User> luser= null;
-        User usr = null; 
-        String nameUser;
+
         if (academicactivity.getEstimatedCollection() == null) {
             academicactivity.setEstimatedCollection(new ArrayList<Estimated>());
         }
         if (academicactivity.getGroupeCollection() == null) {
             academicactivity.setGroupeCollection(new ArrayList<Groupe>());
         }
+        if (academicactivity.getDiscountCollection() == null) {
+            academicactivity.setDiscountCollection(new ArrayList<Discount>());
+        }
         EntityManager em = null;
         try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            nameUser = academicactivity.getIdUser().getNameUser();
-            if (nameUser != null) {
-                luser = em.createNamedQuery("User.findByNameUser")
-                    .setParameter("nameUser", nameUser)
-                    .getResultList(); 
-                usr = luser.get(0);
-                academicactivity.setIdUser(usr);
-            }
             em = getEntityManager();
             em.getTransaction().begin();
             Portafolio idPort = academicactivity.getIdPort();
@@ -84,6 +72,12 @@ public class AcademicactivityDAO implements Serializable {
                 attachedGroupeCollection.add(groupeCollectionGroupeToAttach);
             }
             academicactivity.setGroupeCollection(attachedGroupeCollection);
+            Collection<Discount> attachedDiscountCollection = new ArrayList<Discount>();
+            for (Discount discountCollectionDiscountToAttach : academicactivity.getDiscountCollection()) {
+                discountCollectionDiscountToAttach = em.getReference(discountCollectionDiscountToAttach.getClass(), discountCollectionDiscountToAttach.getIdDiscount());
+                attachedDiscountCollection.add(discountCollectionDiscountToAttach);
+            }
+            academicactivity.setDiscountCollection(attachedDiscountCollection);
             em.persist(academicactivity);
             if (idPort != null) {
                 idPort.getAcademicactivityCollection().add(academicactivity);
@@ -111,8 +105,17 @@ public class AcademicactivityDAO implements Serializable {
                     oldIdAcadOfGroupeCollectionGroupe = em.merge(oldIdAcadOfGroupeCollectionGroupe);
                 }
             }
+            for (Discount discountCollectionDiscount : academicactivity.getDiscountCollection()) {
+                Academicactivity oldIdAcadOfDiscountCollectionDiscount = discountCollectionDiscount.getIdAcad();
+                discountCollectionDiscount.setIdAcad(academicactivity);
+                discountCollectionDiscount = em.merge(discountCollectionDiscount);
+                if (oldIdAcadOfDiscountCollectionDiscount != null) {
+                    oldIdAcadOfDiscountCollectionDiscount.getDiscountCollection().remove(discountCollectionDiscount);
+                    oldIdAcadOfDiscountCollectionDiscount = em.merge(oldIdAcadOfDiscountCollectionDiscount);
+                }
+            }
             em.getTransaction().commit();
-        }  finally {
+        } finally {
             lAcad = em.createNamedQuery("Academicactivity.findLast")
                     .setMaxResults(1)
                     .getResultList(); // retorna actividad recién creada
@@ -137,6 +140,8 @@ public class AcademicactivityDAO implements Serializable {
             Collection<Estimated> estimatedCollectionNew = academicactivity.getEstimatedCollection();
             Collection<Groupe> groupeCollectionOld = persistentAcademicactivity.getGroupeCollection();
             Collection<Groupe> groupeCollectionNew = academicactivity.getGroupeCollection();
+            Collection<Discount> discountCollectionOld = persistentAcademicactivity.getDiscountCollection();
+            Collection<Discount> discountCollectionNew = academicactivity.getDiscountCollection();
             if (idPortNew != null) {
                 idPortNew = em.getReference(idPortNew.getClass(), idPortNew.getId());
                 academicactivity.setIdPort(idPortNew);
@@ -159,6 +164,13 @@ public class AcademicactivityDAO implements Serializable {
             }
             groupeCollectionNew = attachedGroupeCollectionNew;
             academicactivity.setGroupeCollection(groupeCollectionNew);
+            Collection<Discount> attachedDiscountCollectionNew = new ArrayList<Discount>();
+            for (Discount discountCollectionNewDiscountToAttach : discountCollectionNew) {
+                discountCollectionNewDiscountToAttach = em.getReference(discountCollectionNewDiscountToAttach.getClass(), discountCollectionNewDiscountToAttach.getIdDiscount());
+                attachedDiscountCollectionNew.add(discountCollectionNewDiscountToAttach);
+            }
+            discountCollectionNew = attachedDiscountCollectionNew;
+            academicactivity.setDiscountCollection(discountCollectionNew);
             academicactivity = em.merge(academicactivity);
             if (idPortOld != null && !idPortOld.equals(idPortNew)) {
                 idPortOld.getAcademicactivityCollection().remove(academicactivity);
@@ -210,6 +222,23 @@ public class AcademicactivityDAO implements Serializable {
                     }
                 }
             }
+            for (Discount discountCollectionOldDiscount : discountCollectionOld) {
+                if (!discountCollectionNew.contains(discountCollectionOldDiscount)) {
+                    discountCollectionOldDiscount.setIdAcad(null);
+                    discountCollectionOldDiscount = em.merge(discountCollectionOldDiscount);
+                }
+            }
+            for (Discount discountCollectionNewDiscount : discountCollectionNew) {
+                if (!discountCollectionOld.contains(discountCollectionNewDiscount)) {
+                    Academicactivity oldIdAcadOfDiscountCollectionNewDiscount = discountCollectionNewDiscount.getIdAcad();
+                    discountCollectionNewDiscount.setIdAcad(academicactivity);
+                    discountCollectionNewDiscount = em.merge(discountCollectionNewDiscount);
+                    if (oldIdAcadOfDiscountCollectionNewDiscount != null && !oldIdAcadOfDiscountCollectionNewDiscount.equals(academicactivity)) {
+                        oldIdAcadOfDiscountCollectionNewDiscount.getDiscountCollection().remove(discountCollectionNewDiscount);
+                        oldIdAcadOfDiscountCollectionNewDiscount = em.merge(oldIdAcadOfDiscountCollectionNewDiscount);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -258,6 +287,11 @@ public class AcademicactivityDAO implements Serializable {
             for (Groupe groupeCollectionGroupe : groupeCollection) {
                 groupeCollectionGroupe.setIdAcad(null);
                 groupeCollectionGroupe = em.merge(groupeCollectionGroupe);
+            }
+            Collection<Discount> discountCollection = academicactivity.getDiscountCollection();
+            for (Discount discountCollectionDiscount : discountCollection) {
+                discountCollectionDiscount.setIdAcad(null);
+                discountCollectionDiscount = em.merge(discountCollectionDiscount);
             }
             em.remove(academicactivity);
             em.getTransaction().commit();
@@ -313,5 +347,5 @@ public class AcademicactivityDAO implements Serializable {
             em.close();
         }
     }
-    
+
 }

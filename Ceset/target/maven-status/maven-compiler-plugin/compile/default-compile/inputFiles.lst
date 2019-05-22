@@ -1,5 +1,6 @@
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\bl\RolBL.java
+C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\PortafolioDTO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\bl\EstemExpendBL.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Notifficationbycheck.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\auth\AuthUtils.java
@@ -24,6 +25,7 @@ C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\e
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\servicios\PortafolioServicio.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Permission.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\NotifficationbyDAO.java
+C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\ThemesDTO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Item.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\NotifficationDAO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Budgetbyexpenditure.java
@@ -46,6 +48,7 @@ C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\e
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Groupe.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Rolebyuser.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Rol.java
+C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\GroupeDTO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\BudgetbyitemDAO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\EstimatedDAO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Expenditurebyitem.java
@@ -108,3 +111,4 @@ C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\e
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\auth\exceptions\NonexistentEntityException.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\CheckDAO.java
 C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dto\entities\Academicactivity.java
+C:\Users\Juan\Documents\Work\Ceset\Backend\CesetBackend\Ceset\src\main\java\co\edu\udea\ceset\dao\AcademicactivityJpaController.java

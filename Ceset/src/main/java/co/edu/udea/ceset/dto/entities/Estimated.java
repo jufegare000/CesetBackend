@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estimated.findByTotalBudget", query = "SELECT e FROM Estimated e WHERE e.totalBudget = :totalBudget"),
     @NamedQuery(name = "Estimated.findByImprovised", query = "SELECT e FROM Estimated e WHERE e.improvised = :improvised"),
     @NamedQuery(name = "Estimated.findByContributionsUdeA", query = "SELECT e FROM Estimated e WHERE e.contributionsUdeA = :contributionsUdeA"),
-    @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty")})
+    @NamedQuery(name = "Estimated.findByContributionsFaculty", query = "SELECT e FROM Estimated e WHERE e.contributionsFaculty = :contributionsFaculty"),
+        @NamedQuery(name = "Estimated.findLast", query = "SELECT e FROM Estimated e ORDER BY e.idEstimated DESC")})
 public class Estimated implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -68,6 +69,10 @@ public class Estimated implements Serializable {
     private Collection<Estimatedbyexpenditure> estimatedbyexpenditureCollection;
 
     public Estimated() {
+    }
+
+    public Estimated(int id){
+        this.setIdEstimated(id);
     }
 
     public Estimated(Integer idEstimated) {
@@ -155,5 +160,6 @@ public class Estimated implements Serializable {
     public String toString() {
         return "co.edu.udea.ceset.dto.entities.Estimated[ idEstimated=" + idEstimated + " ]";
     }
-    
+
+
 }

@@ -57,11 +57,13 @@ co\edu\udea\ceset\dao\PortafolioDAO.class
 co\edu\udea\ceset\dto\entities\Expenditure.class
 co\edu\udea\ceset\dto\entities\Expenditurebyitem.class
 co\edu\udea\ceset\dao\BudgetbyexpenditureDAO.class
+co\edu\udea\ceset\dto\PortafolioDTO.class
 co\edu\udea\ceset\dto\entities\Budgetbyitem.class
 co\edu\udea\ceset\dto\entities\Budget.class
 co\edu\udea\ceset\dto\ExpenditureByItemDTO.class
 co\edu\udea\ceset\dto\entities\Item.class
 co\edu\udea\ceset\dto\entities\Estimatedbyexpenditure.class
+co\edu\udea\ceset\dto\ThemesDTO.class
 co\edu\udea\ceset\dto\UserDTO.class
 co\edu\udea\ceset\bl\AcademicActivityBL.class
 co\edu\udea\ceset\dao\ExpenditurebygroupDAO.class
@@ -79,6 +81,7 @@ co\edu\udea\ceset\dto\EstimatedDTO.class
 co\edu\udea\ceset\dao\GroupeDAO.class
 co\edu\udea\ceset\dto\entities\Permission.class
 co\edu\udea\ceset\utilities\Daos.class
+co\edu\udea\ceset\dao\AcademicactivityJpaController.class
 co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.class
 co\edu\udea\ceset\dao\EstimatedDAO.class
 co\edu\udea\ceset\dto\entities\Budget_.class
@@ -134,4 +137,5 @@ co\edu\udea\ceset\dto\entities\Rol.class
 co\edu\udea\ceset\dto\entities\Notiffication.class
 co\edu\udea\ceset\bl\RolBL.class
 co\edu\udea\ceset\dto\NotifficationDTO.class
+co\edu\udea\ceset\dto\GroupeDTO.class
 co\edu\udea\ceset\dto\entities\Notifficationbyrole_.class

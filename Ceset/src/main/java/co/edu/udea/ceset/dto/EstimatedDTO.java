@@ -5,6 +5,8 @@
  */
 package co.edu.udea.ceset.dto;
 
+import co.edu.udea.ceset.dto.entities.Estimatedbyexpenditure;
+
 import java.util.Collection;
 
 /**
@@ -12,15 +14,15 @@ import java.util.Collection;
  * @author jufeg
  */
 public class EstimatedDTO {
-    
+
     private Integer idEstimated;
     private Double totalBudget;
     private Double improvised;
     private Double contributionsUdeA;
     private Double contributionsFaculty;
     private AcademicActivityDTO idAcad;
-    private Collection<EstimatedByItemDTO> estimatedbyitemCollection;
-    private Collection<EstiamtedByExpenditureDTO> estimatedbyExpenditure;
+
+    private Collection<EstimatedExpenditureDTO> estimatedbyexpenditureCollection;
 
     public EstimatedDTO() {
     }
@@ -73,19 +75,11 @@ public class EstimatedDTO {
         this.idAcad = idAcad;
     }
 
-    public Collection<EstimatedByItemDTO> getEstimatedbyitemCollection() {
-        return estimatedbyitemCollection;
+    public Collection<EstimatedExpenditureDTO> getEstimatedbyExpenditure() {
+        return estimatedbyexpenditureCollection;
     }
 
-    public void setEstimatedbyitemCollection(Collection<EstimatedByItemDTO> estimatedbyitemCollection) {
-        this.estimatedbyitemCollection = estimatedbyitemCollection;
-    }
-
-    public Collection<EstiamtedByExpenditureDTO> getEstimatedbyExpenditure() {
-        return estimatedbyExpenditure;
-    }
-
-    public void setEstimatedbyExpenditure(Collection<EstiamtedByExpenditureDTO> estimatedbyExpenditure) {
-        this.estimatedbyExpenditure = estimatedbyExpenditure;
+    public void setEstimatedbyExpenditure(Collection<EstimatedExpenditureDTO> estimatedbyexpenditureCollection) {
+        this.estimatedbyexpenditureCollection = estimatedbyexpenditureCollection;
     }
 }

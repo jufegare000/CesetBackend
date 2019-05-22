@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Academicactivity.findByState", query = "SELECT a FROM Academicactivity a WHERE a.state = :state"),
     @NamedQuery(name = "Academicactivity.findLast", query = "SELECT e FROM Academicactivity e ORDER BY e.idAcad DESC")})
 public class Academicactivity implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -144,8 +145,15 @@ public class Academicactivity implements Serializable {
     @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
     @Expose
     private Collection<Groupe> groupeCollection;
+    @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
+    @Expose
+    private Collection<Discount> discountCollection;
 
     public Academicactivity() {
+    }
+
+    public Academicactivity(int idAcad) {
+        this.setIdAcad(idAcad);
     }
 
     public Academicactivity(Integer idAcad) {
@@ -378,5 +386,14 @@ public class Academicactivity implements Serializable {
     public String toString() {
         return "co.edu.udea.ceset.dto.entities.Academicactivity[ idAcad=" + idAcad + " ]";
     }
-    
+
+    @XmlTransient
+    public Collection<Discount> getDiscountCollection() {
+        return discountCollection;
+    }
+
+    public void setDiscountCollection(Collection<Discount> discountCollection) {
+        this.discountCollection = discountCollection;
+    }
+
 }

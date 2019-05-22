@@ -35,7 +35,8 @@ public class BudgetDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Budget budget) {
+    public Budget create(Budget budget) {
+        List<Budget> lBdg = null;
         if (budget.getBudgetbyexpenditureCollection() == null) {
             budget.setBudgetbyexpenditureCollection(new ArrayList<Budgetbyexpenditure>());
         }
@@ -70,10 +71,14 @@ public class BudgetDAO implements Serializable {
             }
             em.getTransaction().commit();
         } finally {
+            lBdg = em.createNamedQuery("Budget.findLast")
+                    .setMaxResults(1)
+                    .getResultList(); // retorna actividad recién creada
             if (em != null) {
                 em.close();
             }
         }
+        return lBdg.get(0);
     }
 
     public void edit(Budget budget) throws NonexistentEntityException, Exception {

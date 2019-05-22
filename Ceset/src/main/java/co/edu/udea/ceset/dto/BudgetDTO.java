@@ -13,8 +13,7 @@ import java.util.Collection;
  */
 public class BudgetDTO {
     private Integer idBudget;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-   
+
     private Double totalRealBudget;
 
     private Double mprovisedBudget;
@@ -23,7 +22,66 @@ public class BudgetDTO {
 
     private Double contributionsFaculty;
 
-    private AcademicActivityDTO idActivity;
+    private Collection<BudgetByExpenditureDTO> budgetbyexpenditureCollection;
 
-    private Collection<ItemDTO> items;
+    private GroupeDTO idGroup;
+
+    public BudgetDTO() {
+    }
+
+    public Integer getIdBudget() {
+        return idBudget;
+    }
+
+    public void setIdBudget(Integer idBudget) {
+        this.idBudget = idBudget;
+    }
+
+    public Double getTotalRealBudget() {
+        return totalRealBudget;
+    }
+
+    public void setTotalRealBudget(Double totalRealBudget) {
+        this.totalRealBudget = totalRealBudget;
+    }
+
+    public Double getMprovisedBudget() {
+        return mprovisedBudget;
+    }
+
+    public void setMprovisedBudget(Double mprovisedBudget) {
+        this.mprovisedBudget = mprovisedBudget;
+    }
+
+    public Double getContributionsUdeA() {
+        return contributionsUdeA;
+    }
+
+    public void setContributionsUdeA(Double contributionsUdeA) {
+        this.contributionsUdeA = contributionsUdeA;
+    }
+
+    public Double getContributionsFaculty() {
+        return contributionsFaculty;
+    }
+
+    public void setContributionsFaculty(Double contributionsFaculty) {
+        this.contributionsFaculty = contributionsFaculty;
+    }
+
+    public Collection<BudgetByExpenditureDTO> getBudgetbyexpenditureCollection() {
+        return budgetbyexpenditureCollection;
+    }
+
+    public void setBudgetbyexpenditureCollection(Collection<BudgetByExpenditureDTO> budgetbyexpenditureCollection) {
+        this.budgetbyexpenditureCollection = budgetbyexpenditureCollection;
+    }
+
+    public GroupeDTO getIdGroup() {
+        return idGroup;
+    }
+
+    public void setIdGroup(GroupeDTO idGroup) {
+        this.idGroup = idGroup;
+    }
 }
