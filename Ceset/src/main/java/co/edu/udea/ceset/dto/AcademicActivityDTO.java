@@ -46,6 +46,36 @@ public class AcademicActivityDTO {
     private Collection<DiscountDTO> discountCollection;
     private Collection<EstimadoDTO> estimatedCollection;
 
+    private String coValue;
+
+    private String coEntity;
+
+    private String coConcept;
+
+
+    public String getCoValue() {
+        return coValue;
+    }
+
+    public void setCoValue(String coValue) {
+        this.coValue = coValue;
+    }
+
+    public String getCoEntity() {
+        return coEntity;
+    }
+
+    public void setCoEntity(String coEntity) {
+        this.coEntity = coEntity;
+    }
+
+    public String getCoConcept() {
+        return coConcept;
+    }
+
+    public void setCoConcept(String coConcept) {
+        this.coConcept = coConcept;
+    }
 
     public Collection<DiscountDTO> getDiscountCollection() {
         return discountCollection;

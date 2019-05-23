@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Academicactivity.findByState", query = "SELECT a FROM Academicactivity a WHERE a.state = :state"),
     @NamedQuery(name = "Academicactivity.findLast", query = "SELECT e FROM Academicactivity e ORDER BY e.idAcad DESC")})
 public class Academicactivity implements Serializable {
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -148,6 +149,20 @@ public class Academicactivity implements Serializable {
     @OneToMany(mappedBy = "idAcad", fetch = FetchType.LAZY)
     @Expose
     private Collection<Discount> discountCollection;
+    @Size(max = 100)
+    @Column(name = "coValue")
+    @Expose
+    private String coValue;
+    @Size(max = 100)
+    @Column(name = "coEntity")
+    @Expose
+    private String coEntity;
+    @Size(max = 100)
+    @Column(name = "coConcept")
+    @Expose
+    private String coConcept;
+
+    
 
     public Academicactivity() {
     }
@@ -394,6 +409,30 @@ public class Academicactivity implements Serializable {
 
     public void setDiscountCollection(Collection<Discount> discountCollection) {
         this.discountCollection = discountCollection;
+    }
+
+    public String getCoValue() {
+        return coValue;
+    }
+
+    public void setCoValue(String coValue) {
+        this.coValue = coValue;
+    }
+
+    public String getCoEntity() {
+        return coEntity;
+    }
+
+    public void setCoEntity(String coEntity) {
+        this.coEntity = coEntity;
+    }
+
+    public String getCoConcept() {
+        return coConcept;
+    }
+
+    public void setCoConcept(String coConcept) {
+        this.coConcept = coConcept;
     }
 
 }

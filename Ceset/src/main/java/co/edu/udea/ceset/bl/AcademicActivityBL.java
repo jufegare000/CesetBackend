@@ -218,6 +218,9 @@ public class AcademicActivityBL implements Serializable {
         acad.setContractInit(vieja.getContractInit());
         acad.setContractEntity(vieja.getContractEntity());
         acad.setContractEnd(vieja.getContractEnd());
+        acad.setCoConcept(vieja.getCoConcept());
+        acad.setCoEntity(vieja.getCoEntity());
+        acad.setCoValue(vieja.getCoValue());
     }
 
     public Estimated setearEstimated(Estimated estm, int idAcad){

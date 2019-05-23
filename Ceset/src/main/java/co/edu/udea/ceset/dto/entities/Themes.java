@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Themes.findByDependency", query = "SELECT t FROM Themes t WHERE t.dependency = :dependency"),
     @NamedQuery(name = "Themes.findByUniversityLink", query = "SELECT t FROM Themes t WHERE t.universityLink = :universityLink")})
 public class Themes implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,7 +102,12 @@ public class Themes implements Serializable {
     @JoinColumn(name = "idGroup", referencedColumnName = "idGroup")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Groupe idGroup;
+    @Size(max = 1000)
+    @Column(name = "contractType")
+    @Expose
+    private String contractType;
 
+    
     public Themes() {
     }
 
@@ -212,6 +218,7 @@ public class Themes implements Serializable {
     public void setIdGroup(Groupe idGroup) {
         this.idGroup = idGroup;
     }
+    
 
     @Override
     public int hashCode() {
@@ -236,6 +243,14 @@ public class Themes implements Serializable {
     @Override
     public String toString() {
         return "co.edu.udea.ceset.dto.entities.Themes[ idTheme=" + idTheme + " ]";
+    }
+
+    public String getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
     }
     
 }

@@ -79,10 +79,6 @@ public class UsuariosServicio implements Serializable {
         Token token;
         String mensaje;
 
-        /*usuarioAutenticado = new User();
-        usuarioAutenticado.setIdUser(1);
-        usuarioAutenticado.setNameUser("usuario.prueba");*/
-
         if (usuarioAutenticado != null) {
             // Devuelves un Response con un entity de tipo Token. 
             // En el token están los datos del usuario autenticado

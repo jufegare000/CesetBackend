@@ -5,30 +5,21 @@ import java.util.Date;
 public class ThemesDTO {
 
     private Integer idTheme;
-
     private Date creationDate;
-
     private String description;
-
     private String responsible;
-
     private String responsbileDocument;
-
     private Integer hours;
-
     private String responsibleEmail;
-
     private String contactNumber;
-
     private Date initDate;
-
     private Date endDate;
-
     private String dependency;
-
     private String universityLink;
-
     private GroupeDTO idGroup;
+    private String contractType;
+    
+    
 
     public ThemesDTO() {
     }
@@ -136,4 +127,13 @@ public class ThemesDTO {
     public void setIdGroup(GroupeDTO idGroup) {
         this.idGroup = idGroup;
     }
+
+    public String getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
+    }
+    
 }

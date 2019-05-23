@@ -3,10 +3,11 @@ co\edu\udea\ceset\dto\entities\Estimatedbyexpenditure_.class
 co\edu\udea\ceset\excepciones\IllegalOrphanException.class
 co\edu\udea\ceset\utilities\Utilities.class
 co\edu\udea\ceset\dto\entities\Portafolio.class
-co\edu\udea\ceset\dto\EstiamtedByExpenditureDTO.class
+co\edu\udea\ceset\dto\BudgetByExpenditureDTO.class
 co\edu\udea\ceset\dto\entities\Budgetbyexpenditure.class
 co\edu\udea\ceset\dto\entities\Permission_.class
 co\edu\udea\ceset\dto\entities\Usuario.class
+co\edu\udea\ceset\dto\EstimatedByExpenditureDTO.class
 co\edu\udea\ceset\dao\EstimatedbyexpenditureDAO.class
 co\edu\udea\ceset\dao\ThemesDAO.class
 co\edu\udea\ceset\dao\UserDAO.class
@@ -36,6 +37,8 @@ co\edu\udea\ceset\dto\entities\Discount.class
 co\edu\udea\ceset\dao\cnf\JDBCConnectionPool.class
 co\edu\udea\ceset\dto\entities\Portafolio_.class
 co\edu\udea\ceset\excepciones\BusinessLogicalException.class
+co\edu\udea\ceset\dto\EstimadoDTO.class
+co\edu\udea\ceset\dto\DiscountDTO.class
 co\edu\udea\ceset\dto\entities\Expenditurebyitem_.class
 co\edu\udea\ceset\excepciones\IllegalOrphanExceptionMapper.class
 co\edu\udea\ceset\dto\entities\exceptions\PreexistingEntityException.class
@@ -81,10 +84,10 @@ co\edu\udea\ceset\dto\EstimatedDTO.class
 co\edu\udea\ceset\dao\GroupeDAO.class
 co\edu\udea\ceset\dto\entities\Permission.class
 co\edu\udea\ceset\utilities\Daos.class
-co\edu\udea\ceset\dao\AcademicactivityJpaController.class
 co\edu\udea\ceset\dao\exceptions\NonexistentEntityException.class
 co\edu\udea\ceset\dao\EstimatedDAO.class
 co\edu\udea\ceset\dto\entities\Budget_.class
+co\edu\udea\ceset\dto\EstimatedExpenditureDTO.class
 co\edu\udea\ceset\auth\Token.class
 co\edu\udea\ceset\auth\SecurityFilter$Authorizer.class
 co\edu\udea\ceset\dto\entities\User.class
