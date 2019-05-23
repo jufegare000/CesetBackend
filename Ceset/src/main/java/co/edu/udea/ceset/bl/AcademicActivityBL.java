@@ -127,7 +127,7 @@ public class AcademicActivityBL implements Serializable {
         int idAcadNueva;
         String retorno;
         Estimated estimado;
-        Discount descuento;
+        Collection<Discount> descuentos;
         Groupe grupo;
         ModelMapper modelMapper = new ModelMapper();
         // La actividad se crea en cascada, primero se crean los datos de cabecera,
@@ -139,12 +139,11 @@ public class AcademicActivityBL implements Serializable {
         idAcadNueva = acadCreado.getIdAcad();
         estimado = (Estimated)acad.getEstimatedCollection().toArray()[0];
         this.crearEstimado(estimado, idAcadNueva);
-        descuento = (Discount)acad.getDiscountCollection().toArray()[0];
-        this.crearDescuento(descuento, idAcadNueva);
+        descuentos = acad.getDiscountCollection();
+        for(Discount aCrear: descuentos){
+            this.crearDescuento(aCrear, idAcadNueva);
+        }
         this.crearGrupos(acad.getGroupeCollection(), idAcadNueva);
-
-
-
         this.organizaActividad(acad);
         retorno = Utilities.jasonizer(acadCreado);
 
